@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XKYSearchVCRecommendTableHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门搜索" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc9-8H-X58">
+                    <rect key="frame" x="15" y="15" width="77" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="9vH-YB-k9G"/>
+                        <constraint firstAttribute="width" constant="77" id="U9W-ca-NuY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <color key="textColor" red="0.10980392156862745" green="0.6588235294117647" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0B-RV-6S1">
+                    <rect key="frame" x="15" y="52" width="90" height="30"/>
+                    <color key="backgroundColor" red="0.10980392160000001" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="TUZ-JN-k0v"/>
+                    </constraints>
+                    <state key="normal" title="马来西亚">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="kWR-fE-OCg"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UmE-iY-zHa">
+                    <rect key="frame" x="114" y="52" width="90.5" height="30"/>
+                    <color key="backgroundColor" red="0.10980392160000001" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="EnT-PB-Vv2"/>
+                    </constraints>
+                    <state key="normal" title="印度尼西亚">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="YnF-BB-a9p"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PN9-51-p6m">
+                    <rect key="frame" x="15" y="92" width="90" height="30"/>
+                    <color key="backgroundColor" red="0.10980392160000001" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="xpt-lw-Jeo"/>
+                    </constraints>
+                    <state key="normal" title="新加坡">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="avb-j6-tVa"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFU-RU-LBy">
+                    <rect key="frame" x="215" y="92" width="90" height="30"/>
+                    <color key="backgroundColor" red="0.10980392160000001" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="v33-PJ-uJi"/>
+                    </constraints>
+                    <state key="normal" title="日本">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="75Q-qW-2Lh"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jf6-id-eDo">
+                    <rect key="frame" x="114.5" y="92" width="90.5" height="30"/>
+                    <color key="backgroundColor" red="0.10980392160000001" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="M8D-AJ-O8K"/>
+                    </constraints>
+                    <state key="normal" title="越南">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="UNG-Nd-8FV"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfI-rW-JH7">
+                    <rect key="frame" x="215" y="52" width="90" height="30"/>
+                    <color key="backgroundColor" red="0.10980392160000001" green="0.6588235294" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="h5P-wr-RyU"/>
+                    </constraints>
+                    <state key="normal" title="泰国">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="fOe-Ku-aJh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="p0B-RV-6S1" firstAttribute="top" secondItem="nc9-8H-X58" secondAttribute="bottom" constant="15" id="0ap-KC-h1Q"/>
+                <constraint firstItem="UmE-iY-zHa" firstAttribute="leading" secondItem="p0B-RV-6S1" secondAttribute="trailing" constant="10" id="0ie-iF-vSa"/>
+                <constraint firstItem="GfI-rW-JH7" firstAttribute="leading" secondItem="UmE-iY-zHa" secondAttribute="trailing" constant="10" id="0uM-Lw-ZYr"/>
+                <constraint firstItem="jFU-RU-LBy" firstAttribute="width" secondItem="Jf6-id-eDo" secondAttribute="width" id="3du-pN-AcG"/>
+                <constraint firstItem="jFU-RU-LBy" firstAttribute="leading" secondItem="Jf6-id-eDo" secondAttribute="trailing" constant="10" id="4Pg-Ff-sfL"/>
+                <constraint firstAttribute="trailing" secondItem="jFU-RU-LBy" secondAttribute="trailing" constant="15" id="4aR-mn-BVN"/>
+                <constraint firstItem="GfI-rW-JH7" firstAttribute="width" secondItem="p0B-RV-6S1" secondAttribute="width" id="4fv-NJ-9Ay"/>
+                <constraint firstItem="PN9-51-p6m" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="672-18-D8N"/>
+                <constraint firstItem="jFU-RU-LBy" firstAttribute="top" secondItem="GfI-rW-JH7" secondAttribute="bottom" constant="10" id="9PH-nL-t9f"/>
+                <constraint firstItem="Jf6-id-eDo" firstAttribute="leading" secondItem="PN9-51-p6m" secondAttribute="trailing" constant="10" id="9gC-nA-iac"/>
+                <constraint firstAttribute="bottom" secondItem="PN9-51-p6m" secondAttribute="bottom" constant="10" id="Fyx-UC-qHv"/>
+                <constraint firstItem="PN9-51-p6m" firstAttribute="top" secondItem="p0B-RV-6S1" secondAttribute="bottom" constant="10" id="GUg-HS-EaG"/>
+                <constraint firstAttribute="bottom" secondItem="jFU-RU-LBy" secondAttribute="bottom" constant="10" id="HKU-9c-RUL"/>
+                <constraint firstItem="nc9-8H-X58" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="PXT-Kf-e8s"/>
+                <constraint firstAttribute="trailing" secondItem="GfI-rW-JH7" secondAttribute="trailing" constant="15" id="QTf-fD-2LC"/>
+                <constraint firstItem="GfI-rW-JH7" firstAttribute="leading" secondItem="UmE-iY-zHa" secondAttribute="trailing" constant="10" id="Rz0-UC-u6L"/>
+                <constraint firstItem="p0B-RV-6S1" firstAttribute="top" secondItem="nc9-8H-X58" secondAttribute="bottom" constant="15" id="Yfg-Wn-CpJ"/>
+                <constraint firstItem="Jf6-id-eDo" firstAttribute="top" secondItem="UmE-iY-zHa" secondAttribute="bottom" constant="10" id="Zr4-zj-6Iq"/>
+                <constraint firstItem="Jf6-id-eDo" firstAttribute="leading" secondItem="PN9-51-p6m" secondAttribute="trailing" constant="10" id="fdJ-dG-TGU"/>
+                <constraint firstItem="Jf6-id-eDo" firstAttribute="top" secondItem="UmE-iY-zHa" secondAttribute="bottom" constant="10" id="hQq-re-YOc"/>
+                <constraint firstItem="p0B-RV-6S1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="pX1-fI-Tzb"/>
+                <constraint firstItem="UmE-iY-zHa" firstAttribute="leading" secondItem="p0B-RV-6S1" secondAttribute="trailing" constant="10" id="r5A-Hq-3Md"/>
+                <constraint firstItem="jFU-RU-LBy" firstAttribute="top" secondItem="GfI-rW-JH7" secondAttribute="bottom" constant="10" id="thb-Jk-2G5"/>
+                <constraint firstItem="jFU-RU-LBy" firstAttribute="leading" secondItem="Jf6-id-eDo" secondAttribute="trailing" constant="10" id="wd0-Ch-K9l"/>
+                <constraint firstItem="jFU-RU-LBy" firstAttribute="width" secondItem="PN9-51-p6m" secondAttribute="width" id="xaC-nZ-Aac"/>
+                <constraint firstAttribute="bottom" secondItem="Jf6-id-eDo" secondAttribute="bottom" constant="10" id="xoY-pX-Cg8"/>
+                <constraint firstItem="GfI-rW-JH7" firstAttribute="width" secondItem="UmE-iY-zHa" secondAttribute="width" id="yTx-W5-VJT"/>
+                <constraint firstItem="PN9-51-p6m" firstAttribute="top" secondItem="p0B-RV-6S1" secondAttribute="bottom" constant="10" id="zv1-7Z-iRe"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="recommendBuutons" destination="p0B-RV-6S1" id="fBF-55-8KA"/>
+                <outletCollection property="recommendBuutons" destination="UmE-iY-zHa" id="iLV-hI-Por"/>
+                <outletCollection property="recommendBuutons" destination="GfI-rW-JH7" id="xVt-Vv-zqg"/>
+                <outletCollection property="recommendBuutons" destination="PN9-51-p6m" id="AHW-rm-f2x"/>
+                <outletCollection property="recommendBuutons" destination="Jf6-id-eDo" id="Zga-Nh-dmz"/>
+                <outletCollection property="recommendBuutons" destination="jFU-RU-LBy" id="5XQ-Sd-Hvp"/>
+            </connections>
+            <point key="canvasLocation" x="245" y="319"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

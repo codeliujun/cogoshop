@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 14,
+          "height" : 4
+        },
+        "capInsets" : {
+          "bottom" : 30,
+          "top" : 26,
+          "right" : 102,
+          "left" : 89
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "search_label_select_bg.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

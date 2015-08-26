@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="LIUWillPayTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7l-SF-eJS">
+                        <rect key="frame" x="10" y="30" width="65" height="19.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="QjT-9F-IIf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单金额:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y9-cR-7Mm">
+                        <rect key="frame" x="10" y="54" width="65" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="WvW-Em-urz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ot-wy-wmo">
+                        <rect key="frame" x="259" y="25" width="51" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.070236308710000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Nek-J8-dG1"/>
+                            <constraint firstAttribute="width" constant="51" id="ORO-p2-W3n"/>
+                        </constraints>
+                        <state key="normal" title="去支付">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="goPay:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="moN-8Y-wqY"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单编号:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anZ-WQ-Y7b">
+                        <rect key="frame" x="10" y="5" width="65" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="FRH-Aq-2PV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="l7l-SF-eJS" firstAttribute="top" secondItem="anZ-WQ-Y7b" secondAttribute="bottom" constant="5" id="1vL-Ea-Vlr"/>
+                    <constraint firstItem="l7l-SF-eJS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="B8B-LM-FF4"/>
+                    <constraint firstItem="1y9-cR-7Mm" firstAttribute="top" secondItem="l7l-SF-eJS" secondAttribute="bottom" constant="5" id="O5B-rY-yZQ"/>
+                    <constraint firstAttribute="bottom" secondItem="1y9-cR-7Mm" secondAttribute="bottom" constant="5" id="PS3-n1-vo3"/>
+                    <constraint firstItem="anZ-WQ-Y7b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Pio-gm-h2r"/>
+                    <constraint firstAttribute="centerY" secondItem="0Ot-wy-wmo" secondAttribute="centerY" id="R5Y-8S-ALf"/>
+                    <constraint firstItem="1y9-cR-7Mm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="aXA-Nx-Yt1"/>
+                    <constraint firstItem="anZ-WQ-Y7b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="eBL-kK-5t6"/>
+                    <constraint firstAttribute="trailing" secondItem="0Ot-wy-wmo" secondAttribute="trailing" constant="10" id="i5b-ce-Cnf"/>
+                    <constraint firstItem="anZ-WQ-Y7b" firstAttribute="height" secondItem="l7l-SF-eJS" secondAttribute="height" id="iHf-VC-ESX"/>
+                    <constraint firstItem="anZ-WQ-Y7b" firstAttribute="height" secondItem="1y9-cR-7Mm" secondAttribute="height" id="xra-R9-1kI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="orderNumber" destination="anZ-WQ-Y7b" id="NwA-1z-V6H"/>
+                <outlet property="orderPrice" destination="1y9-cR-7Mm" id="34p-Bf-WX6"/>
+                <outlet property="orderTime" destination="l7l-SF-eJS" id="zGj-Ml-ICo"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
