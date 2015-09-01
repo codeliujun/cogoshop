@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
 
+#define kScreenBounds       [UIScreen mainScreen].bounds
+
 #import "LIUCategoryCollectionView.h"
 #import "LIUHeaderCollectionReusableView.h"
 #import "LIUCategoryCollectionViewCell.h"
@@ -27,6 +29,8 @@
 + (LIUCategoryCollectionView *)creatCategoryCollectionViewWithCategpry:(NSDictionary *)category {
     //配置scrollerView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    
+    //layout.itemSize = CGSizeMake((kScreenBounds.size.width-80-40)/3.0, (kScreenBounds.size.width-80-40)/3.0);
     layout.minimumInteritemSpacing = 20;
     layout.minimumLineSpacing = 10;
     LIUCategoryCollectionView *categoryView = [[LIUCategoryCollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -103,7 +107,7 @@
 
 #pragma --mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 150);
+    return CGSizeMake((kScreenBounds.size.width-80-40)/3.0, (kScreenBounds.size.width-80-40)/2.0);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 30, 20, 30);

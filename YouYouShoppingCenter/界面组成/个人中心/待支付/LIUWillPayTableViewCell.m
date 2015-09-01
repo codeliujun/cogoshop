@@ -74,7 +74,7 @@
         make.height.equalTo(@(rect.size.height));
     }];
     
-    self.orderPriceLabel.text = [NSString stringWithFormat:@"%.2f",self.orderModel.TotalAmount];
+    //self.orderPriceLabel.text = [NSString stringWithFormat:@"%.2f",self.orderModel.TotalAmount];
     self.orderPriceLabel.font = [UIFont systemFontOfSize:15.0];
     rect = [self.orderPriceLabel textRectForBounds:CGRectMake(0, 0, 999, 999) limitedToNumberOfLines:1];
     [self addSubview:self.orderPriceLabel];

@@ -176,7 +176,7 @@
 #pragma --mark cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击了cell");
-    
+    self.shoppingVC = nil ;
     //LIUShoppingDetaileViewController *shoppingVC = [[LIUShoppingDetaileViewController alloc]init];
     self.shoppingVC.good = self.shoppingList[indexPath.row];
     [self presentViewController:self.shoppingVC animated:YES completion:nil];

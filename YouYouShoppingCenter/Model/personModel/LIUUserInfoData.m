@@ -7,7 +7,9 @@
 //
 
 #import "LIUUserInfoData.h"
+
 static LIUUserInfoData *_userData = nil;
+
 @implementation LIUUserInfoData
 
 + (LIUUserInfoData *)defaultUserInfo {
@@ -22,6 +24,10 @@ static LIUUserInfoData *_userData = nil;
         _userData = self;
     }
     return self;
+}
+
++ (void)logOut {
+    _userData = nil;
 }
 
 @end

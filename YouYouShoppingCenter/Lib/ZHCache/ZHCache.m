@@ -40,10 +40,40 @@
     }
 }
 
++ (void)writeData:(NSData *)cacheData fileName:(NSString *)fileName {
+    
+    NSString *filePath = [self fileName:fileName];
+    BOOL fileExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    if (!fileExist){
+        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+    }
+    BOOL success = [cacheData writeToFile:filePath atomically:YES];
+    if (!success) {
+        NSLog(@"写入失败");
+    }else{
+        NSLog(@"写入成功");
+    }
+    
+}
+
 + (id)getCacheData:(NSString *)fileName {
     NSString *filePath = [self fileName:fileName];
+    NSLog(@"%@",filePath);
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         id cacheData =  [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        if (!cacheData) {
+            NSLog(@"读取失败");
+        }
+        return cacheData;
+    }
+    return nil;
+}
+
++ (NSData *)getCacheImageData:(NSString *)fileName {
+    NSString *filePath = [self fileName:fileName];
+    NSLog(@"%@",filePath);
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        id cacheData =  [NSData dataWithContentsOfFile:filePath];
         if (!cacheData) {
             NSLog(@"读取失败");
         }

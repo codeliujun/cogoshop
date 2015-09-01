@@ -10,9 +10,4 @@
 
 @implementation LIUOrderModel
 
-
-+ (NSDictionary *)objectClassInArray{
-    return @{@"OrderDetails":[LIUOrderdetails class]};
-}
-
 @end

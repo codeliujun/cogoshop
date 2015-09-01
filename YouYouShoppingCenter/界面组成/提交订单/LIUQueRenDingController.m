@@ -9,11 +9,14 @@
 #import "LIUQueRenDingController.h"
 #import "LIUQueRenTableViewCell.h"
 #import "LIUAddressChooseView.h"
+#import "UIColor+HexColor.h"
+#import "LIUCaquView.h"
 #import "Masonry.h"
 #import "MJExtension.h"
 #import "SVProgressHUD.h"
 #import "UIViewController+GetHTTPRequest.h"
 #import "LIUAdressManagerViewController.h"
+#import "LIUConfirmViewController.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -24,10 +27,29 @@
 
 @property (nonatomic,strong)NSArray *addressArray;
 @property (nonatomic,strong)NSArray *orderList;
+@property (nonatomic,strong)LIUCaquView *caquView;
 
 @end
 
 @implementation LIUQueRenDingController
+
+
+- (LIUCaquView *)caquView {
+    
+    if (!_caquView) {
+        WS(ws);
+        _caquView = [LIUCaquView view];
+        _caquView.confirmButtonBlock = ^() {
+          
+            LIUConfirmViewController *confirm = [[LIUConfirmViewController alloc]init];
+            confirm.orederModels = ws.orderList;
+            [ws.navigationController pushViewController:confirm animated:YES];
+        
+        };
+    }
+    return _caquView;
+    
+}
 
 - (NSArray *)orderList {
     
@@ -61,11 +83,26 @@
                                                     @"endtime":@""}
                  Success:^(NSDictionary *result) {
                      ws.orderList = [LIUOrderModel objectArrayWithKeyValuesArray:result[@"Data"]];
+                     [ws caqulateTotalPrice];
                      [ws.tableView reloadData];
                  } Failue:^(NSDictionary *failueInfo) {
                      
                  }];
     [self getAddressData];
+}
+
+- (void)caqulateTotalPrice {
+    
+    CGFloat total = 0.0f;
+    
+    for (LIUOrderModel *model in self.orderList) {
+        
+        total = total+model.Total;
+        
+    }
+    
+    self.caquView.priceLabel.text = [NSString stringWithFormat:@"%.2f",total];
+    
 }
 
 - (void)getAddressData {
@@ -128,44 +165,45 @@
 #pragma --mark delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return self.orderList.count;
+    return 1;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    LIUOrderModel *orderModel = self.orderList[section];
-    NSArray *detail = orderModel.OrderDetails;
-    return detail.count;
+    return self.orderList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LIUQueRenTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell" forIndexPath:indexPath];
-    LIUOrderModel *orderModel = self.orderList[indexPath.section];
-    NSArray *detail = orderModel.OrderDetails;
-    LIUOrderdetails *detaile = detail[indexPath.row];
-    cell.orderDetail = detaile;
+    LIUOrderModel *orderModel = self.orderList[indexPath.row];
+    cell.mode = orderModel;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
+    return 90.f;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 20)];
-    view.backgroundColor = [UIColor whiteColor];
-    UILabel *label = [[UILabel  alloc]init];
-    LIUOrderModel *order = self.orderList[section];
-    label.text = [NSString stringWithFormat:@"订单编号：%@",order.Id];
-    label.font = [UIFont systemFontOfSize:20.0f];
-    [view addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(view).insets(UIEdgeInsetsMake(0, 10, 0, 0));
-    }];
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    return view;
+    if (section+1 == [tableView numberOfSections]) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44.f)];
+        [view addSubview:self.caquView];
+        [self.caquView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(view).insets(UIEdgeInsetsZero);
+        }];
+        return view;
+    }
+    return nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+    if (section+1 == [tableView numberOfSections]) {
+        return 50.f;
+    }
+    else return 0.0f;
+}
 
 @end

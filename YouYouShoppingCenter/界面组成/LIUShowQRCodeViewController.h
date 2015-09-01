@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LIUPersonModel.h"
+#import "LIUUserInfoData.h"
 
 @interface LIUShowQRCodeViewController : UIViewController
 
-@property(nonatomic,strong)LIUPersonModel *person;
+@property(nonatomic,strong)LIUUserInfoData *userInfoData;
 
 @end

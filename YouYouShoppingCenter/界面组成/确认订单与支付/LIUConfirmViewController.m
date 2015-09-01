@@ -12,6 +12,7 @@ typedef enum {
 } Paystyle;
 
 #import "LIUConfirmViewController.h"
+#import "UIViewController+GetHTTPRequest.h"
 #import "LIUPersonModel.h"
 
 @interface LIUConfirmViewController ()
@@ -33,22 +34,44 @@ typedef enum {
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"取消支付" style:UIBarButtonItemStylePlain target:self action:@selector(goBackDidTap:)];
     self.navigationItem.leftBarButtonItem = item;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self caqulateTotalPrice];
+    //self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",self.orderModel.TotalAmount];
+}
+
+
+- (void)caqulateTotalPrice {
     
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",self.orderModel.TotalAmount];
+    CGFloat total = 0.0f;
+    NSMutableArray  *orderNum = @[].mutableCopy;
+    for (LIUOrderModel *model in self.self.orederModels) {
+        
+        total = total+model.Total;
+        [orderNum addObject:model.Code];
+    }
+    
+    NSString *str = [orderNum componentsJoinedByString:@","];
+    self.orderLabel.text = str;
+    self.priceLabel.text = [NSString stringWithFormat:@"%.2f",total];
+    
 }
 
 - (IBAction)payButtonDidTap:(UIButton *)sender {
-    NSLog(@"支付完成之后，就要将模型商品转移到DidPay");
-    //模拟数据在这里已经支付完成
-    LIUPersonModel *person = [LIUPersonModel defaultUser];
-    [person.willPayOrders removeObject:self.orderModel];//删除即将付款
-    [person.willDispathOrders addObject:self.orderModel];//添加到即将发货
+    LIUOrderModel *orderModel = self.orederModels[0];
+    [self requestWithUrl:kPayOrder Parameters:@{@"userid":[self getUserId],
+                                                @"orderid":orderModel.Id}
+        Success:^(NSDictionary *result) {
+            NSLog(@"%@",result);
+            [self.navigationController popToRootViewControllerAnimated:YES];
+    } Failue:^(NSDictionary *failueInfo) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    
 }
 
 //返回按钮
 - (void)goBackDidTap:(UIBarButtonItem *)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

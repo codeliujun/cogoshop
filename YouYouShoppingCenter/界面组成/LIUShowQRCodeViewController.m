@@ -20,6 +20,13 @@
 
 @implementation LIUShowQRCodeViewController
 
+- (LIUUserInfoData *)userInfoData {
+    if (!_userInfoData) {
+        _userInfoData = [LIUUserInfoData defaultUserInfo];
+    }
+    return _userInfoData;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -39,9 +46,19 @@
     }];
     
     UIImage *image = [LIUCreatQRCode qrImageForString:@"用户的信息" imageSize:self.view.bounds.size.width*3.0/5];
-    self.userInfo.image = [LIUCreatQRCode twoDimensionCodeImage:image withAvatarImage:[UIImage imageNamed:[LIUPersonModel defaultUser].icon]];
-    
-    
+    NSString *str  = self.userInfoData.ThumbUrl;
+    NSString *newStr = [str stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    NSURL *thumUrl = [NSURL URLWithString:newStr];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSData *data = [NSData dataWithContentsOfURL:thumUrl];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (data) {
+                self.userInfo.image = [LIUCreatQRCode twoDimensionCodeImage:image withAvatarImage:[UIImage imageWithData:data]];
+            }else {
+                self.userInfo.image = [LIUCreatQRCode twoDimensionCodeImage:image withAvatarImage:[UIImage imageNamed:@"cust_level_gold"]];
+            }
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning {

@@ -19,7 +19,9 @@
 @interface LIUAddressEditAndAddViewController : UIViewController
 
 @property(nonatomic,weak)id<LIUAddressEditAndAddViewControllerDelegate> delegate;
+
 - (void)addAddress;
+
 - (void)reEditAddress:(LIURecevingAderess *)address;
 
 @end

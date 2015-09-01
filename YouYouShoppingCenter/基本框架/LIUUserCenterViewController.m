@@ -11,12 +11,18 @@
 #import "LIUPersonModel.h"
 #import "LIUUserInfoData.h"
 #import "SVProgressHUD.h"
+#import "Masonry.h"
 #import "LIUShowQRCodeViewController.h"
 #import "LIUZhangHuGuanLiViewController.h"
 #import "LIUWillPayViewController.h"
 #import "LIULoginViewController.h"
 #import "UIButton+LIUBadgeButton.h"
+#import "UIViewController+GetHTTPRequest.h"
 #import "LIUUserHeaderView.h"
+
+#import "LIUOrderListController.h"
+
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
 @interface LIUUserCenterViewController ()<UITableViewDataSource,UITableViewDelegate,LIUUserHeaderViewDelegate>
 
@@ -34,7 +40,7 @@
 
 - (NSArray *)cellLabels {
     if (!_cellLabels) {
-        _cellLabels = @[@"全部订单",@"账户管理",@"会员中心"];
+        _cellLabels = @[@"全部订单",@"会员中心",@"我的二维码"];
     }
     return _cellLabels;
 }
@@ -57,7 +63,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self addHeaderView];
-
+    [self.userCenterTableView reloadData];
 }
 
 //添加头视图
@@ -92,9 +98,10 @@
         switch (sender.tag) {
             case 1000:
             {
-                NSLog(@"待付款");
-                LIUWillPayViewController *willPayVC = [[LIUWillPayViewController alloc]initWithNibName:@"LIUWillPayViewController" bundle:nil];;
-                [self.navigationController pushViewController:willPayVC animated:YES];
+                LIUOrderListController *controller = [[LIUOrderListController alloc]init];
+                controller.status = OrderStatussWillPay;
+                [self.navigationController pushViewController:controller animated:YES];
+                break;
             }
                 break;
                 
@@ -108,8 +115,11 @@
                 break;
             
             case 1003:
-                NSLog(@"待评价");
-                [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据api来" duration:1.0];
+            {
+                LIUOrderListController *controller = [[LIUOrderListController alloc]init];
+                controller.status = OrderStatusEve;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
                 break;
                 
             case 1004:{
@@ -145,24 +155,68 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor clearColor];
+    
+    UIView *view = nil;
+    if ([[self getUserId] isEqualToString:@""]) {
+        view  = [UIView new];
+        view.backgroundColor = [UIColor clearColor];
+    }else {
+        view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 70)];
+        view.backgroundColor = [UIColor whiteColor];
+        UIButton *button = [[UIButton alloc]init];
+        [button setTitle:@"退出" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor redColor]];
+        [view addSubview:button];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(view).insets(UIEdgeInsetsMake(30, 20, 0, 20));
+        }];
+    }
+    
     return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 70.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         LIUShowQRCodeViewController *showVC = [LIUShowQRCodeViewController new];
         //UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:showVC];
         [self.navigationController pushViewController:showVC animated:YES];
     }else if(indexPath.row == 1) {
         LIUZhangHuGuanLiViewController *zhanghaoVC = [[LIUZhangHuGuanLiViewController alloc]initWithNibName:@"LIUZhangHuGuanLiViewController" bundle:nil];
         [self.navigationController pushViewController:zhanghaoVC animated:YES];
+    }else if(indexPath.row == 0) {
+        LIUOrderListController *controller = [[LIUOrderListController alloc]init];
+        controller.status = OrderStatusAll;
+        [self.navigationController pushViewController:controller animated:YES];
     }else {
         [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据api来" duration:1.0];
     }
     
+}
+
+- (void)logOut:(UIButton *)sender {
+        
+        WS(ws);
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认退出" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [LIUUserInfoData logOut];
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userName"];
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"passWord"];
+            [ws viewWillAppear:YES];
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        
+        [alert addAction:action1];
+        [alert addAction:action2];
+        [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

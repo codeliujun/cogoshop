@@ -34,7 +34,7 @@
                                 <constraint firstAttribute="height" constant="20" id="Uun-ng-BfA"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这个会很长很长这个会很长很长这个会很长很长这个会很长很长这个会很长很长这个会很长很长" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbL-mS-gdb">
@@ -43,7 +43,7 @@
                                 <constraint firstAttribute="height" constant="40" id="0Hu-JC-Le2"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13790646251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5S-yH-JBc">
@@ -53,7 +53,7 @@
                                 <constraint firstAttribute="width" constant="124.5" id="spF-Qa-48J"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNT-6R-TTB">
@@ -68,7 +68,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="SNT-6R-TTB" firstAttribute="top" secondItem="7L0-Cs-7JN" secondAttribute="top" id="1Pq-sa-cI2"/>
                         <constraint firstAttribute="centerY" secondItem="g4E-lg-heM" secondAttribute="centerY" id="1nH-rh-ziY"/>
@@ -102,7 +102,7 @@
                 <outlet property="name" destination="lPe-VP-yce" id="YhX-4H-G0l"/>
                 <outlet property="phone" destination="C5S-yH-JBc" id="B51-cm-eSa"/>
             </connections>
-            <point key="canvasLocation" x="155" y="333"/>
+            <point key="canvasLocation" x="1" y="290"/>
         </view>
     </objects>
     <resources>

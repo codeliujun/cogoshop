@@ -7,9 +7,11 @@
 //
 
 #import "LIUAddressEditAndAddViewController.h"
+#import "UIViewController+GetHTTPRequest.h"
 
 @interface LIUAddressEditAndAddViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *areaTextField;
 @property (weak, nonatomic) IBOutlet UIView *upView;
 @property (weak, nonatomic) IBOutlet UIView *downView;
 
@@ -20,6 +22,8 @@
 @property(nonatomic,strong)LIURecevingAderess *oldAddress;
 
 @property(nonatomic,assign)BOOL isAdd;
+
+@property (nonatomic,assign)BOOL isDefault;
 
 @end
 
@@ -37,17 +41,20 @@
     self.downView.layer.masksToBounds = YES;
     self.downView.layer.borderColor = [UIColor lightTextColor].CGColor;
     self.downView.layer.borderWidth = 1.0;
+    
+    self.shouJianRenTextField.text = self.oldAddress.Name;
+    self.shouJiHaoTextField.text = self.oldAddress.Phone;
+    self.xiangXiDiZhiTextField.text = self.oldAddress.FullAddress;
+    
 }
 
 - (void)addAddress {
     self.isAdd = YES;
 }
+
 - (void)reEditAddress:(LIURecevingAderess *)address {
     self.isAdd = NO;
     self.oldAddress = address;
-    self.shouJianRenTextField.text = address.Name;
-    self.shouJiHaoTextField.text = address.Phone;
-    self.xiangXiDiZhiTextField.text = address.FullAddress;
 }
 
 - (IBAction)quXiao:(id)sender {
@@ -55,16 +62,60 @@
 }
 
 - (IBAction)done:(id)sender {
-    LIURecevingAderess *address = [LIURecevingAderess new];
-    address.FullAddress = self.xiangXiDiZhiTextField.text;
-    address.Name = self.shouJianRenTextField.text;
-    address.Phone = self.shouJiHaoTextField.text;
+    
+    /*
+     userid={userid}&fullname={fullname}&provinceid={provinceid}&cityid={cityid}&areaid={areaid}&address={address}&zipcode={zipcode}&telephone={telephone}&mobile={mobile}&email={email}&alias={alias}&isdefault={isdefault}
+     */
     if (self.isAdd) {
-        [self.delegate addSuccessAddress:address];
-    }else {
-        [self.delegate reEditSuccessOldAddress:self.oldAddress NewAddress:address];
+        
+        [self requestWithUrl:kAddAddress Parameters:@{
+                    @"userid":[self getUserId],
+                    @"fullname":self.xiangXiDiZhiTextField.text,
+                    @"provinceid":@"",
+                    @"provinceid":@"",
+                    @"cityid":@"",
+                    @"areaid":@"",
+                    @"address":@"",
+                    @"zipcode":@"",
+                    @"telephone":self.shouJiHaoTextField.text,
+                    @"mobile":self.shouJiHaoTextField.text,
+                    @"email":@"",
+                    @"alias":@"",
+                    @"isdefault":self.isDefault?@"1":@"0",
+                    } Success:^(NSDictionary *result) {
+                        NSLog(@"%@",result);
+        } Failue:^(NSDictionary *failueInfo) {
+            
+        }];
+        
     }
-    [self quXiao:nil];
+    else {
+        [self requestWithUrl:kUpdataAddress Parameters:@{
+                    @"userid":[self getUserId],
+                    @"fullname":self.xiangXiDiZhiTextField.text,
+                    @"provinceid":@"",
+                    @"provinceid":@"",
+                    @"cityid":@"",
+                    @"areaid":@"",
+                    @"address":@"",
+                    @"zipcode":@"",
+                    @"telephone":self.shouJiHaoTextField.text,
+                    @"mobile":self.shouJiHaoTextField.text,
+                    @"email":@"",
+                    @"alias":@"",
+                    @"isdefault":self.isDefault?@"1":@"0",
+                } Success:^(NSDictionary *result) {
+                    NSLog(@"%@",result);
+                } Failue:^(NSDictionary *failueInfo) {
+                    
+                }];
+        
+    }
+    
+}
+- (IBAction)default:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    self.isDefault = sender.isSelected;
 }
 
 

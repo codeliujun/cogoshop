@@ -11,6 +11,6 @@
 
 @interface LIUQueRenTableViewCell : UITableViewCell
 
-@property(nonatomic,strong)LIUOrderdetails *orderDetail;
+@property(nonatomic,strong)LIUOrderModel *mode;;
 
 @end

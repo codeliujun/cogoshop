@@ -58,7 +58,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    self.customSwitch = [[LIUCustomSwitch alloc]initWithFrame:CGRectMake(285, 220, 50, 25)];
+    self.customSwitch = [[LIUCustomSwitch alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-80, 220, 50, 25)];
     [self.view addSubview:self.customSwitch];
     self.customSwitch.delegate = self;
     

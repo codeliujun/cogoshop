@@ -8,11 +8,13 @@
 
 #import "LIUHomeViewController.h"
 #import "LIUHomeViewRecommendTableViewCell.h"
+#import "UIViewController+GetHTTPRequest.h"
 #import "LIUHomeCategoryCell.h"
 #import "LIUSearchViewController.h"
 #import "LIUScanTwoDimensionalCode.h"
 #import "SVProgressHUD.h"
 #import "LIUUserInfoData.h"
+#import "LIUDisplayShoppingViewController.h"
 #import "Masonry.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf = self
@@ -30,9 +32,18 @@
 @property(nonatomic,strong)UIButton *rightButton;
 @property(nonatomic,strong)LIUScanTwoDimensionalCode *scanCodeView;
 
+@property (nonatomic ,strong)NSArray *catergays;
+
 @end
 
 @implementation LIUHomeViewController
+
+- (NSArray *)catergays {
+    if (!_catergays) {
+        _catergays = @[];
+    }
+    return _catergays;
+}
 
 - (NSMutableArray *)scrollerAllButtons {
     if (!_scrollerAllButtons) {
@@ -65,6 +76,28 @@
     //这里只显示图片吧
     [self addTableHeaderViewWithGoods:@[@"测试图片",@"测试图片",@"测试图片",@"测试图片",@"测试图片"]];
     [self itemLayout];
+    
+    [self getData];
+    
+}
+
+- (void)getData {
+    WS(ws);
+    [self requestWithUrl:kGetFirstCater Parameters:@{@"pageindex":@1,
+                        @"pagesize":@20,
+                        @"thumbwidth":@20,
+                        @"thumbheight":@20,
+            } Success:^(NSDictionary *result) {
+                
+                ws.catergays = result[@"Data"];
+                
+                [self.homeTableView reloadData];
+                
+            } Failue:^(NSDictionary *failueInfo) {
+                                                         
+                                                     }];
+    
+    
 }
 
 /**
@@ -179,7 +212,7 @@
     
     NSInteger row = 1;
     if (1 == section) {
-        row = 10;
+        row = self.catergays.count;
     }
     
     return row;
@@ -200,6 +233,7 @@
         return cell;
     }else {
         LIUHomeCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell2" forIndexPath:indexPath];
+        cell.caterInfo = self.catergays[indexPath.row];
         return cell;
     }
     
@@ -265,6 +299,19 @@
         view = [UIView new];
     }
     return view;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (1 == indexPath.section) {
+        LIUDisplayShoppingViewController *disVC = [LIUDisplayShoppingViewController new];
+        NSDictionary *dic = self.catergays[indexPath.row];
+        disVC.categoryid = dic[@"id"];
+        //disVC.titleLabel.text = model.name;
+        //disVC.model = model;
+        [self presentViewController:disVC animated:YES completion:nil];
+
+    }
+    
 }
 
 #pragma --mark 扫描二维码

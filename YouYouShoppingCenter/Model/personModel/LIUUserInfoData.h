@@ -36,7 +36,7 @@
 
 @property (nonatomic, copy) NSString *ThumbFileId;
 
-
++ (void)logOut;
 
 /*
 @property(nonatomic,strong)NSString *account;//account: "13341189799",

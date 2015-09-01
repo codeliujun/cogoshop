@@ -14,4 +14,6 @@
 //@property(nonatomic,assign)float totalPrice;
 @property(nonatomic,strong)LIUOrderModel *orderModel;
 
+@property (nonatomic,strong)NSArray *orederModels;
+
 @end

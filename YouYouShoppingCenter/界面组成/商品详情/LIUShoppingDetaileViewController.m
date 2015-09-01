@@ -221,9 +221,9 @@
          goodsid={goodsid}&count={count}&shopid={shopid}
          */
   
-        //先注释
+       // 先注释
 //        if ([self.good.InstoreNumber integerValue] <= 0) {
-//            [SVProgressHUD showErrorWithStatus:@"一点库存也没有了" duration:1.5];
+//            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
 //            return;
 //        }
         

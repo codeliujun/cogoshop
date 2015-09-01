@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *shopIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *desLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderNumber;
 
 @property(nonatomic,strong)UILabel *countLabel;
 @property(nonatomic,strong)UILabel *priceLabel;
@@ -41,40 +42,44 @@
     // Initialization code
 }
 
-- (void)setOrderDetail:(LIUOrderdetails *)orderDetail{
-    _orderDetail = orderDetail;
-    
+
+- (void)setMode:(LIUOrderModel *)mode {
+    _mode = mode;
     [self.priceLabel removeFromSuperview];
     self.priceLabel = nil;
     [self.countLabel removeFromSuperview];
     self.countLabel = nil;
     
     //1.读取缓存中又没有图片
-    NSData *cacheImageData = [ZHCache getCacheData:self.orderDetail.ProductThumbUrl];
+    NSData *cacheImageData = [ZHCache getCacheImageData:mode.ProductName];
     if (cacheImageData) {
         self.shopIconImageView.image = [UIImage  imageWithData:cacheImageData];
     }else {
-        UIImage *image = nil;
-        NSString *imageStr = [self.orderDetail.ProductThumbUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
-        if (data) {
-            image = [UIImage imageWithData:data];
-            NSData *imageData = UIImagePNGRepresentation(image);
-            [ZHCache saveData:imageData fileName:self.orderDetail.ProductThumbUrl];
-            self.shopIconImageView.image = image;
-        }else {
-            self.shopIconImageView.image = [UIImage imageNamed:@"测试图片"];
-        }
+       __block UIImage *image = nil;
+        NSString *imageStr = [mode.ProductThumbUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (data) {
+                    image = [UIImage imageWithData:data];
+                    NSData *imageData = UIImagePNGRepresentation(image);
+                    [ZHCache writeData:imageData fileName:mode.ProductName];
+                    self.shopIconImageView.image = image;
+                }else {
+                    self.shopIconImageView.image = [UIImage imageNamed:@"测试图片"];
+                }
+            });
+        });
+        
+        
     }
     
-    LIUProductjson *product = self.orderDetail.ProductJson;
-    //self.shopIconImageView.image = [UIImage imageNamed:goodModel.imageName];
-    self.desLabel.text = product.NameSpecification;
+    self.desLabel.text = mode.ProductName;
     
     WS(ws);
     
     self.countLabel.font = [UIFont systemFontOfSize:10];
-    self.countLabel.text = [NSString stringWithFormat:@"×%ld",product.TotalNum];
+    self.countLabel.text = [NSString stringWithFormat:@"×%ld",mode.ProductCount];
     CGRect rect = [self.countLabel textRectForBounds:CGRectMake(0, 0, 200, 200) limitedToNumberOfLines:0];
     [self addSubview:self.countLabel];
     [self.countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,7 +91,7 @@
     
     self.priceLabel.font = [UIFont systemFontOfSize:13];
     self.priceLabel.textColor = [UIColor redColor];
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",product.Join_Price];
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",mode.ProductPrice];
     rect = [self.priceLabel textRectForBounds:CGRectMake(0, 0, 200, 200) limitedToNumberOfLines:0];
     [self addSubview:self.priceLabel];
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -95,6 +100,8 @@
         make.width.equalTo(@(rect.size.width));
         make.height.equalTo(@(rect.size.height));
     }];
+    
+    self.orderNumber.text = [NSString stringWithFormat:@"订单编号：%@",mode.Code];
 }
 
 @end

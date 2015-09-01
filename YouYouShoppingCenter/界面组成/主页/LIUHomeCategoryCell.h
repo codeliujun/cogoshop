@@ -16,4 +16,6 @@
  *  分类的单元格德接口
  */
 
+@property (nonatomic,strong)NSDictionary *caterInfo;
+
 @end

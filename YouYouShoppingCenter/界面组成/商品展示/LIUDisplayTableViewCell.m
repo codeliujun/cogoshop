@@ -101,21 +101,25 @@
     //NSLog(@"salesPriceRect:%@",NSStringFromCGRect(salesPriceRect));
     
     //1.读取缓存中又没有图片
-    NSData *cacheImageData = [ZHCache getCacheData:self.shopping.ThumbUrl];
+    NSData *cacheImageData = [ZHCache getCacheImageData:self.shopping.Name];
     if (cacheImageData) {
         self.shoppingImageView.image = [UIImage  imageWithData:cacheImageData];
     }else {
-        UIImage *image = nil;
+       __block UIImage *image = nil;
         NSString *imageStr = [self.shopping.ThumbUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
-        if (data) {
-            image = [UIImage imageWithData:data];
-            NSData *imageData = UIImagePNGRepresentation(image);
-            [ZHCache saveData:imageData fileName:self.shopping.ThumbUrl];
-            self.shoppingImageView.image = image;
-        }else {
-            self.shoppingImageView.image = [UIImage imageNamed:@"测试图片"];
-        }
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (data) {
+                    image = [UIImage imageWithData:data];
+                    NSData *imageData = UIImagePNGRepresentation(image);
+                    [ZHCache writeData:imageData fileName:self.shopping.Name];
+                    self.shoppingImageView.image = image;
+                }else {
+                    self.shoppingImageView.image = [UIImage imageNamed:@"测试图片"];
+                }
+            });
+        });
     }
 
     self.titleLabel.text = self.shopping.SupplierName;

@@ -63,7 +63,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    LIURecevingAderess *address = self.personModel.recevingAddress[indexPath.row];
+    LIURecevingAderess *address = self.addressArray[indexPath.row];
     [self.delegate didSelectAddress:address];
     [self backButton:nil];
     
@@ -74,9 +74,10 @@
 - (void)didTapButtonCell:(LIUAddressTableViewCell *)cell {
    NSIndexPath *indexPath = [self.addressTableView indexPathForCell:cell];
     LIUAddressEditAndAddViewController *reEdit = [LIUAddressEditAndAddViewController new];
+    [reEdit reEditAddress:self.addressArray[indexPath.row]];
     reEdit.delegate = self;
     [self presentViewController:reEdit animated:YES completion:nil];
-     [reEdit reEditAddress:self.personModel.recevingAddress[indexPath.row]];
+    
 }
 
 #pragma --mark addOrEditDelegate
@@ -100,6 +101,7 @@
 - (IBAction)backButton:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction)addNewAddress:(UIButton *)sender {
     LIUAddressEditAndAddViewController *add = [LIUAddressEditAndAddViewController new];
     add.delegate = self;

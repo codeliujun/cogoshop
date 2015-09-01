@@ -142,13 +142,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    BOOL test = YES;
-    if (test == YES) {
-        LIUQueRenDingController *confirmVC = [[LIUQueRenDingController alloc]init];
-        confirmVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:confirmVC animated:YES];
-        //[self presentViewController:confirmVC animated:YES completion:nil];
-    }
 }
 
 /**
@@ -410,17 +403,26 @@
     }
     //NSString *allGood = marray.count==1?[marray firstObject]:[marray componentsJoinedByString:@","];
     
-    [self requestWithUrl:kCreatOrder Parameters:@{@"shopid":@"",@"userid":[self getUserId]} Success:^(NSDictionary *result) {
-        
-        //跳转界面
-        LIUQueRenDingController *confirmVC = [[LIUQueRenDingController alloc]init];
-        confirmVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:confirmVC animated:YES];
-       // [self presentViewController:confirmVC animated:YES completion:nil];
-    } Failue:^(NSDictionary *failueInfo) {
-        
-    }];
+        [self requestWithUrl:kCreatOrder Parameters:@{@"shopid":@"",@"userid":[self getUserId],@"addressid":@""} Success:^(NSDictionary *result) {
     
+            //跳转界面
+            LIUQueRenDingController *confirmVC = [[LIUQueRenDingController alloc]init];
+            confirmVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:confirmVC animated:YES];
+           // [self presentViewController:confirmVC animated:YES completion:nil];
+    
+        } Failue:^(NSDictionary *failueInfo) {
+    
+        }];
+//    [self requestWithUrl:kCreatNo Parameters:@{@"isRecharge":@"0"} Success:^(NSDictionary *result) {
+//        //跳转界面
+//        LIUQueRenDingController *confirmVC = [[LIUQueRenDingController alloc]init];
+//        confirmVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:confirmVC animated:YES];
+//        // [self presentViewController:confirmVC animated:YES completion:nil];
+//    } Failue:^(NSDictionary *failueInfo) {
+//        
+//    }];
     
     
     
@@ -437,7 +439,7 @@
     //        }
     //
     //    } Failue:^(NSDictionary *failueInfo) {
-    //        
+    //
     //    }];
     
 }

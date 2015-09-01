@@ -83,7 +83,7 @@
 //按钮的操作
 - (IBAction)reduceCount:(UIButton *)sender {
     self.countNumber--;
-    if (self.countNumber == 0) {
+    if (self.countNumber <= 0) {
         [SVProgressHUD showErrorWithStatus:@"真的不能再少了..." duration:1.5f];
         self.countNumber = 1;
         return;

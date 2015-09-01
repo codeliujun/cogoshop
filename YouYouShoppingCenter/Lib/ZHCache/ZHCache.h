@@ -20,6 +20,8 @@
  */
 + (id)loadInfoWithKey:(NSString *)key;
 + (void)saveInfo:(id)infoObject withKey:(NSString *)key;
++ (void)writeData:(NSData *)cacheData fileName:(NSString *)fileName;
++ (NSData *)getCacheImageData:(NSString *)fileName;
 
 + (void)removeCache;
 
