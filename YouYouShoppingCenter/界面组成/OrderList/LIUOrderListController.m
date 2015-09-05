@@ -8,6 +8,7 @@
 
 #import "LIUOrderListController.h"
 #import "UIViewController+GetHTTPRequest.h"
+#import "LIUConfirmViewController.h"
 #import "MJExtension.h"
 #import "LIUEvalatController.h"
 
@@ -19,6 +20,7 @@
 
 @property (nonatomic ,strong)NSArray *orderListArray;
 
+@property (weak, nonatomic) IBOutlet UIView *nodataView;
 @end
 
 @implementation LIUOrderListController
@@ -33,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = self.showTitle;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LIUOrderTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([LIUOrderTableViewCell class])];
 }
 
@@ -77,13 +80,25 @@
     Success:^(NSDictionary *result) {
         NSArray *arr = result[@"Data"];
         ws.orderListArray = [LIUOrderModel objectArrayWithKeyValuesArray:arr];
-        [ws.tableView reloadData];
-        NSLog(@"%@",result);
+        [ws isLoadTableView:ws.orderListArray];
         
     } Failue:^(NSDictionary *failueInfo) {
         
     }];;
     
+    
+}
+
+- (void)isLoadTableView:(NSArray *)data {
+    
+    if (data.count == 0) {
+        self.tableView.hidden = YES;
+        self.nodataView.hidden = NO;
+    }else {
+        self.tableView.hidden = NO;
+        self.nodataView.hidden = YES;
+        [self.tableView reloadData];
+    }
     
 }
 
@@ -127,7 +142,11 @@
         evaVc.model = order;
         [self.navigationController pushViewController:evaVc animated:YES];
     }
-    
+    if (self.status == OrderStatussWillPay) {
+        LIUConfirmViewController *controller = [[LIUConfirmViewController alloc]init];
+        controller.orderModel = order;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
     
 }
 

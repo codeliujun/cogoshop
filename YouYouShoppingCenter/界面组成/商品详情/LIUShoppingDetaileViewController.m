@@ -24,22 +24,23 @@
 @property (weak, nonatomic) IBOutlet UITableView *detaileTableView;
 @property(nonatomic,strong)UILabel *numberLabel;//显示scroller的数量的
 
+@property (weak, nonatomic) IBOutlet UIButton *addCartButton;
 @end
 
 @implementation LIUShoppingDetaileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"商品详情ViewDidLoad开始执行");
     [self addHeaderScrollerview];
     //注册单元格
     [self.detaileTableView registerNib:[UINib nibWithNibName:@"LIUTheFirstTableViewCell" bundle:nil] forCellReuseIdentifier:@"firstCell"];
     [self.detaileTableView registerNib:[UINib nibWithNibName:@"LIUTheSecondTableViewCell" bundle:nil] forCellReuseIdentifier:@"secondCell"];
-    NSLog(@"商品详情ViewDidLoad执行完毕");
 }
 
 - (void)addHeaderScrollerview {
     
+    self.addCartButton.layer.cornerRadius = 5.0f;
+    self.addCartButton.layer.masksToBounds = YES;
     /**
      假数据
      */
@@ -222,10 +223,10 @@
          */
   
        // 先注释
-//        if ([self.good.InstoreNumber integerValue] <= 0) {
-//            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
-//            return;
-//        }
+        if ([self.good.InstoreNumber integerValue] <= 0) {
+            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
+            return;
+        }
         
         NSString *userId = [self getUserId];
         [self requestWithUrl:kAddGood Parameters:@{

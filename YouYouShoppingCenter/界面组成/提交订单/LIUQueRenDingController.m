@@ -6,15 +6,19 @@
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
 
+#define kGoodsCartCell          @"cell"
+
 #import "LIUQueRenDingController.h"
-#import "LIUQueRenTableViewCell.h"
+//#import "LIUQueRenTableViewCell.h"
 #import "LIUAddressChooseView.h"
 #import "UIColor+HexColor.h"
 #import "LIUCaquView.h"
+#import "LIUCartGoodModel.h"
 #import "Masonry.h"
 #import "MJExtension.h"
 #import "SVProgressHUD.h"
 #import "UIViewController+GetHTTPRequest.h"
+#import "LIUGoodsCartTableViewCell.h"
 #import "LIUAdressManagerViewController.h"
 #import "LIUConfirmViewController.h"
 
@@ -23,10 +27,12 @@
 @interface LIUQueRenDingController ()<UITableViewDataSource,UITableViewDelegate,LIUAdressManagerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *footView;
 @property (nonatomic ,strong) LIUAddressChooseView *addressView;
 
+@property (nonatomic,strong)LIURecevingAderess *currentAddress;
+
 @property (nonatomic,strong)NSArray *addressArray;
-@property (nonatomic,strong)NSArray *orderList;
 @property (nonatomic,strong)LIUCaquView *caquView;
 
 @end
@@ -40,11 +46,41 @@
         WS(ws);
         _caquView = [LIUCaquView view];
         _caquView.confirmButtonBlock = ^() {
-          
-            LIUConfirmViewController *confirm = [[LIUConfirmViewController alloc]init];
-            confirm.orederModels = ws.orderList;
-            [ws.navigationController pushViewController:confirm animated:YES];
-        
+            /*
+             shopid={shopid}&userid={userid}&addressid={addressid}
+             */
+            
+            NSMutableArray *shopIdStrArr = @[].mutableCopy;
+            
+            for (LIUCartGoodModel *model in ws.orderList) {
+                [shopIdStrArr addObject:model.ShopId];
+            }
+            
+            NSString *shopId = nil;
+            if (shopIdStrArr.count == 0) {
+                return ;
+            }
+            if (shopIdStrArr.count == 1) {
+                shopId = shopIdStrArr[0];
+            }else {
+                shopId = [shopIdStrArr componentsJoinedByString:@","];
+            }
+            
+            //跳转支付
+            [ws requestWithUrl:kCreatOrder Parameters:@{@"shopid":shopId,
+                                                        @"userid":[ws getUserId],
+                                                        @"addressid":ws.currentAddress.Id} Success:^(NSDictionary *result) {
+        LIUConfirmViewController *confirm = [[LIUConfirmViewController alloc]init];
+        confirm.orderModel = [LIUOrderModel objectWithKeyValues:result[@"Data"]];
+        [ws.navigationController pushViewController:confirm animated:YES];
+                                                        } Failue:^(NSDictionary *failueInfo) {
+                                                            
+                                                        }];
+            
+            //            LIUConfirmViewController *confirm = [[LIUConfirmViewController alloc]init];
+            //            confirm.orederModels = ws.orderList;
+            //            [ws.navigationController pushViewController:confirm animated:YES];
+            
         };
     }
     return _caquView;
@@ -62,42 +98,63 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"LIUQueRenTableViewCell" bundle:nil] forCellReuseIdentifier:@"mycell"];
+    self.title = @"订单确认";
+    [self.tableView registerNib:[UINib nibWithNibName:@"LIUGoodsCartTableViewCell" bundle:nil] forCellReuseIdentifier:kGoodsCartCell];
+    //    [self.tableView registerNib:[UINib nibWithNibName:@"LIUQueRenTableViewCell" bundle:nil] forCellReuseIdentifier:@"mycell"];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
     [self addHeaderView];
+    [self addFootView];
     [self getData];
+}
+
+- (void)addFootView {
+    
+    WS(ws);
+    [self.footView addSubview:self.caquView];
+    [self.caquView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(ws.footView).insets(UIEdgeInsetsZero);
+    }];
+    
+    [self.view addSubview:self.footView];
+    //    [self.view bringSubviewToFront:view];
+    
 }
 
 - (void)getData {
     
     WS(ws);
     //获取订单/*userid={userid}&pageindex={pageindex}&pagesize={pagesize}&goodsname={goodsname}&shopname={shopname}&orderstatus={orderstatus}&begintime={begintime}&endtime={endtime}*/
-    [self requestWithUrl:KGetOrderList Parameters:@{
-                                                    @"userid":[self getUserId],
-                                                    @"pageindex":@1,
-                                                    @"pagesize":@20,
-                                                    @"goodsname":@"",
-                                                    @"shopname":@"",
-                                                    @"orderstatus":@1,
-                                                    @"begintime":@"",
-                                                    @"endtime":@""}
-                 Success:^(NSDictionary *result) {
-                     ws.orderList = [LIUOrderModel objectArrayWithKeyValuesArray:result[@"Data"]];
-                     [ws caqulateTotalPrice];
-                     [ws.tableView reloadData];
-                 } Failue:^(NSDictionary *failueInfo) {
-                     
-                 }];
+    //    [self requestWithUrl:KGetOrderList Parameters:@{
+    //                                                    @"userid":[self getUserId],
+    //                                                    @"pageindex":@1,
+    //                                                    @"pagesize":@20,
+    //                                                    @"goodsname":@"",
+    //                                                    @"shopname":@"",
+    //                                                    @"orderstatus":@1,
+    //                                                    @"begintime":@"",
+    //                                                    @"endtime":@""}
+    //                 Success:^(NSDictionary *result) {
+    //                     ws.orderList = [LIUOrderModel objectArrayWithKeyValuesArray:result[@"Data"]];
+    //                     [ws caqulateTotalPrice];
+    //                     [ws.tableView reloadData];
+    //                 } Failue:^(NSDictionary *failueInfo) {
+    //
+    //                 }];
     [self getAddressData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self caqulateTotalPrice];
 }
 
 - (void)caqulateTotalPrice {
     
     CGFloat total = 0.0f;
     
-    for (LIUOrderModel *model in self.orderList) {
+    for (LIUCartGoodModel *model in self.orderList) {
         
-        total = total+model.Total;
+        total = total+([model.TotalMoney floatValue]);
         
     }
     
@@ -119,6 +176,7 @@
         
         for (LIURecevingAderess *address in ws.addressArray) {
             if (address.IsDefault) {
+                ws.currentAddress = address;
                 [ws.addressView setAddRess:address];
                 break;
             }
@@ -154,6 +212,7 @@
 }
 
 - (void)didSelectAddress:(LIURecevingAderess *)address {
+    self.currentAddress = address;
     [self.addressView setAddRess:address];
 }
 
@@ -174,10 +233,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LIUQueRenTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell" forIndexPath:indexPath];
-    LIUOrderModel *orderModel = self.orderList[indexPath.row];
-    cell.mode = orderModel;
+    //    LIUQueRenTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell" forIndexPath:indexPath];
+    //    LIUOrderModel *orderModel = self.orderList[indexPath.row];
+    //    cell.mode = orderModel;
+    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    LIUGoodsCartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGoodsCartCell forIndexPath:indexPath];
+    cell.cartGood = self.orderList[indexPath.row];
+    //cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+    
     return cell;
 }
 
@@ -187,23 +254,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    if (section+1 == [tableView numberOfSections]) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44.f)];
-        [view addSubview:self.caquView];
-        [self.caquView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(view).insets(UIEdgeInsetsZero);
-        }];
-        return view;
-    }
-    return nil;
+    return [UIView new];
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    
-    if (section+1 == [tableView numberOfSections]) {
-        return 50.f;
-    }
-    else return 0.0f;
-}
-
 @end

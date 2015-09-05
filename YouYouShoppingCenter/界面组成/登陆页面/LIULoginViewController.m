@@ -31,6 +31,7 @@
 
 //模拟人的登陆
 @property(nonatomic,strong)LIUPersonModel *userInfo;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -55,12 +56,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"登陆";
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.customSwitch = [[LIUCustomSwitch alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-80, 220, 50, 25)];
     [self.view addSubview:self.customSwitch];
     self.customSwitch.delegate = self;
+    
+    self.loginButton.layer.cornerRadius = 5.0f;
+    self.loginButton.layer.masksToBounds = YES;
     
     //为自己的navigation添加button
     UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UBk-pR-dJt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UBk-pR-dJt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -21,7 +21,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结算（0）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1i-fG-OUx">
                                         <rect key="frame" x="225" y="6" width="90" height="33"/>
-                                        <color key="backgroundColor" red="0.94509803920000002" green="0.4941176471" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.78813525880000002" green="0.058338312910000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="0ok-lv-7hv"/>
                                             <constraint firstAttribute="width" constant="90" id="Dmd-D6-jAV"/>
@@ -40,13 +40,13 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="caculaterButtonTap:" destination="jCT-sX-Wg0" eventType="touchUpInside" id="gd8-N0-kKK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9r-Xm-eNK">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9r-Xm-eNK">
                                         <rect key="frame" x="5" y="10" width="25" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -105,14 +105,14 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wob-op-biJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="410"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jCT-sX-Wg0" id="s1q-5i-1W7"/>
                                     <outlet property="delegate" destination="jCT-sX-Wg0" id="x5H-BF-gJc"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QeF-RR-F6e" firstAttribute="top" secondItem="wob-op-biJ" secondAttribute="bottom" id="Ch6-M6-qNm"/>
                             <constraint firstItem="9LD-nE-m4B" firstAttribute="top" secondItem="QeF-RR-F6e" secondAttribute="bottom" id="RUJ-2K-Jzh"/>
@@ -275,11 +275,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HxI-Ft-ONQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="mzh-yt-riv">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="160"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
                                 <connections>
                                     <outlet property="dataSource" destination="cMI-BD-6ws" id="wYk-HK-Ziv"/>
                                     <outlet property="delegate" destination="cMI-BD-6ws" id="KpV-Y6-mNq"/>
@@ -325,7 +320,6 @@
                     <connections>
                         <outlet property="homeTableView" destination="HxI-Ft-ONQ" id="zNe-2I-Fgx"/>
                         <outlet property="searchButton" destination="5rX-eJ-YCW" id="BoX-an-KGN"/>
-                        <outlet property="tableHeaderViewCustom" destination="mzh-yt-riv" id="zvF-AR-bnr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KtX-UO-Dn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,7 +349,7 @@
         <scene sceneID="2FJ-Nh-pzx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aXe-iF-2sl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人中心" id="kdc-1w-2Lt"/>
+                    <tabBarItem key="tabBarItem" title="个人中心" image="main_tab_member" id="kdc-1w-2Lt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tXl-NN-ms7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -424,7 +418,7 @@
         <scene sceneID="rTy-BY-kMU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C7h-6x-FpS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" id="aLa-i9-Yam"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="nav_home_on" id="aLa-i9-Yam"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="teW-oe-R2W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -443,7 +437,7 @@
         <scene sceneID="ZFD-7x-yMk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="35V-fg-gYw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="分类" id="nrT-GT-aE8"/>
+                    <tabBarItem key="tabBarItem" title="分类" image="main_tab_search" id="nrT-GT-aE8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Wg-hp-1cT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -462,7 +456,7 @@
         <scene sceneID="c4i-xP-P1Q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6XL-G7-hzJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="购物车" id="Ze0-6X-x5x"/>
+                    <tabBarItem key="tabBarItem" title="购物车" image="main_tab_car" id="Ze0-6X-x5x"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="080-gX-5je">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -518,8 +512,12 @@
     </scenes>
     <resources>
         <image name="del_history_btn.9" width="129" height="58"/>
-        <image name="icon_checkbox_checked" width="40" height="40"/>
-        <image name="icon_checkbox_unchecked" width="40" height="40"/>
+        <image name="icon_checkbox_checked" width="20" height="20"/>
+        <image name="icon_checkbox_unchecked" width="20" height="20"/>
+        <image name="main_tab_car" width="24" height="24"/>
+        <image name="main_tab_member" width="24" height="24"/>
+        <image name="main_tab_search" width="24" height="24"/>
+        <image name="nav_home_on" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

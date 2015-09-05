@@ -11,6 +11,8 @@
 
 @interface LIUOrderListController : UIViewController
 
+@property (nonatomic,strong)NSString *showTitle;
+
 @property (nonatomic,assign)OrderStatus status;
 
 @end

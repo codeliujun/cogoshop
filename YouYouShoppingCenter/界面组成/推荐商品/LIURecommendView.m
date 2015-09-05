@@ -5,9 +5,12 @@
 //  Created by 刘俊 on 15/6/17.
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
-
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 //全局变量，这个是为了存储传进来的frame的值
 #import "LIURecommendView.h"
+#import "LIUGoodModel.h"
+#import "UIImage+GetUrlImage.h"
+
 @interface LIURecommendView ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *shoppingButton;
 
@@ -34,15 +37,39 @@
 }
 
 - (void)setShoppingList:(NSArray *)shoppingList {
-    _shoppingList = [shoppingList copy];
-    [self updateButton];
+    WS(ws);
+    __block NSMutableArray *marr = @[].mutableCopy;
+    for (id imageAdd in shoppingList) {
+        if ([imageAdd isKindOfClass:[NSString class]]) {
+            [UIImage getImageWithThumble:imageAdd Success:^(UIImage *image) {
+                [marr addObject:image];
+                [ws isUpdatebutton:marr origin:shoppingList];
+            }];
+        }else {
+            LIUGoodModel *obj = (LIUGoodModel *)imageAdd;
+            [UIImage getImageWithThumble:obj.ThumbUrl Success:^(UIImage *image) {
+                [marr addObject:image];
+                [ws isUpdatebutton:marr origin:shoppingList];
+            }];
+        }
+    }
+}
+
+- (void)isUpdatebutton:(NSArray *)marr origin:(NSArray *)shoppingList {
+    
+    if (marr.count == shoppingList.count) {
+        _shoppingList = marr.copy;
+        [self updateButton];
+    }else {
+        
+    }
 }
 
 #pragma --mark 更新button
 - (void)updateButton {
     for (int i = 0; i < MIN(_shoppingList.count, 4); i++) {//这里是小雨shoppinglist，防止传入进来的数据小于4
         UIButton *button = self.shoppingButton[i];
-        [button setBackgroundImage:[UIImage imageNamed:_shoppingList[i]] forState:UIControlStateNormal];
+        [button setBackgroundImage:_shoppingList[i] forState:UIControlStateNormal];
     }
 }
 

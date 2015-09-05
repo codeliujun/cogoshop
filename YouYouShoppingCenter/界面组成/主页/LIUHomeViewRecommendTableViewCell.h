@@ -7,12 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LIUGoodModel.h"
 
+@protocol LIUHomeViewRecommendTableViewCellDelegate <NSObject>
+
+- (void)didChooseGoodModel:(LIUGoodModel *)model;
+
+@end
 
 @interface LIUHomeViewRecommendTableViewCell : UITableViewCell
+
++ (LIUHomeViewRecommendTableViewCell *)cell;
 
 @property(nonatomic,strong)NSArray *recommends;
 @property(nonatomic,strong)void (^buttonTap) (void);
 
+@property (nonatomic,weak)id<LIUHomeViewRecommendTableViewCellDelegate> delegate;
 
 @end

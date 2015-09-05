@@ -8,7 +8,7 @@
 
 #import "LIUDisplayTableViewCell.h"
 #import "Masonry.h"
-#import "ZHCache.h"
+#import "UIImage+GetUrlImage.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -49,7 +49,7 @@
 }
 
 - (void)updateCellContent {
-     WS(ws);
+    WS(ws);
     [self.currentLabel removeFromSuperview];
     self.currentLabel = nil;
     [self.salesLabel removeFromSuperview];
@@ -100,28 +100,10 @@
     }];
     //NSLog(@"salesPriceRect:%@",NSStringFromCGRect(salesPriceRect));
     
-    //1.读取缓存中又没有图片
-    NSData *cacheImageData = [ZHCache getCacheImageData:self.shopping.Name];
-    if (cacheImageData) {
-        self.shoppingImageView.image = [UIImage  imageWithData:cacheImageData];
-    }else {
-       __block UIImage *image = nil;
-        NSString *imageStr = [self.shopping.ThumbUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (data) {
-                    image = [UIImage imageWithData:data];
-                    NSData *imageData = UIImagePNGRepresentation(image);
-                    [ZHCache writeData:imageData fileName:self.shopping.Name];
-                    self.shoppingImageView.image = image;
-                }else {
-                    self.shoppingImageView.image = [UIImage imageNamed:@"测试图片"];
-                }
-            });
-        });
-    }
-
+    [UIImage getImageWithThumble:self.shopping.ThumbUrl Success:^(UIImage *image) {
+        ws.shoppingImageView.image = image;
+    }];
+    
     self.titleLabel.text = self.shopping.SupplierName;
     self.decLabel.text = self.shopping.Name;
     

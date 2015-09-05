@@ -5,6 +5,7 @@
 //  Created by 刘俊 on 15/7/6.
 //  Copyright (c) 2015年 新开元. All rights reserved.
 //
+#define kThemClolor     [UIColor colorWithRed:105/256.0 green:34/256.0 blue:56/256.0 alpha:1]
 
 #import "XKYSearchVCRecommendTableHeaderView.h"
 
@@ -44,6 +45,7 @@
          */
         button.layer.cornerRadius = 5.0;
         button.layer.masksToBounds = YES;
+        button.backgroundColor = kThemClolor;
     }
     self.tapBlock = tapBlock;
 }

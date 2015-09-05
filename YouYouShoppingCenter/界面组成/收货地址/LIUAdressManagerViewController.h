@@ -18,6 +18,7 @@
 @interface LIUAdressManagerViewController : UIViewController
 
 @property(nonatomic,weak)id<LIUAdressManagerViewControllerDelegate> delegate;
+
 @property (nonatomic,strong)NSArray *addressArray;
 
 

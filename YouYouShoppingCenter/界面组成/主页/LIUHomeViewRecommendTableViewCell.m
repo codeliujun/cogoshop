@@ -8,27 +8,34 @@
 
 #import "LIUHomeViewRecommendTableViewCell.h"
 #import "SVProgressHUD.h"
+#import "LIURecomNewView.h"
 #import "Masonry.h"
-#import "LIURecommendView.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
 @interface LIUHomeViewRecommendTableViewCell()
 
-@property(nonatomic,strong)LIURecommendView *recommendView;
+@property(nonatomic,strong)LIURecomNewView *recommendView;
 
 @end
 
 @implementation LIUHomeViewRecommendTableViewCell
 
++ (LIUHomeViewRecommendTableViewCell *)cell {
+    LIUHomeViewRecommendTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil]firstObject];
+    [cell addRecommendView];
+    return cell;
+}
+
 //初始化推荐界面，以后可以在需要的的时候传值,安装创建之后直接添加到了推荐的界面
 
-- (LIURecommendView *)recommendView {
+- (LIURecomNewView *)recommendView {
     if (!_recommendView) {
         WS(ws);
-        _recommendView = [LIURecommendView creatViewAndDidTapButton:^(NSDictionary *info) {
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"当前点击的信息:%@ 还没开放",info[@"buttonTitle"]] duration:1.0];
-        }];
+        _recommendView = [LIURecomNewView view];
+        _recommendView.didChooseGoodBlock = ^(LIUGoodModel *model) {
+            [ws.delegate didChooseGoodModel:model];
+        };
         [self addSubview:_recommendView];
         //masonry约束 先要add进去
         [_recommendView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -36,6 +43,19 @@
         }];
     }
     return _recommendView;
+}
+
+- (void)addRecommendView {
+    WS(ws);
+    _recommendView = [LIURecomNewView view];
+    _recommendView.didChooseGoodBlock = ^(LIUGoodModel *model) {
+        [ws.delegate didChooseGoodModel:model];
+    };
+    [self addSubview:_recommendView];
+    //masonry约束 先要add进去
+    [_recommendView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(ws).insets(UIEdgeInsetsMake(40, 0, 0, 0));
+    }];
 }
 
 
@@ -48,8 +68,11 @@
 }
 
 - (void)setRecommends:(NSArray *)recommends {
+    if (recommends == nil) {
+        return;
+    }
     _recommends = [recommends copy];
-    self.recommendView.shoppingList = recommends;
+    self.recommendView.goodList = recommends;
     [self setNeedsDisplay];
 }
 

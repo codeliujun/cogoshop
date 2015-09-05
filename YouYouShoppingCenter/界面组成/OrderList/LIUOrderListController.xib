@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LIUOrderListController">
             <connections>
+                <outlet property="nodataView" destination="qUC-zl-9Hl" id="oge-Cp-gm5"/>
                 <outlet property="tableView" destination="U2j-mw-d0C" id="plx-6v-Q0S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,14 +24,51 @@
                         <outlet property="delegate" destination="-1" id="Rga-cI-kCA"/>
                     </connections>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUC-zl-9Hl">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="9te-su-AiB">
+                            <rect key="frame" x="250" y="250" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="AQK-Db-nfF"/>
+                                <constraint firstAttribute="width" constant="100" id="t3g-ue-b5s"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="没有该类数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuT-Ed-Jj1">
+                            <rect key="frame" x="169.5" y="368" width="262" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="JIP-ed-vdR"/>
+                                <constraint firstAttribute="width" constant="262" id="RSs-8I-CCD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="tuT-Ed-Jj1" firstAttribute="centerX" secondItem="9te-su-AiB" secondAttribute="centerX" id="0G3-ky-a2H"/>
+                        <constraint firstAttribute="centerY" secondItem="9te-su-AiB" secondAttribute="centerY" id="3MD-qS-nmX"/>
+                        <constraint firstItem="tuT-Ed-Jj1" firstAttribute="top" secondItem="9te-su-AiB" secondAttribute="bottom" constant="18" id="COZ-tS-mTZ"/>
+                        <constraint firstAttribute="centerX" secondItem="9te-su-AiB" secondAttribute="centerX" id="K8M-dD-VRE"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="qUC-zl-9Hl" secondAttribute="bottom" id="FaB-dg-l7g"/>
                 <constraint firstItem="U2j-mw-d0C" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Rxw-ky-IDG"/>
+                <constraint firstItem="qUC-zl-9Hl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UEq-C4-k79"/>
+                <constraint firstItem="qUC-zl-9Hl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a8l-Kp-vuy"/>
                 <constraint firstItem="U2j-mw-d0C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h6Z-rW-EqB"/>
+                <constraint firstAttribute="trailing" secondItem="qUC-zl-9Hl" secondAttribute="trailing" id="ots-IW-QOR"/>
                 <constraint firstAttribute="trailing" secondItem="U2j-mw-d0C" secondAttribute="trailing" id="p7N-cX-hQd"/>
                 <constraint firstAttribute="bottom" secondItem="U2j-mw-d0C" secondAttribute="bottom" id="sEQ-vg-AwD"/>
             </constraints>
+            <point key="canvasLocation" x="148" y="313"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_nodata" width="129" height="89"/>
+    </resources>
 </document>

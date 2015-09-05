@@ -42,21 +42,21 @@ typedef enum {
 - (void)caqulateTotalPrice {
     
     CGFloat total = 0.0f;
-    NSMutableArray  *orderNum = @[].mutableCopy;
-    for (LIUOrderModel *model in self.self.orederModels) {
-        
-        total = total+model.Total;
-        [orderNum addObject:model.Code];
-    }
+//    NSMutableArray  *orderNum = @[].mutableCopy;
+//    for (LIUOrderModel *model in self.self.orederModels) {
+//        
+//        total = total+model.Total;
+//        [orderNum addObject:model.Code];
+//    }
     
-    NSString *str = [orderNum componentsJoinedByString:@","];
-    self.orderLabel.text = str;
-    self.priceLabel.text = [NSString stringWithFormat:@"%.2f",total];
+//    NSString *str = [orderNum componentsJoinedByString:@","];
+    self.orderLabel.text = self.orderModel.Code;
+    self.priceLabel.text = [NSString stringWithFormat:@"%.2f",self.orderModel.Total];
     
 }
 
 - (IBAction)payButtonDidTap:(UIButton *)sender {
-    LIUOrderModel *orderModel = self.orederModels[0];
+    LIUOrderModel *orderModel = self.orderModel;
     [self requestWithUrl:kPayOrder Parameters:@{@"userid":[self getUserId],
                                                 @"orderid":orderModel.Id}
         Success:^(NSDictionary *result) {

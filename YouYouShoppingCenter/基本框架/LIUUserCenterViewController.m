@@ -10,6 +10,7 @@
 #import "LIUUserCenterTableViewCell.h"
 #import "LIUPersonModel.h"
 #import "LIUUserInfoData.h"
+#import "LIUNewUserCenter.h"
 #import "SVProgressHUD.h"
 #import "Masonry.h"
 #import "LIUShowQRCodeViewController.h"
@@ -21,6 +22,7 @@
 #import "LIUUserHeaderView.h"
 
 #import "LIUOrderListController.h"
+#import "LIUSettingController.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -56,8 +58,23 @@
     self.title = @"个人中心";
     self.userCenterTableView.bounces = NO;
     [self.userCenterTableView registerNib:[UINib nibWithNibName:@"LIUUserCenterTableViewCell" bundle:nil] forCellReuseIdentifier:@"mycell"];
+    [self addRightButton];
     // Do any additional setup after loading the view.
     
+}
+
+- (void)addRightButton {
+    
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    [button setBackgroundImage:[UIImage imageNamed:@"icon_setting"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(tapSetting:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+}
+
+- (void)tapSetting:(UIButton *)sender{
+    LIUSettingController *controller = [[LIUSettingController alloc]init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,7 +116,9 @@
             case 1000:
             {
                 LIUOrderListController *controller = [[LIUOrderListController alloc]init];
+                controller.showTitle = @"待付款";
                 controller.status = OrderStatussWillPay;
+                controller.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:controller animated:YES];
                 break;
             }
@@ -117,7 +136,9 @@
             case 1003:
             {
                 LIUOrderListController *controller = [[LIUOrderListController alloc]init];
+                controller.showTitle = @"待评价";
                 controller.status = OrderStatusEve;
+                controller.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:controller animated:YES];
             }
                 break;
@@ -185,14 +206,21 @@
     
     if (indexPath.row == 2) {
         LIUShowQRCodeViewController *showVC = [LIUShowQRCodeViewController new];
+        showVC.hidesBottomBarWhenPushed = YES;
         //UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:showVC];
         [self.navigationController pushViewController:showVC animated:YES];
     }else if(indexPath.row == 1) {
-        LIUZhangHuGuanLiViewController *zhanghaoVC = [[LIUZhangHuGuanLiViewController alloc]initWithNibName:@"LIUZhangHuGuanLiViewController" bundle:nil];
-        [self.navigationController pushViewController:zhanghaoVC animated:YES];
+//        LIUZhangHuGuanLiViewController *zhanghaoVC = [[LIUZhangHuGuanLiViewController alloc]initWithNibName:@"LIUZhangHuGuanLiViewController" bundle:nil];
+//        zhanghaoVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:zhanghaoVC animated:YES];
+        LIUNewUserCenter *controller = [[LIUNewUserCenter alloc]init];
+        controller.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:controller animated:YES];
     }else if(indexPath.row == 0) {
         LIUOrderListController *controller = [[LIUOrderListController alloc]init];
         controller.status = OrderStatusAll;
+        controller.showTitle = @"全部订单";
+        controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }else {
         [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据api来" duration:1.0];

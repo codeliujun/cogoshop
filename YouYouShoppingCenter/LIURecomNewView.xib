@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LIURecomNewView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-Zi-myE">
+                    <rect key="frame" x="107" y="0.0" width="213" height="74"/>
+                    <color key="backgroundColor" red="0.088322515899999995" green="1" blue="0.01308478033" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhX-s1-01P">
+                    <rect key="frame" x="107" y="75" width="106" height="74"/>
+                    <color key="backgroundColor" red="0.088322515899999995" green="1" blue="0.01308478033" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eq-ee-JTW">
+                    <rect key="frame" x="214" y="75" width="106" height="74"/>
+                    <color key="backgroundColor" red="0.088322515899999995" green="1" blue="0.01308478033" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rER-iW-tmZ">
+                    <rect key="frame" x="0.0" y="0.0" width="106" height="149"/>
+                    <color key="backgroundColor" red="0.088322515899999995" green="1" blue="0.01308478033" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="qhX-s1-01P" firstAttribute="leading" secondItem="rER-iW-tmZ" secondAttribute="trailing" constant="1" id="4Jg-3c-Pge"/>
+                <constraint firstItem="0eq-ee-JTW" firstAttribute="leading" secondItem="qhX-s1-01P" secondAttribute="trailing" constant="1" id="85S-f9-wsI"/>
+                <constraint firstAttribute="bottom" secondItem="rER-iW-tmZ" secondAttribute="bottom" constant="1" id="9cb-xh-67u"/>
+                <constraint firstItem="rER-iW-tmZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BXe-eF-WJc"/>
+                <constraint firstItem="0eq-ee-JTW" firstAttribute="top" secondItem="pZ5-Zi-myE" secondAttribute="bottom" constant="1" id="Hjw-cE-hEY"/>
+                <constraint firstAttribute="bottom" secondItem="0eq-ee-JTW" secondAttribute="bottom" constant="1" id="J3j-Q3-fo5"/>
+                <constraint firstItem="pZ5-Zi-myE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NAm-tV-dvy"/>
+                <constraint firstItem="0eq-ee-JTW" firstAttribute="height" secondItem="pZ5-Zi-myE" secondAttribute="height" id="PUg-11-Bg9"/>
+                <constraint firstItem="0eq-ee-JTW" firstAttribute="height" secondItem="qhX-s1-01P" secondAttribute="height" id="PYi-Jy-ukc"/>
+                <constraint firstItem="pZ5-Zi-myE" firstAttribute="leading" secondItem="rER-iW-tmZ" secondAttribute="trailing" constant="1" id="T92-SO-Fgh"/>
+                <constraint firstItem="rER-iW-tmZ" firstAttribute="width" secondItem="qhX-s1-01P" secondAttribute="width" id="Ujj-v6-bYo"/>
+                <constraint firstItem="rER-iW-tmZ" firstAttribute="width" secondItem="0eq-ee-JTW" secondAttribute="width" id="a0G-Vs-8dr"/>
+                <constraint firstItem="rER-iW-tmZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="e5j-zd-HDK"/>
+                <constraint firstItem="qhX-s1-01P" firstAttribute="leading" secondItem="rER-iW-tmZ" secondAttribute="trailing" constant="1" id="fa2-dR-der"/>
+                <constraint firstItem="qhX-s1-01P" firstAttribute="top" secondItem="pZ5-Zi-myE" secondAttribute="bottom" constant="1" id="hRA-7t-Agq"/>
+                <constraint firstAttribute="trailing" secondItem="pZ5-Zi-myE" secondAttribute="trailing" id="o0n-W7-dT5"/>
+                <constraint firstItem="0eq-ee-JTW" firstAttribute="top" secondItem="pZ5-Zi-myE" secondAttribute="bottom" constant="1" id="q59-gx-ReZ"/>
+                <constraint firstAttribute="trailing" secondItem="0eq-ee-JTW" secondAttribute="trailing" id="ri3-6h-aOc"/>
+                <constraint firstAttribute="bottom" secondItem="qhX-s1-01P" secondAttribute="bottom" constant="1" id="rkI-b3-QF1"/>
+                <constraint firstItem="0eq-ee-JTW" firstAttribute="leading" secondItem="qhX-s1-01P" secondAttribute="trailing" constant="1" id="zax-Gp-nLU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="recommendSupViews" destination="rER-iW-tmZ" id="tUg-ga-mpf"/>
+                <outletCollection property="recommendSupViews" destination="pZ5-Zi-myE" id="ayn-IV-IWG"/>
+                <outletCollection property="recommendSupViews" destination="qhX-s1-01P" id="O9D-VO-TZD"/>
+                <outletCollection property="recommendSupViews" destination="0eq-ee-JTW" id="sOw-yO-z2E"/>
+            </connections>
+            <point key="canvasLocation" x="289" y="259"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

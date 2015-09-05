@@ -75,6 +75,25 @@
     WS(ws);
     
     [self.didLogingView bringSubviewToFront:self.levelImageView];
+    NSInteger leave = [self.userData.Level integerValue];
+    switch (leave) {
+        case 0:
+            self.levelImageView.image = [UIImage imageNamed:@"cust_level_normal"];
+            break;
+        case 1:
+            self.levelImageView.image = [UIImage imageNamed:@"cust_level_silver"];
+            break;
+        case 2:
+            self.levelImageView.image = [UIImage imageNamed:@"cust_level_platinum"];
+            break;
+        case 3:
+            self.levelImageView.image = [UIImage imageNamed:@"cust_level_gold"];
+            break;
+        default:
+            break;
+    }
+    
+    
     //1.将button切圆
     self.userIconButton.layer.cornerRadius = self.userIconButton.bounds.size.width*0.5;
     self.userIconButton.layer.masksToBounds = YES;
@@ -98,20 +117,20 @@
     
     //2.用户名
     UILabel *userNameLabel = [[UILabel alloc]init];
-    userNameLabel.text = self.userData.loginid;
+    userNameLabel.text = self.userData.lastname;
     userNameLabel.font = [UIFont systemFontOfSize:15];
     CGRect frame = [userNameLabel textRectForBounds:CGRectMake(0, 0, 999, 999) limitedToNumberOfLines:1];
     [self.didLogingView addSubview:userNameLabel];
     [userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(ws.levelImageView.mas_right).with.offset(8);
-        make.bottom.equalTo(ws.balanceLabel.mas_top).with.offset(-20);
+        make.bottom.equalTo(ws.balanceLabel.mas_top).with.offset(-5);
         make.width.equalTo(@(frame.size.width));
         make.height.equalTo(@(frame.size.height));
     }];
     
     //3.状态
     UILabel *stateLabel = [UILabel new];
-    stateLabel.text = self.userData.Level;
+    stateLabel.text = @"正常";
     stateLabel.textColor = [UIColor redColor];
     stateLabel.font = [UIFont systemFontOfSize:15];
     frame = [stateLabel textRectForBounds:CGRectMake(0, 0, 999, 999) limitedToNumberOfLines:1];

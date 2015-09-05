@@ -30,6 +30,11 @@
 #define kUpdataAddress              kGetRequestUrl(@"Address/update")
 #define kPayOrder                   kGetRequestUrl(@"Order/pay")
 #define kAddComment                 kGetRequestUrl(@"Goods/addcomment")
+#define kGetRecomment               kGetRequestUrl(@"Product/hotproducts")
+#define kSearchAddres               kGetRequestUrl(@"Address/search")
+#define kGetVersion                 kGetRequestUrl(@"APPVersion/info")
+#define kUpdateUserInfo             kGetRequestUrl(@"kGetRequestUrl")
+#define kCreatSaveCode              kGetRequestUrl(@"User/BuildRechargeCode")
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"

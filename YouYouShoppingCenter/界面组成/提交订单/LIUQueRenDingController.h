@@ -10,4 +10,6 @@
 
 @interface LIUQueRenDingController : UIViewController
 
+@property (nonatomic,strong)NSArray *orderList;
+
 @end

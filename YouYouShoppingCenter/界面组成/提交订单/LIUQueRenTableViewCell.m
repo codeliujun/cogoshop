@@ -9,6 +9,7 @@
 #import "LIUQueRenTableViewCell.h"
 #import "ZHCache.h"
 #import "Masonry.h"
+#import "UIImage+GetUrlImage.h"
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
 @interface LIUQueRenTableViewCell ()
@@ -50,33 +51,12 @@
     [self.countLabel removeFromSuperview];
     self.countLabel = nil;
     
-    //1.读取缓存中又没有图片
-    NSData *cacheImageData = [ZHCache getCacheImageData:mode.ProductName];
-    if (cacheImageData) {
-        self.shopIconImageView.image = [UIImage  imageWithData:cacheImageData];
-    }else {
-       __block UIImage *image = nil;
-        NSString *imageStr = [mode.ProductThumbUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (data) {
-                    image = [UIImage imageWithData:data];
-                    NSData *imageData = UIImagePNGRepresentation(image);
-                    [ZHCache writeData:imageData fileName:mode.ProductName];
-                    self.shopIconImageView.image = image;
-                }else {
-                    self.shopIconImageView.image = [UIImage imageNamed:@"测试图片"];
-                }
-            });
-        });
-        
-        
-    }
-    
     self.desLabel.text = mode.ProductName;
     
     WS(ws);
+    [UIImage getImageWithThumble:mode.ProductThumbUrl Success:^(UIImage *image) {
+        ws.shopIconImageView.image = image;
+    }];
     
     self.countLabel.font = [UIFont systemFontOfSize:10];
     self.countLabel.text = [NSString stringWithFormat:@"×%ld",mode.ProductCount];

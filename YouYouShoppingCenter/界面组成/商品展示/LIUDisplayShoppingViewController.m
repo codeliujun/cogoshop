@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
 
+#define kThemClolor     [UIColor colorWithRed:105/256.0 green:34/256.0 blue:56/256.0 alpha:1]
+
 #import "LIUDisplayShoppingViewController.h"
 #import "MJRefresh.h"
 #import "MJExtension.h"
@@ -18,7 +20,10 @@
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
-@interface LIUDisplayShoppingViewController ()<UITableViewDataSource,UITableViewDelegate,LIUHeaderViewDelegate>
+@interface LIUDisplayShoppingViewController ()<UITableViewDataSource,UITableViewDelegate,LIUHeaderViewDelegate>{
+    BOOL        _isPriceUp;
+    BOOL        _isSellUp;
+}
 
 //@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UITableView *displayShoppingTableView;
@@ -118,7 +123,7 @@
 //    self.searchButton.layer.cornerRadius = self.searchButton.bounds.size.height*0.5;
 //    self.searchButton.layer.masksToBounds = YES;
     
-    LIUHeaderView *headerView = [LIUHeaderView creatHeaderViewWithItems:@[@"综合",@"销量",@"价格",@"筛选"]];
+    LIUHeaderView *headerView = [LIUHeaderView creatHeaderViewWithItems:@[@"综合",@"新品",@"销量",@"价格"]];
     headerView.delegate = self;
     headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 40);
     self.displayShoppingTableView.tableHeaderView = headerView;
@@ -126,7 +131,37 @@
 
 #pragma --mark 代理
 - (void)headerViewDidSelectButtonInfo:(NSDictionary *)Info{
-    [self.displayShoppingTableView reloadData];
+    
+    [self.shoppingList removeAllObjects];
+    //排序方式
+    NSString *orderBy = Info[@"title"];
+    
+    if ([orderBy isEqualToString:@"综合"]) {
+        self.orderby = 1;
+    }
+    if ([orderBy isEqualToString:@"新品"]) {
+        self.orderby = 1;
+    }
+    if ([orderBy isEqualToString:@"销量"]) {
+        if (_isSellUp) {
+            self.orderby = 4;
+            _isSellUp = NO;
+        }else {
+            self.orderby = 5;
+            _isSellUp = YES;
+        }
+    }
+    if ([orderBy isEqualToString:@"价格"]) {
+        if (_isPriceUp) {
+            self.orderby = 2;
+            _isPriceUp = NO;
+        }else {
+            self.orderby = 3;
+            _isPriceUp = YES;
+        }
+    }
+    self.pageindex = 1;
+    [self getGoods];
 }
 
 - (void)didReceiveMemoryWarning {

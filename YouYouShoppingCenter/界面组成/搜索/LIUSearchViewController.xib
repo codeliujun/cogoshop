@@ -77,7 +77,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.18431372549019609" green="0.66274509803921566" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.41176470588235292" green="0.13333333333333333" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="06V-iO-ysb"/>
                         <constraint firstAttribute="bottom" secondItem="1Ni-oJ-req" secondAttribute="bottom" constant="8" id="12y-xe-1tp"/>

@@ -10,14 +10,25 @@
 #import "SVProgressHUD.h"
 #import "UIViewController+GetHTTPRequest.h"
 
-@interface LIURegistViewController ()
+@interface LIURegistViewController () {
+    /*
+     mobile={mobile}&name={name}&pwd={pwd}&authcode={authcode}&shopId={shopId}
+     */
+    NSString        *_mobile;
+    NSString        *_nameSt;
+    NSString        *_pwd;
+    NSString        *_authcode;
+    NSString        *_shopId;
+}
 @property (weak, nonatomic) IBOutlet UITextField *shoujiHaoMa;
 @property (weak, nonatomic) IBOutlet UITextField *diyiciMima;
 @property (weak, nonatomic) IBOutlet UITextField *dierciMima;
 @property (weak, nonatomic) IBOutlet UITextField *yanZhengMa;
+@property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UIButton *getYanZhengMaButton;
 
 @property(nonatomic,strong)UILabel *caculateTimeLabel;//下一次发送验证码的时间
+@property (weak, nonatomic) IBOutlet UIButton *zhuceButton;
 
 @end
 
@@ -37,6 +48,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.getYanZhengMaButton.layer.cornerRadius = 3.0;
+    self.getYanZhengMaButton.layer.masksToBounds = YES;
+    
+    self.zhuceButton.layer.cornerRadius = 5.0f;
+    self.zhuceButton.layer.masksToBounds = YES;
+    
     self.title = @"手机快速注册";
     // Do any additional setup after loading the view from its nib.
 }
@@ -51,6 +69,30 @@
 }
 
 - (IBAction)zhuCe:(UIButton *)sender {
+    
+    _mobile = self.shoujiHaoMa.text;
+    _nameSt = self.name.text;
+    _shopId = @"1";
+    _pwd    = self.diyiciMima.text;
+    _authcode = self.yanZhengMa.text;
+    
+    if ([_mobile isEqual:[NSNull null]] || _mobile == nil || [_mobile isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入手机号码" duration:1.f];
+        return;
+    }
+    if ([_authcode isEqual:[NSNull null]] || _authcode == nil || [_authcode isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入验证码" duration:1.f];
+        return;
+    }
+    if ([_nameSt isEqual:[NSNull null]] || _nameSt == nil || [_nameSt isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入名字" duration:1.f];
+        return;
+    }
+    if ([_pwd isEqual:[NSNull null]] || _pwd == nil || [_pwd isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入密码" duration:1.f];
+        return;
+    }
+    
     //1.判断2此输入的密码是否一致
     if (![self.diyiciMima.text isEqualToString:self.dierciMima.text]) {
         [SVProgressHUD showErrorWithStatus:@"密码输入不一致,请重新输入" duration:1];

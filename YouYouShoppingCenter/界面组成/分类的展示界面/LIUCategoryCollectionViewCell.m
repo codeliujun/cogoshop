@@ -5,9 +5,10 @@
 //  Created by 刘俊 on 15/6/18.
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
-
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 #import "LIUCategoryCollectionViewCell.h"
 #import "ZHCache.h"
+#import "UIImage+GetUrlImage.h"
 
 @interface LIUCategoryCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
@@ -24,33 +25,10 @@
 
 - (void)reloadCell {
     self.decLabel.text = self.category.name;
-    
-    //1.读取缓存中又没有图片
-    NSData *cacheImageData = [ZHCache getCacheImageData:self.category.name];
-    if (cacheImageData) {
-        self.iconImage.image = [UIImage  imageWithData:cacheImageData];
-    }else {
-       __block UIImage *image = nil;
-        NSString *imageStr = [self.category.thumb stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (data) {
-                    image = [UIImage imageWithData:data];
-                    NSData *imageData = UIImagePNGRepresentation(image);
-                    [ZHCache writeData:imageData fileName:self.category.name];
-                    self.iconImage.image = image;
-                }else {
-                    self.iconImage.image = [UIImage imageNamed:@"测试图片"];
-                }
-            });
-        });
-        
-        
-    }
-    
-    
-    
+    WS(ws);
+    [UIImage getImageWithThumble:self.category.thumb Success:^(UIImage *image) {
+        ws.iconImage.image = image;
+    }];
     
     //self.iconImage.image = [UIImage imageNamed:self.category.imageName];
     //self.url = self.category.categoryId;

@@ -6,10 +6,15 @@
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
 
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
+
 #import "LIUAdressManagerViewController.h"
 #import "LIUAddressTableViewCell.h"
 #import "LIUAddressEditAndAddViewController.h"
+#import "UIViewController+GetHTTPRequest.h"
 #import "LIUPersonModel.h"
+#import "SVProgressHUD.h"
+#import "MJExtension.h"
 
 @interface LIUAdressManagerViewController ()<UITableViewDataSource,UITableViewDelegate,LIUAddressTableViewCellDelegate,LIUAddressEditAndAddViewControllerDelegate>
 
@@ -35,6 +40,27 @@
     self.addAddressButton.layer.cornerRadius = 5;
     self.addAddressButton.layer.masksToBounds = YES;
     [self.addressTableView registerNib:[UINib nibWithNibName:@"LIUAddressTableViewCell" bundle:nil] forCellReuseIdentifier:@"mycell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self getData];
+}
+
+- (void)getData {
+    WS(ws);
+    [self requestWithUrl:kGetAddressList Parameters:@{@"pageindex":@1,@"userid":[self getUserId],@"pagesize":@20} Success:^(NSDictionary *result) {
+        NSArray *arr = result[@"Data"];
+        if (arr.count == 0) {
+            [SVProgressHUD showErrorWithStatus:@"地址获取失败" duration:1.5f];
+            return ;
+        }
+        ws.addressArray = [LIURecevingAderess objectArrayWithKeyValuesArray:arr];
+        [ws.addressTableView reloadData];
+    } Failue:^(NSDictionary *failueInfo) {
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

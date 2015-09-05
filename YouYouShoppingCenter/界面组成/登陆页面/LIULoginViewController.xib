@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LIULoginViewController">
             <connections>
+                <outlet property="loginButton" destination="E9d-i7-68m" id="vE3-60-bt9"/>
                 <outlet property="loginView" destination="Z67-1p-S83" id="Ky5-xM-Q1i"/>
                 <outlet property="passWordTextField" destination="CkQ-hf-yfx" id="HRw-2S-hLY"/>
                 <outlet property="rememberButton" destination="YJV-1g-Azx" id="Trp-07-wrm"/>
@@ -44,7 +45,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9d-i7-68m">
                     <rect key="frame" x="40" y="277" width="240" height="40"/>
-                    <color key="backgroundColor" red="1" green="0.42918352506620061" blue="0.19236188177302993" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.27066688300000002" blue="0.20891249740000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="86h-aV-fb2"/>
                     </constraints>
@@ -130,10 +131,10 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_checkbox_checked" width="40" height="40"/>
-        <image name="icon_checkbox_unchecked" width="40" height="40"/>
-        <image name="icon_edit_user_password" width="63" height="63"/>
-        <image name="main_tab_member" width="48" height="48"/>
+        <image name="icon_checkbox_checked" width="20" height="20"/>
+        <image name="icon_checkbox_unchecked" width="20" height="20"/>
+        <image name="icon_edit_user_password" width="31" height="31"/>
+        <image name="main_tab_member" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

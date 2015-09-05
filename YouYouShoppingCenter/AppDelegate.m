@@ -25,9 +25,10 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    
     //[UINavigationBar appearance].tintColor = [UIColor whiteColor];
     [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:105/256.0 green:34/256.0 blue:56/256.0 alpha:1];
-    
+    [[UITabBar appearance]setSelectedImageTintColor:[UIColor redColor]];
     //检测网络
     [self checkNetWork];
     [self autoLogin];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -36,11 +36,11 @@
                             <constraint firstAttribute="height" constant="25" id="Za9-GP-FnJ"/>
                         </constraints>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="desButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Hr-h9-7xI"/>
@@ -49,11 +49,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-pM-88K">
                         <rect key="frame" x="145" y="54" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="desButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DIP-tP-evM"/>
@@ -62,11 +62,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OZ-4Q-RAe">
                         <rect key="frame" x="185" y="54" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="desButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bp1-HU-dMM"/>
@@ -75,11 +75,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5i-mR-86q">
                         <rect key="frame" x="225" y="54" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="desButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Sdq-0U-vzX"/>
@@ -88,11 +88,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfT-9z-TdK">
                         <rect key="frame" x="265" y="54" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="desButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pgI-cl-LoF"/>
@@ -107,11 +107,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeY-Zd-nqv">
                         <rect key="frame" x="105" y="90" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="serButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hRD-n8-V9u"/>
@@ -120,11 +120,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cel-PC-Lon">
                         <rect key="frame" x="145" y="90" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="serButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nig-5D-pgT"/>
@@ -133,11 +133,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Der-PP-6jS">
                         <rect key="frame" x="185" y="90" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="serButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6CK-YL-aJS"/>
@@ -146,11 +146,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuS-gw-JkN">
                         <rect key="frame" x="225" y="90" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="serButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0hQ-Nu-G9h"/>
@@ -165,11 +165,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6J-vw-YNb">
                         <rect key="frame" x="105" y="126" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="speedButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tj9-T5-S4L"/>
@@ -178,11 +178,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjP-Jz-6wc">
                         <rect key="frame" x="145" y="126" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="speedButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="90e-Dd-M8d"/>
@@ -191,11 +191,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2m-qi-PIL">
                         <rect key="frame" x="185" y="126" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="speedButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dfg-rP-Rgf"/>
@@ -204,11 +204,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vN1-0Z-z6g">
                         <rect key="frame" x="225" y="126" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="speedButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ffy-7E-MAL"/>
@@ -217,11 +217,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfK-bn-mpB">
                         <rect key="frame" x="265" y="126" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="speedButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cqb-dv-2pw"/>
@@ -230,11 +230,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxr-Qr-J0W">
                         <rect key="frame" x="265" y="90" width="25" height="25"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <state key="normal" backgroundImage="collection_n">
+                        <state key="normal" backgroundImage="star">
                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="collection_h"/>
+                        <state key="selected" backgroundImage="star_on"/>
                         <state key="highlighted" backgroundImage="collection_h"/>
                         <connections>
                             <action selector="serButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A3S-JH-GQb"/>
@@ -338,6 +338,7 @@
     </objects>
     <resources>
         <image name="collection_h" width="22" height="22"/>
-        <image name="collection_n" width="22" height="22"/>
+        <image name="star" width="25" height="25"/>
+        <image name="star_on" width="25" height="25"/>
     </resources>
 </document>

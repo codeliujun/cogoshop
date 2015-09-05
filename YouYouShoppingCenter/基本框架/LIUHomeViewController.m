@@ -10,16 +10,21 @@
 #import "LIUHomeViewRecommendTableViewCell.h"
 #import "UIViewController+GetHTTPRequest.h"
 #import "LIUHomeCategoryCell.h"
+#import "LIUShoppingDetaileViewController.h"
+#import "LIUGoodModel.h"
 #import "LIUSearchViewController.h"
 #import "LIUScanTwoDimensionalCode.h"
 #import "SVProgressHUD.h"
 #import "LIUUserInfoData.h"
 #import "LIUDisplayShoppingViewController.h"
+#import "UIColor+HexColor.h"
 #import "Masonry.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf = self
 
-@interface LIUHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,LIUScanTwoDimensionalCodeDelegate>
+@interface LIUHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,LIUScanTwoDimensionalCodeDelegate,LIUHomeViewRecommendTableViewCellDelegate>{
+    LIUHomeViewRecommendTableViewCell   *_recommendCell;
+}
 
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
@@ -33,6 +38,8 @@
 @property(nonatomic,strong)LIUScanTwoDimensionalCode *scanCodeView;
 
 @property (nonatomic ,strong)NSArray *catergays;
+
+@property (nonatomic ,strong)NSArray *recommends;
 
 @end
 
@@ -69,16 +76,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.homeTableView registerNib:[UINib nibWithNibName:@"LIUHomeViewRecommendTableViewCell" bundle:nil] forCellReuseIdentifier:@"mycell1"];
-    [self.homeTableView registerNib:[UINib nibWithNibName:@"LIUHomeCategoryCell" bundle:nil] forCellReuseIdentifier:@"mycell2"];
-    
     [self addRightButton];
     //这里只显示图片吧
-    [self addTableHeaderViewWithGoods:@[@"测试图片",@"测试图片",@"测试图片",@"测试图片",@"测试图片"]];
+    //[self addTableHeaderViewWithGoods:@[@"测试图片",@"测试图片",@"测试图片",@"测试图片",@"测试图片"]];
     [self itemLayout];
+    [self initCell];
+   
     
-    [self getData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+     [self getData];
+}
+
+- (void)initCell {
     
+    
+    [self.homeTableView registerNib:[UINib nibWithNibName:@"LIUHomeCategoryCell" bundle:nil] forCellReuseIdentifier:@"mycell2"];
+    
+    
+    _recommendCell = [LIUHomeViewRecommendTableViewCell cell];
+    _recommendCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _recommendCell.recommends = self.recommends;
+    _recommendCell.buttonTap = ^{
+        /**
+         *  @author 刘俊, 15-07-27
+         *
+         *  点击了更多的按钮
+         */
+    };
+    _recommendCell.delegate = self;
+    
+}
+
+- (void)didChooseGoodModel:(LIUGoodModel *)model {
+    
+    LIUShoppingDetaileViewController *controller = [[LIUShoppingDetaileViewController alloc]init];
+    controller.good = model;
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)getData {
@@ -90,8 +127,14 @@
             } Success:^(NSDictionary *result) {
                 
                 ws.catergays = result[@"Data"];
-                
                 [self.homeTableView reloadData];
+                
+                [ws requestWithUrl:kGetRecomment Parameters:@{@"pagesize":@4} Success:^(NSDictionary *result) {
+                    ws.recommends = [LIUGoodModel objectArrayWithKeyValuesArray:result[@"Data"]];
+                    [ws updateRecommend];
+                } Failue:^(NSDictionary *failueInfo) {
+                    
+                }];
                 
             } Failue:^(NSDictionary *failueInfo) {
                                                          
@@ -100,6 +143,11 @@
     
 }
 
+- (void)updateRecommend {
+    
+    _recommendCell.recommends = self.recommends;
+    
+}
 /**
  *  @author 刘俊, 15-07-28
  *
@@ -220,17 +268,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (0 == indexPath.section) {
-        LIUHomeViewRecommendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell1" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.recommends = @[@"测试图片",@"测试图片",@"测试图片",@"测试图片",@"测试图片"];
-        cell.buttonTap = ^{
-            /**
-             *  @author 刘俊, 15-07-27
-             *
-             *  点击了更多的按钮
-             */
-        };
-        return cell;
+        return _recommendCell;
     }else {
         LIUHomeCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mycell2" forIndexPath:indexPath];
         cell.caterInfo = self.catergays[indexPath.row];
@@ -265,6 +303,7 @@
             make.height.equalTo(@31);
         }];
         
+        view.backgroundColor = [UIColor hexStringToColor:@"F0F0F0"];
     }
     
     return view;

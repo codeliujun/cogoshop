@@ -128,6 +128,7 @@
                     [self updateTotalCountLabel];
                     self.allSelectButton.selected = NO;
                     [self.unLoginOrNoGoodsView setHidden:YES];
+                    [self allSelectButtonTap:nil];
                     [self.tableView reloadData];
                 }
             }else {
@@ -172,7 +173,8 @@
     UIImageView *imageView = nil;
     {//ImageView
         imageView = [[UIImageView alloc]init];
-        imageView.image = [UIImage imageNamed:@"emptyCart"];
+        imageView.image = [UIImage imageNamed:@"icon_nodata"];
+//        imageView.
         [self.unLoginOrNoGoodsView addSubview:imageView];//240 160
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(ws.unLoginOrNoGoodsView);
@@ -192,7 +194,7 @@
         [self.unLoginOrNoGoodsButton addTarget:self action:@selector(tapUnloginButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.unLoginOrNoGoodsView addSubview:self.unLoginOrNoGoodsButton];
         [self.unLoginOrNoGoodsButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(imageView.mas_bottom).with.offset(5);
+            make.top.equalTo(imageView.mas_bottom).with.offset(15);
             make.left.equalTo(ws.unLoginOrNoGoodsView.mas_left).with.offset(30);
             make.right.equalTo(ws.unLoginOrNoGoodsView.mas_right).with.offset(-30);
             make.height.equalTo(@49);
@@ -249,6 +251,7 @@
         UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         //cell.backgroundColor = [UIColor redColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
         return cell;
     }else {
         LIUGoodsCartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGoodsCartCell forIndexPath:indexPath];
@@ -261,7 +264,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70.f;
+    return 80.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -361,10 +364,8 @@
     CGFloat goodsTotalPrice = 0.00f;
     
     for (LIUCartGoodModel *good in self.cartGoodData) {
-        if (good.isSelect) {
             goodsCount++;
             goodsTotalPrice = goodsTotalPrice + [good.Price floatValue]*[good.Number integerValue];
-        }
     }
     
     self.caculaterLabel.text = [NSString stringWithFormat:@"结算（%lu）",goodsCount];
@@ -375,7 +376,9 @@
 #pragma --mark CurrentpageButtonEvent
 - (IBAction)allSelectButtonTap:(UIButton *)sender {
     
-    sender.selected = !sender.isSelected;
+    if (sender) {
+        sender.selected = !sender.isSelected;
+    }
     
     for (LIUCartGoodModel *good in self.cartGoodData) {
         good.isSelect = sender.selected;
@@ -397,23 +400,24 @@
             [marray addObject:good.Id];
         }
     }
-    if (marray.count == 0) {
-        [SVProgressHUD showErrorWithStatus:@"请至少选择一件商品" duration:1.5f];
-        return;
-    }
+//    if (marray.count == 0) {
+//        [SVProgressHUD showErrorWithStatus:@"请至少选择一件商品" duration:1.5f];
+//        return;
+//    }
     //NSString *allGood = marray.count==1?[marray firstObject]:[marray componentsJoinedByString:@","];
     
-        [self requestWithUrl:kCreatOrder Parameters:@{@"shopid":@"",@"userid":[self getUserId],@"addressid":@""} Success:^(NSDictionary *result) {
-    
+//        [self requestWithUrl:kCreatOrder Parameters:@{@"shopid":@"",@"userid":[self getUserId],@"addressid":@""} Success:^(NSDictionary *result) {
+//    
             //跳转界面
             LIUQueRenDingController *confirmVC = [[LIUQueRenDingController alloc]init];
+    confirmVC.orderList = self.cartGoodData;
             confirmVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:confirmVC animated:YES];
            // [self presentViewController:confirmVC animated:YES completion:nil];
     
-        } Failue:^(NSDictionary *failueInfo) {
-    
-        }];
+//        } Failue:^(NSDictionary *failueInfo) {
+//    
+//        }];
 //    [self requestWithUrl:kCreatNo Parameters:@{@"isRecharge":@"0"} Success:^(NSDictionary *result) {
 //        //跳转界面
 //        LIUQueRenDingController *confirmVC = [[LIUQueRenDingController alloc]init];

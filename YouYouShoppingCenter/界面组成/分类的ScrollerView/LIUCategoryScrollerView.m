@@ -73,14 +73,14 @@
         UIButton *button = [[UIButton alloc]init];
         button.titleLabel.font = [UIFont systemFontOfSize:13.f];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"search_label_normal_bg"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"rb_bg_n"] forState:UIControlStateNormal];
         
         [button addTarget:self action:@selector(didTapButton:) forControlEvents:UIControlEventTouchUpInside];
        
         //[button setTitle:categorys[i] forState:UIControlStateNormal];
         [button setTitle:categorys[i][@"name"] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        [button setBackgroundImage:[UIImage imageNamed:@"search_label_select_bg"] forState:UIControlStateSelected];
+        [button setBackgroundImage:[UIImage imageNamed:@"rb_bg_h"] forState:UIControlStateSelected];
         
         //2.将buttonadd进scroller
         [container addSubview:button];

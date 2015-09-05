@@ -17,7 +17,7 @@
                         <constraint firstAttribute="width" constant="77" id="U9W-ca-NuY"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                    <color key="textColor" red="0.10980392156862745" green="0.6588235294117647" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.41176470588235292" green="0.13333333333333333" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0B-RV-6S1">
