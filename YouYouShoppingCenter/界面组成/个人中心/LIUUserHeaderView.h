@@ -19,4 +19,5 @@
 - (void)updateHeaderView;
 
 @property(nonatomic,weak)id<LIUUserHeaderViewDelegate> delegate;
+
 @end

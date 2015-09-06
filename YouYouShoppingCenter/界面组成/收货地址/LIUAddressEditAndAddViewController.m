@@ -160,20 +160,23 @@
         
     }
     else {
-        [self requestWithUrl:kUpdataAddress Parameters:@{
-                    @"userid":[self getUserId],
-                    @"fullname":self.fullname,
-                    @"provinceid":self.provinceid,
-                    @"cityid":self.cityid,
-                    @"areaid":self.areaid,
-                    @"address":self.address,
-                    @"zipcode":self.zipcode,
-                    @"telephone":self.telephone,
-                    @"mobile":self.mobile,
-                    @"email":self.email,
-                    @"alias":self.alias,
-                    @"isdefault":self.isdefault,
-                } Success:^(NSDictionary *result) {
+        /*userid={userid}&addressid={addressid}&fullname={fullname}&provinceid={provinceid}&cityid={cityid}&areaid={areaid}&address={address}&zipcode={zipcode}&telephone={telephone}&mobile={mobile}&email={email}&alias={alias}&isdefault={isdefault}*/
+        NSDictionary *dic = @{
+                              @"userid":[self getUserId],
+                              @"addressid":self.oldAddress.Id,
+                              @"fullname":self.fullname,
+                              @"provinceid":self.provinceid,
+                              @"cityid":self.cityid,
+                              @"areaid":self.areaid,
+                              @"address":self.address,
+                              @"zipcode":self.zipcode,
+                              @"telephone":self.telephone,
+                              @"mobile":self.mobile,
+                              @"email":self.email,
+                              @"alias":self.alias,
+                              @"isdefault":self.isdefault,
+                              };
+        [self requestWithUrl:kUpdataAddress Parameters:dic Success:^(NSDictionary *result) {
                     NSLog(@"%@",result);
                 } Failue:^(NSDictionary *failueInfo) {
                     

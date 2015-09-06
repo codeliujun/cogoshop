@@ -19,6 +19,7 @@
 
 //登陆之后的界面
 @property (weak, nonatomic) IBOutlet UIButton *userIconButton;//1004
+@property (nonatomic,strong)UIButton *changeUserNameButton;
 @property (weak, nonatomic) IBOutlet UIImageView *levelImageView;
 @property (weak, nonatomic) IBOutlet UILabel *balanceLabel;
 @property (weak, nonatomic) IBOutlet UIView *didLogingView;
@@ -75,6 +76,7 @@
     WS(ws);
     
     [self.didLogingView bringSubviewToFront:self.levelImageView];
+    
     NSInteger leave = [self.userData.Level integerValue];
     switch (leave) {
         case 0:
@@ -141,6 +143,11 @@
         make.width.equalTo(@(frame.size.width));
         make.height.equalTo(@(frame.size.height));
     }];
+    
+#warning ToDo...
+    //修改名字的button
+    self.changeUserNameButton = [[UIButton alloc]init];
+    
     
     //4.余额
     self.balanceLabel.text = [NSString stringWithFormat:@"%@",self.userData.Balance];

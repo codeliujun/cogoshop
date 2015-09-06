@@ -223,10 +223,10 @@
          */
   
        // 先注释
-        if ([self.good.InstoreNumber integerValue] <= 0) {
-            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
-            return;
-        }
+//        if ([self.good.InstoreNumber integerValue] <= 0) {
+//            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
+//            return;
+//        }
         
         NSString *userId = [self getUserId];
         [self requestWithUrl:kAddGood Parameters:@{

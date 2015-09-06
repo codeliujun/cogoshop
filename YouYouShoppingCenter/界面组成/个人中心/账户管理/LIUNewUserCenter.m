@@ -49,7 +49,7 @@
 
 - (void)getData {
     WS(ws);
-    [self requestWithUrl:kUpdateUserInfo Parameters:@{@"userid":[self getUserId],@"name":self.infoData.lastname} Success:^(NSDictionary *result) {
+    [self requestWithUrl:kGetUserInfo Parameters:@{@"userid":[self getUserId]} Success:^(NSDictionary *result) {
         ws.infoData.Balance = result[@"Data"][@"Balance"];
         [ws upDateCell];
     } Failue:^(NSDictionary *failueInfo) {

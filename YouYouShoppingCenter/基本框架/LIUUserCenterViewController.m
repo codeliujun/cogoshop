@@ -145,7 +145,7 @@
                 
             case 1004:{
                 NSLog(@"个人设置");
-                [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据api来" duration:1.0];
+                [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据来" duration:1.0];
             }
                 break;
         }

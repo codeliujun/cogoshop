@@ -35,6 +35,8 @@
 #define kGetVersion                 kGetRequestUrl(@"APPVersion/info")
 #define kUpdateUserInfo             kGetRequestUrl(@"kGetRequestUrl")
 #define kCreatSaveCode              kGetRequestUrl(@"User/BuildRechargeCode")
+#define kGetUserInfo                kGetRequestUrl(@"User/userinfo")
+
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
