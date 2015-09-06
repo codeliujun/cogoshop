@@ -9,6 +9,7 @@
 #import "LIUNewUserCenter.h"
 #import "LIUSaveMoneyController.h"
 #import "UIViewController+GetHTTPRequest.h"
+#import "LIUConsumeViewController.h"
 #import "LIUNewUseCell.h"
 #import "LIUUserInfoData.h"
 
@@ -36,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"用户中心";
     //更新用户数据
     
     [self initCell];
@@ -50,7 +52,7 @@
 - (void)getData {
     WS(ws);
     [self requestWithUrl:kGetUserInfo Parameters:@{@"userid":[self getUserId]} Success:^(NSDictionary *result) {
-        ws.infoData.Balance = result[@"Data"][@"Balance"];
+        ws.infoData.Balance = [NSString stringWithFormat:@"%@",result[@"Data"][@"AppendData"][@"Balance"]];
         [ws upDateCell];
     } Failue:^(NSDictionary *failueInfo) {
         
@@ -69,15 +71,9 @@
     
     _cell4 = [LIUNewUseCell cell];
     
-    [self upDateCell];
-}
-
-- (void)upDateCell {
-  
     [_cell1 setCellTitle:@"账户余额："];
     [_cell1 setCellButtonTitle:@"充值"];
     _cell1.delegate = self;
-    [_cell1 setCellStatu:self.infoData.Balance];
     
     [_cell2 setCellTitle:@"会员积分："];
     _cell2.delegate = self;
@@ -109,6 +105,15 @@
             break;
     }
     [_cell4 setStatuImage:image];
+
+    [self upDateCell];
+}
+
+- (void)upDateCell {
+  
+    NSString *str = self.infoData.Balance;
+    [_cell1 setCellStatu:str];
+    
     
 }
 
@@ -119,6 +124,9 @@
         
         [self.navigationController pushViewController:controller animated:YES];
     }else {
+        
+        LIUConsumeViewController *controller = [[LIUConsumeViewController alloc]init];
+        [self.navigationController pushViewController:controller animated:YES];
         
     }
 }

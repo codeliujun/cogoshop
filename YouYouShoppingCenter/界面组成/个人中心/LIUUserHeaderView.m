@@ -32,6 +32,7 @@
 //下面的bubutton
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allButtons;//1000~1003
 
+@property (nonatomic,assign)BOOL isLogin;
 
 @end
 
@@ -43,7 +44,6 @@
     }
     return _userData;
 }
-
 
 
 - (void)updateHeaderView {
@@ -147,7 +147,15 @@
 #warning ToDo...
     //修改名字的button
     self.changeUserNameButton = [[UIButton alloc]init];
-    
+    [self.didLogingView addSubview:self.changeUserNameButton];
+    self.changeUserNameButton.tag = 1006;
+    [self.changeUserNameButton addTarget:self action:@selector(changeUserName:) forControlEvents:UIControlEventTouchUpInside];
+    [self.changeUserNameButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(userNameLabel.mas_leading).with.offset(0);
+        make.top.equalTo(userNameLabel.mas_top).with.offset(0);
+        make.right.equalTo(ws.balanceLabel.mas_right).with.offset(0);
+        make.bottom.equalTo(ws.balanceLabel.mas_bottom).with.offset(0);
+    }];
     
     //4.余额
     self.balanceLabel.text = [NSString stringWithFormat:@"%@",self.userData.Balance];
@@ -177,6 +185,10 @@
 }
 - (IBAction)touch:(UIButton *)sender {
     [self.delegate headerViewDidTapButton:sender];
+}
+
+- (void)changeUserName:(UIButton *)sender {
+    [self touch:sender];
 }
 
 

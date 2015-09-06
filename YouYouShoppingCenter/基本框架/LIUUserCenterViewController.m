@@ -8,6 +8,7 @@
 
 #import "LIUUserCenterViewController.h"
 #import "LIUUserCenterTableViewCell.h"
+#import "LIUConsumeViewController.h"
 #import "LIUPersonModel.h"
 #import "LIUUserInfoData.h"
 #import "LIUNewUserCenter.h"
@@ -20,6 +21,7 @@
 #import "UIButton+LIUBadgeButton.h"
 #import "UIViewController+GetHTTPRequest.h"
 #import "LIUUserHeaderView.h"
+#import "LIUUserInfoController.h"
 
 #import "LIUOrderListController.h"
 #import "LIUSettingController.h"
@@ -31,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *userCenterTableView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
+@property (nonatomic,strong) LIUUserHeaderView *subHeaderView;
 
 //cell的内容和配置
 @property(nonatomic,strong)NSArray *cellLabels;
@@ -59,13 +62,14 @@
     self.userCenterTableView.bounces = NO;
     [self.userCenterTableView registerNib:[UINib nibWithNibName:@"LIUUserCenterTableViewCell" bundle:nil] forCellReuseIdentifier:@"mycell"];
     [self addRightButton];
+    [self addHeaderView];
     // Do any additional setup after loading the view.
     
 }
 
 - (void)addRightButton {
     
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [button setBackgroundImage:[UIImage imageNamed:@"icon_setting"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(tapSetting:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
@@ -79,18 +83,25 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [self addHeaderView];
+    [self updateHeaderView];
     [self.userCenterTableView reloadData];
+}
+
+- (void)updateHeaderView {
+    [self.subHeaderView updateHeaderView];
 }
 
 //添加头视图
 - (void)addHeaderView {
     
     LIUUserHeaderView *headerView = [[[NSBundle mainBundle]loadNibNamed:@"LIUUserHeaderView" owner:nil options:nil] lastObject];
-    [headerView updateHeaderView];
+    
     headerView.delegate = self;
     headerView.frame = CGRectMake(0, 64, self.view.bounds.size.width, 180);
     [self.view addSubview:headerView];
+    self.subHeaderView = headerView;
+    [self updateHeaderView];
+    
     
 }
 
@@ -132,7 +143,7 @@
                 NSLog(@"待收货");
                 [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据api来" duration:1.0];
                 break;
-            
+                
             case 1003:
             {
                 LIUOrderListController *controller = [[LIUOrderListController alloc]init];
@@ -146,6 +157,12 @@
             case 1004:{
                 NSLog(@"个人设置");
                 [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据来" duration:1.0];
+            }
+                
+            case 1006: {
+                LIUUserInfoController *userInfo = [[LIUUserInfoController alloc]init];
+                userInfo.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:userInfo animated:YES];
             }
                 break;
         }
@@ -210,9 +227,9 @@
         //UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:showVC];
         [self.navigationController pushViewController:showVC animated:YES];
     }else if(indexPath.row == 1) {
-//        LIUZhangHuGuanLiViewController *zhanghaoVC = [[LIUZhangHuGuanLiViewController alloc]initWithNibName:@"LIUZhangHuGuanLiViewController" bundle:nil];
-//        zhanghaoVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:zhanghaoVC animated:YES];
+        //        LIUZhangHuGuanLiViewController *zhanghaoVC = [[LIUZhangHuGuanLiViewController alloc]initWithNibName:@"LIUZhangHuGuanLiViewController" bundle:nil];
+        //        zhanghaoVC.hidesBottomBarWhenPushed = YES;
+        //        [self.navigationController pushViewController:zhanghaoVC animated:YES];
         LIUNewUserCenter *controller = [[LIUNewUserCenter alloc]init];
         controller.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:controller animated:YES];
@@ -229,22 +246,22 @@
 }
 
 - (void)logOut:(UIButton *)sender {
+    
+    WS(ws);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认退出" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [LIUUserInfoData logOut];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userName"];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"passWord"];
+        [ws viewWillAppear:YES];
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         
-        WS(ws);
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确认退出" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-            [LIUUserInfoData logOut];
-            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"passWord"];
-            [ws viewWillAppear:YES];
-        }];
-        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }];
-        
-        [alert addAction:action1];
-        [alert addAction:action2];
-        [self presentViewController:alert animated:YES completion:nil];
+    }];
+    
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

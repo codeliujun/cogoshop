@@ -36,6 +36,8 @@
 #define kUpdateUserInfo             kGetRequestUrl(@"kGetRequestUrl")
 #define kCreatSaveCode              kGetRequestUrl(@"User/BuildRechargeCode")
 #define kGetUserInfo                kGetRequestUrl(@"User/userinfo")
+#define kGetAccountings             kGetRequestUrl(@"User/accountings")
+#define kChangePassWord             kGetRequestUrl(@"User/changepwd")
 
 
 #import <UIKit/UIKit.h>

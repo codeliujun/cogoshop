@@ -81,6 +81,14 @@
 		855FB7E81B6E47B700AEC192 /* LIUGoodsCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 855FB7E71B6E47B700AEC192 /* LIUGoodsCartViewController.m */; };
 		855FB7EC1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 855FB7EA1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.m */; };
 		855FB7ED1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855FB7EB1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.xib */; };
+		8564F4D51B9C7757007382CB /* LIUConsumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4D31B9C7757007382CB /* LIUConsumeViewController.m */; };
+		8564F4D61B9C7757007382CB /* LIUConsumeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4D41B9C7757007382CB /* LIUConsumeViewController.xib */; };
+		8564F4DA1B9C7AD4007382CB /* LIUConsumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4D81B9C7AD4007382CB /* LIUConsumeCell.m */; };
+		8564F4DB1B9C7AD4007382CB /* LIUConsumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4D91B9C7AD4007382CB /* LIUConsumeCell.xib */; };
+		8564F4DF1B9C8654007382CB /* LIUUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4DD1B9C8654007382CB /* LIUUserInfoController.m */; };
+		8564F4E01B9C8654007382CB /* LIUUserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4DE1B9C8654007382CB /* LIUUserInfoController.xib */; };
+		8564F4E41B9C895C007382CB /* LIUChangePassWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4E21B9C895C007382CB /* LIUChangePassWordController.m */; };
+		8564F4E51B9C895C007382CB /* LIUChangePassWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4E31B9C895C007382CB /* LIUChangePassWordController.xib */; };
 		85710A2B1B39061B00546AC0 /* LIUGouWuCheTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85710A291B39061B00546AC0 /* LIUGouWuCheTableViewCell.m */; };
 		85710A2C1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85710A2A1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib */; };
 		85710A6B1B3A434200546AC0 /* LIURecevingAderess.m in Sources */ = {isa = PBXBuildFile; fileRef = 85710A6A1B3A434200546AC0 /* LIURecevingAderess.m */; };
@@ -321,6 +329,18 @@
 		855FB7E91B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUGoodsCartTableViewCell.h; path = "界面组成/购物车Cell/LIUGoodsCartTableViewCell.h"; sourceTree = "<group>"; };
 		855FB7EA1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUGoodsCartTableViewCell.m; path = "界面组成/购物车Cell/LIUGoodsCartTableViewCell.m"; sourceTree = "<group>"; };
 		855FB7EB1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUGoodsCartTableViewCell.xib; path = "界面组成/购物车Cell/LIUGoodsCartTableViewCell.xib"; sourceTree = "<group>"; };
+		8564F4D21B9C7757007382CB /* LIUConsumeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUConsumeViewController.h; path = "界面组成/个人中心/账户管理/LIUConsumeViewController.h"; sourceTree = "<group>"; };
+		8564F4D31B9C7757007382CB /* LIUConsumeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUConsumeViewController.m; path = "界面组成/个人中心/账户管理/LIUConsumeViewController.m"; sourceTree = "<group>"; };
+		8564F4D41B9C7757007382CB /* LIUConsumeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUConsumeViewController.xib; path = "界面组成/个人中心/账户管理/LIUConsumeViewController.xib"; sourceTree = "<group>"; };
+		8564F4D71B9C7AD4007382CB /* LIUConsumeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUConsumeCell.h; path = "界面组成/个人中心/账户管理/LIUConsumeCell.h"; sourceTree = "<group>"; };
+		8564F4D81B9C7AD4007382CB /* LIUConsumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUConsumeCell.m; path = "界面组成/个人中心/账户管理/LIUConsumeCell.m"; sourceTree = "<group>"; };
+		8564F4D91B9C7AD4007382CB /* LIUConsumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUConsumeCell.xib; path = "界面组成/个人中心/账户管理/LIUConsumeCell.xib"; sourceTree = "<group>"; };
+		8564F4DC1B9C8654007382CB /* LIUUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUUserInfoController.h; path = "界面组成/个人中心/LIUUserInfoController.h"; sourceTree = "<group>"; };
+		8564F4DD1B9C8654007382CB /* LIUUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUUserInfoController.m; path = "界面组成/个人中心/LIUUserInfoController.m"; sourceTree = "<group>"; };
+		8564F4DE1B9C8654007382CB /* LIUUserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUUserInfoController.xib; path = "界面组成/个人中心/LIUUserInfoController.xib"; sourceTree = "<group>"; };
+		8564F4E11B9C895C007382CB /* LIUChangePassWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUChangePassWordController.h; path = "界面组成/个人中心/LIUChangePassWordController.h"; sourceTree = "<group>"; };
+		8564F4E21B9C895C007382CB /* LIUChangePassWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUChangePassWordController.m; path = "界面组成/个人中心/LIUChangePassWordController.m"; sourceTree = "<group>"; };
+		8564F4E31B9C895C007382CB /* LIUChangePassWordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUChangePassWordController.xib; path = "界面组成/个人中心/LIUChangePassWordController.xib"; sourceTree = "<group>"; };
 		85710A281B39061B00546AC0 /* LIUGouWuCheTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUGouWuCheTableViewCell.h; path = "界面组成/购物车Cell/LIUGouWuCheTableViewCell.h"; sourceTree = "<group>"; };
 		85710A291B39061B00546AC0 /* LIUGouWuCheTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUGouWuCheTableViewCell.m; path = "界面组成/购物车Cell/LIUGouWuCheTableViewCell.m"; sourceTree = "<group>"; };
 		85710A2A1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUGouWuCheTableViewCell.xib; path = "界面组成/购物车Cell/LIUGouWuCheTableViewCell.xib"; sourceTree = "<group>"; };
@@ -885,6 +905,12 @@
 				85073C1B1B9AD61D00B39655 /* LIUPaySaveController.h */,
 				85073C1C1B9AD61D00B39655 /* LIUPaySaveController.m */,
 				85073C1D1B9AD61D00B39655 /* LIUPaySaveController.xib */,
+				8564F4D21B9C7757007382CB /* LIUConsumeViewController.h */,
+				8564F4D31B9C7757007382CB /* LIUConsumeViewController.m */,
+				8564F4D41B9C7757007382CB /* LIUConsumeViewController.xib */,
+				8564F4D71B9C7AD4007382CB /* LIUConsumeCell.h */,
+				8564F4D81B9C7AD4007382CB /* LIUConsumeCell.m */,
+				8564F4D91B9C7AD4007382CB /* LIUConsumeCell.xib */,
 			);
 			name = "账户管理";
 			sourceTree = "<group>";
@@ -1135,6 +1161,12 @@
 				85073BFB1B9A80EF00B39655 /* LIUSettingController.h */,
 				85073BFC1B9A80EF00B39655 /* LIUSettingController.m */,
 				85073BFD1B9A80EF00B39655 /* LIUSettingController.xib */,
+				8564F4DC1B9C8654007382CB /* LIUUserInfoController.h */,
+				8564F4DD1B9C8654007382CB /* LIUUserInfoController.m */,
+				8564F4DE1B9C8654007382CB /* LIUUserInfoController.xib */,
+				8564F4E11B9C895C007382CB /* LIUChangePassWordController.h */,
+				8564F4E21B9C895C007382CB /* LIUChangePassWordController.m */,
+				8564F4E31B9C895C007382CB /* LIUChangePassWordController.xib */,
 			);
 			name = "个人中心";
 			sourceTree = "<group>";
@@ -1370,14 +1402,17 @@
 				855FB7ED1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.xib in Resources */,
 				853AF86F1B3BD0D80025C018 /* LIUUserCenterTableViewCell.xib in Resources */,
 				8588654B1B89721C00FC9BD4 /* LIUQueRenDingController.xib in Resources */,
+				8564F4DB1B9C7AD4007382CB /* LIUConsumeCell.xib in Resources */,
 				85F6AF3A1B44D15000BD8788 /* LIUHomeViewRecommendTableViewCell.xib in Resources */,
 				850F2E7E1B311055006AE553 /* Main.storyboard in Resources */,
 				857389061B61DD7D00BF0F3F /* LIUSearchViewController.xib in Resources */,
+				8564F4E01B9C8654007382CB /* LIUUserInfoController.xib in Resources */,
 				851364F21B915CD9008C3377 /* LIUCaquView.xib in Resources */,
 				8585A5131B32A2AA000FA17E /* LIUCategoryCollectionViewCell.xib in Resources */,
 				853AF90F1B3BF25F0025C018 /* LIULoginViewController.xib in Resources */,
 				858865501B89727700FC9BD4 /* LIUAddressChooseView.xib in Resources */,
 				85073C1A1B9ACEDE00B39655 /* LIUSaveMoneyController.xib in Resources */,
+				8564F4E51B9C895C007382CB /* LIUChangePassWordController.xib in Resources */,
 				852219131B34185E00882E73 /* LIUShoppingDetaileViewController.xib in Resources */,
 				85710A2C1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib in Resources */,
 				85D382E61B65FF2F00652740 /* LIUHomeCategoryCell.xib in Resources */,
@@ -1401,6 +1436,7 @@
 				85073C061B9AB29B00B39655 /* LIURecommendSub.xib in Resources */,
 				850F2E831B311055006AE553 /* LaunchScreen.xib in Resources */,
 				85073C0B1B9AB54500B39655 /* LIURecomNewView.xib in Resources */,
+				8564F4D61B9C7757007382CB /* LIUConsumeViewController.xib in Resources */,
 				85F6AFCA1B45133B00BD8788 /* Info.plist in Resources */,
 				858CA5551B928444002BCBCE /* LIUEvaFirstCell.xib in Resources */,
 				858CA5501B9283C0002BCBCE /* LIUEvalatController.xib in Resources */,
@@ -1461,6 +1497,7 @@
 				85D3831D1B68690800652740 /* MJRefreshAutoFooter.m in Sources */,
 				85F6AFD71B45133B00BD8788 /* MJType.m in Sources */,
 				853AF9001B3BEBC00025C018 /* mask.c in Sources */,
+				8564F4D51B9C7757007382CB /* LIUConsumeViewController.m in Sources */,
 				85F6AFCF1B45133B00BD8788 /* MASViewAttribute.m in Sources */,
 				85073C191B9ACEDE00B39655 /* LIUSaveMoneyController.m in Sources */,
 				85710A6B1B3A434200546AC0 /* LIURecevingAderess.m in Sources */,
@@ -1468,6 +1505,7 @@
 				85F6AFCB1B45133B00BD8788 /* MASCompositeConstraint.m in Sources */,
 				853AF9041B3BEBC00025C018 /* rscode.c in Sources */,
 				850F2E9E1B311783006AE553 /* LIUCategoryViewController.m in Sources */,
+				8564F4DF1B9C8654007382CB /* LIUUserInfoController.m in Sources */,
 				85D3832F1B68690800652740 /* UIView+MJExtension.m in Sources */,
 				857389051B61DD7D00BF0F3F /* LIUSearchViewController.m in Sources */,
 				85073C0F1B9AC69D00B39655 /* LIUNewUserCenter.m in Sources */,
@@ -1512,9 +1550,11 @@
 				85D383261B68690800652740 /* MJRefreshBackNormalFooter.m in Sources */,
 				85AAA77D1B882F2800D4C260 /* ZHCache.m in Sources */,
 				85F6AFD91B45133B00BD8788 /* NSObject+MJKeyValue.m in Sources */,
+				8564F4E41B9C895C007382CB /* LIUChangePassWordController.m in Sources */,
 				853F3C7B1B40EC3C00BDC8C8 /* LIUAdressManagerViewController.m in Sources */,
 				85F6AFE31B45234000BD8788 /* LIUPersonModel.m in Sources */,
 				85F6AFCD1B45133B00BD8788 /* MASConstraintMaker.m in Sources */,
+				8564F4DA1B9C7AD4007382CB /* LIUConsumeCell.m in Sources */,
 				85710A2B1B39061B00546AC0 /* LIUGouWuCheTableViewCell.m in Sources */,
 				8585A50A1B32A067000FA17E /* LIUCategoryModel.m in Sources */,
 				85E20CF11B3D5F0E00585D81 /* LIUWillPayTableViewCell.m in Sources */,
@@ -1617,8 +1657,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1661,8 +1701,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1687,8 +1727,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
 				INFOPLIST_FILE = YouYouShoppingCenter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1706,7 +1746,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: HOU Wei Feng (7788DNMK64)";
 				INFOPLIST_FILE = YouYouShoppingCenter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

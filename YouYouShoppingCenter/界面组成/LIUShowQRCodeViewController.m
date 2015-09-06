@@ -9,6 +9,7 @@
 #import "LIUShowQRCodeViewController.h"
 #import "LIUCreatQRCode.h"
 #import "Masonry.h"
+#import "SVProgressHUD.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -47,11 +48,15 @@
     
     UIImage *image = [LIUCreatQRCode qrImageForString:@"用户的信息" imageSize:self.view.bounds.size.width*3.0/5];
     NSString *str  = self.userInfoData.ThumbUrl;
+   
     NSString *newStr = [str stringByReplacingOccurrencesOfString:@"\\" withString:@""];
     NSURL *thumUrl = [NSURL URLWithString:newStr];
+   
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [SVProgressHUD show];
         NSData *data = [NSData dataWithContentsOfURL:thumUrl];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             if (data) {
                 self.userInfo.image = [LIUCreatQRCode twoDimensionCodeImage:image withAvatarImage:[UIImage imageWithData:data]];
             }else {
