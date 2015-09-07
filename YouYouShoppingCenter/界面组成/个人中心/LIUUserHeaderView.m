@@ -32,8 +32,6 @@
 //下面的bubutton
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allButtons;//1000~1003
 
-@property (nonatomic,assign)BOOL isLogin;
-
 @end
 
 @implementation LIUUserHeaderView

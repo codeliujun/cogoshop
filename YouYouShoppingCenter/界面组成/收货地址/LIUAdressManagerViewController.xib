@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -20,14 +20,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7u-UQ-2zc">
-                            <rect key="frame" x="8" y="29" width="66" height="20"/>
+                            <rect key="frame" x="5" y="24" width="46" height="30"/>
                             <rect key="contentStretch" x="0.050000000000000017" y="0.0" width="1" height="1"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="66" id="JNj-3N-4pp"/>
-                                <constraint firstAttribute="height" constant="20" id="w6Z-ja-AgO"/>
+                                <constraint firstAttribute="width" constant="46" id="JNj-3N-4pp"/>
+                                <constraint firstAttribute="height" constant="30" id="w6Z-ja-AgO"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <inset key="contentEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="Back">
+                            <state key="normal" title="返回">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -56,8 +57,8 @@
                     </subviews>
                     <color key="backgroundColor" red="0.41960784313725491" green="0.18431372549019609" blue="0.25882352941176473" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Y7u-UQ-2zc" firstAttribute="leading" secondItem="feo-gE-UEq" secondAttribute="leading" constant="8" id="4xL-vW-lsG"/>
-                        <constraint firstAttribute="bottom" secondItem="Y7u-UQ-2zc" secondAttribute="bottom" constant="15" id="dRP-Kv-g4P"/>
+                        <constraint firstItem="Y7u-UQ-2zc" firstAttribute="leading" secondItem="feo-gE-UEq" secondAttribute="leading" constant="5" id="4xL-vW-lsG"/>
+                        <constraint firstItem="Y7u-UQ-2zc" firstAttribute="centerY" secondItem="D1s-yt-DwV" secondAttribute="centerY" id="H7s-hH-vNR"/>
                         <constraint firstAttribute="trailing" secondItem="D1s-yt-DwV" secondAttribute="trailing" constant="8" id="eJn-JD-9x1"/>
                         <constraint firstAttribute="bottom" secondItem="D1s-yt-DwV" secondAttribute="bottom" constant="10" id="nrI-Fo-ZIH"/>
                         <constraint firstAttribute="height" constant="64" id="wkD-2q-y73"/>

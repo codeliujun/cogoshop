@@ -10,4 +10,6 @@
 
 @interface LIURegistViewController : UIViewController
 
+@property (nonatomic,strong)NSString *shopId;
+
 @end

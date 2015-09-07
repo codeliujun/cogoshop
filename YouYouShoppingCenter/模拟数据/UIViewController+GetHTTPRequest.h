@@ -12,6 +12,7 @@
 #define kLoginUrl                   kGetRequestUrl(@"User/login") //登录
 #define kRegisterUrl                kGetRequestUrl(@"User/register") //注册
 #define kAuthcodeUrl                kGetRequestUrl(@"User/authcode") //获取验证码
+#define kGetShop                    kGetRequestUrl(@"User/shops")
 #define kGetHotVocabulary           kGetRequestUrl(@"Product/hotkey")//获取热门词汇
 #define kSearchGoods                kGetRequestUrl(@"Product/search")//搜索商品
 #define kAddGood                    kGetRequestUrl(@"Cart/add")//添加到购物车
@@ -28,6 +29,7 @@
 #define kGetInventor                kGetRequestUrl(@"Shop/inventory") //获取库存
 #define kAddAddress                 kGetRequestUrl(@"Address/add")
 #define kUpdataAddress              kGetRequestUrl(@"Address/update")
+#define kSetDefault                 kGetRequestUrl(@"Address/setdefault")
 #define kPayOrder                   kGetRequestUrl(@"Order/pay")
 #define kAddComment                 kGetRequestUrl(@"Goods/addcomment")
 #define kGetRecomment               kGetRequestUrl(@"Product/hotproducts")

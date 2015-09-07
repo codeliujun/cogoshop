@@ -20,8 +20,8 @@
 
 @property(nonatomic,weak)id<LIUAddressEditAndAddViewControllerDelegate> delegate;
 
-- (void)addAddress;
+@property(nonatomic,strong)LIURecevingAderess *oldAddress;
 
-- (void)reEditAddress:(LIURecevingAderess *)address;
+@property(nonatomic,assign)BOOL isAdd;
 
 @end

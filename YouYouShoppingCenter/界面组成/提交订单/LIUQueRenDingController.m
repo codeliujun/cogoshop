@@ -66,6 +66,11 @@
                 shopId = [shopIdStrArr componentsJoinedByString:@","];
             }
             
+            if ([ws.currentAddress.Id isEqual:[NSNull null]] || [ws.currentAddress.Id isEqualToString:@""] || ws.currentAddress.Id == nil) {
+                [SVProgressHUD showErrorWithStatus:@"请填写收货地址" duration:1.5f];
+                return;
+            }
+            
             //跳转支付
             [ws requestWithUrl:kCreatOrder Parameters:@{@"shopid":shopId,
                                                         @"userid":[ws getUserId],
@@ -168,7 +173,11 @@
     [self requestWithUrl:kGetAddressList Parameters:@{@"pageindex":@1,@"userid":[self getUserId],@"pagesize":@20} Success:^(NSDictionary *result) {
         NSArray *arr = result[@"Data"];
         if (arr.count == 0) {
-            [SVProgressHUD showErrorWithStatus:@"地址获取失败" duration:1.5f];
+            [SVProgressHUD showErrorWithStatus:@"请填写新地址" duration:1.5f];
+            LIURecevingAderess *address = [[LIURecevingAderess alloc]init];
+            ws.currentAddress = address;
+            address.FullAddress = @"请填写收货地址";
+            [ws.addressView setAddRess:address];
             return ;
         }
         

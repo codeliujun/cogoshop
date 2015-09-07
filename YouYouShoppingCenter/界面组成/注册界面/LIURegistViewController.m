@@ -5,7 +5,7 @@
 //  Created by 刘俊 on 15/6/25.
 //  Copyright (c) 2015年 刘俊. All rights reserved.
 //
-
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 #import "LIURegistViewController.h"
 #import "SVProgressHUD.h"
 #import "UIViewController+GetHTTPRequest.h"
@@ -18,7 +18,6 @@
     NSString        *_nameSt;
     NSString        *_pwd;
     NSString        *_authcode;
-    NSString        *_shopId;
 }
 @property (weak, nonatomic) IBOutlet UITextField *shoujiHaoMa;
 @property (weak, nonatomic) IBOutlet UITextField *diyiciMima;
@@ -72,7 +71,6 @@
     
     _mobile = self.shoujiHaoMa.text;
     _nameSt = self.name.text;
-    _shopId = @"1";
     _pwd    = self.diyiciMima.text;
     _authcode = self.yanZhengMa.text;
     
@@ -98,16 +96,33 @@
         [SVProgressHUD showErrorWithStatus:@"密码输入不一致,请重新输入" duration:1];
         return;
     }
-    
+    WS(ws);
     //发送请求http://o2oapi.cnnst.com/api/User?mobile={mobile}&pwd={pwd}&authcode={authcode}
-    NSDictionary *dic = @{@"mobile":self.shoujiHaoMa.text,@"pwd":self.diyiciMima.text,@"authcode":self.yanZhengMa.text,@"shopId":@"1"};
+    if (!([self.shopId isEqual:[NSNull null]] || [self.shopId isEqualToString:@""] || self.shopId == nil )) {
+        [self regist];
+    }else {
+        
+        //获取门店信息
+        [self requestWithUrl:kGetShop Parameters:nil Success:^(NSDictionary *result) {
+            NSDictionary *dic = [result[@"Data"] firstObject];
+            ws.shopId = dic[@"Id"];
+            [ws regist];
+        } Failue:^(NSDictionary *failueInfo) {
+            
+        }];
+        
+    }
     
-    [self requestWithUrl:kRegisterUrl Parameters:dic Success:^(NSDictionary *result) {
+}
+
+- (void)regist {
+    [self requestWithUrl:kRegisterUrl Parameters:@{@"mobile":_mobile,@"pwd":_pwd,@"authcode":_authcode,@"shopId":self.shopId,@"name":_nameSt} Success:^(NSDictionary *result) {
         [SVProgressHUD showSuccessWithStatus:@"恭喜您注册成功" duration:2.0];
+        [self.navigationController popViewControllerAnimated:YES];
     } Failue:^(NSDictionary *failueInfo) {
         [SVProgressHUD showErrorWithStatus:@"注册失败，请检查您的网络" duration:2.0];
     }];
-    
+
 }
 
 - (IBAction)getYanZhengMa:(UIButton *)sender {

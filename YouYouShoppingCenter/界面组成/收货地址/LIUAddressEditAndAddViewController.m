@@ -23,11 +23,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *shouJiHaoTextField;
 @property (weak, nonatomic) IBOutlet UITextField *xiangXiDiZhiTextField;
 @property (weak, nonatomic) IBOutlet UITextField *youBianTextField;
-@property(nonatomic,strong)LIURecevingAderess *oldAddress;
 
-@property(nonatomic,assign)BOOL isAdd;
 @property (nonatomic,assign)BOOL isDefault;
 @property (weak, nonatomic) IBOutlet UIButton *defaultButton;
+@property (weak, nonatomic) IBOutlet UIView *defsultView;
 
 
 //属性
@@ -74,20 +73,18 @@
         self.youBianTextField.text = self.oldAddress.PostalCode;
         self.defaultButton.selected = self.oldAddress.IsDefault;
         self.areaLabel.text = [NSString stringWithFormat:@"%@,%@,%@",self.oldAddress.ProvinceName,self.oldAddress.CityName,self.oldAddress.AreaName];
+        self.defaultButton.selected = self.oldAddress.IsDefault?YES:NO;
         self.provinceid = self.oldAddress.ProvinceId;
         self.cityid = self.oldAddress.CityId;
         self.areaid = self.oldAddress.AreaId;
     }
     
-}
-
-- (void)addAddress {
-    self.isAdd = YES;
-}
-
-- (void)reEditAddress:(LIURecevingAderess *)address {
-    self.isAdd = NO;
-    self.oldAddress = address;
+    if (self.isAdd) {
+        self.defsultView.hidden = YES;
+    }else {
+        self.defsultView.hidden = NO;
+    }
+    
 }
 
 - (IBAction)quXiao:(id)sender {
@@ -133,7 +130,7 @@
      userid={userid}&fullname={fullname}&provinceid={provinceid}&cityid={cityid}&areaid={areaid}&address={address}&zipcode={zipcode}&telephone={telephone}&mobile={mobile}&email={email}&alias={alias}&isdefault={isdefault}
      */
     if (self.isAdd) {
-        
+        self.isdefault = @"false";
         [self requestWithUrl:kAddAddress Parameters:@{
                     @"userid":[self getUserId],
                     @"fullname":self.fullname,
@@ -161,29 +158,40 @@
     }
     else {
         /*userid={userid}&addressid={addressid}&fullname={fullname}&provinceid={provinceid}&cityid={cityid}&areaid={areaid}&address={address}&zipcode={zipcode}&telephone={telephone}&mobile={mobile}&email={email}&alias={alias}&isdefault={isdefault}*/
-        NSDictionary *dic = @{
-                              @"userid":[self getUserId],
-                              @"addressid":self.oldAddress.Id,
-                              @"fullname":self.fullname,
-                              @"provinceid":self.provinceid,
-                              @"cityid":self.cityid,
-                              @"areaid":self.areaid,
-                              @"address":self.address,
-                              @"zipcode":self.zipcode,
-                              @"telephone":self.telephone,
-                              @"mobile":self.mobile,
-                              @"email":self.email,
-                              @"alias":self.alias,
-                              @"isdefault":self.isdefault,
-                              };
-        [self requestWithUrl:kUpdataAddress Parameters:dic Success:^(NSDictionary *result) {
-                    NSLog(@"%@",result);
-                } Failue:^(NSDictionary *failueInfo) {
-                    
-                }];
+        
+        if (self.isDefault) {
+            self.isdefault = @"true";
+            [self updateAddress];
+        }else {
+            self.isdefault = @"false";
+            [self updateAddress];
+        }
         
     }
     
+}
+
+- (void)updateAddress {
+    NSDictionary *dic = @{
+                          @"userid":[self getUserId],
+                          @"addressid":self.oldAddress.Id,
+                          @"fullname":self.fullname,
+                          @"provinceid":self.provinceid,
+                          @"cityid":self.cityid,
+                          @"areaid":self.areaid,
+                          @"address":self.address,
+                          @"zipcode":self.zipcode,
+                          @"telephone":self.telephone,
+                          @"mobile":self.mobile,
+                          @"email":self.email,
+                          @"alias":self.alias,
+                          @"isdefault":self.isdefault,
+                          };
+    [self requestWithUrl:kUpdataAddress Parameters:dic Success:^(NSDictionary *result) {
+        NSLog(@"%@",result);
+    } Failue:^(NSDictionary *failueInfo) {
+        
+    }];
 }
 - (IBAction)IsDefault:(UIButton *)sender {
     sender.selected = !sender.isSelected;

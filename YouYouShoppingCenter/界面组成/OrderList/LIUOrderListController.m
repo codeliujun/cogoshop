@@ -119,6 +119,7 @@
     cell.delegate = self;
     cell.status = self.status;
     cell.order = self.orderListArray[indexPath.section];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

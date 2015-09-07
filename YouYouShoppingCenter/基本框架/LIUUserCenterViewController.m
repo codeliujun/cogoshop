@@ -83,16 +83,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [self updateHeaderView];
+    [self addHeaderView];
     [self.userCenterTableView reloadData];
 }
 
-- (void)updateHeaderView {
-    [self.subHeaderView updateHeaderView];
-}
 
 //添加头视图
 - (void)addHeaderView {
+    
+    [self.subHeaderView removeFromSuperview];
     
     LIUUserHeaderView *headerView = [[[NSBundle mainBundle]loadNibNamed:@"LIUUserHeaderView" owner:nil options:nil] lastObject];
     
@@ -100,8 +99,7 @@
     headerView.frame = CGRectMake(0, 64, self.view.bounds.size.width, 180);
     [self.view addSubview:headerView];
     self.subHeaderView = headerView;
-    [self updateHeaderView];
-    
+    [self.subHeaderView updateHeaderView];
     
 }
 
@@ -155,9 +153,10 @@
                 break;
                 
             case 1004:{
-                NSLog(@"个人设置");
-                [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据来" duration:1.0];
+//                NSLog(@"个人设置");
+//                [SVProgressHUD showErrorWithStatus:@"界面搭建需要根据来" duration:1.0];
             }
+                break;
                 
             case 1006: {
                 LIUUserInfoController *userInfo = [[LIUUserInfoController alloc]init];

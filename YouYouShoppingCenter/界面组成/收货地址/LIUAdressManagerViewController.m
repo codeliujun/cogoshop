@@ -100,7 +100,9 @@
 - (void)didTapButtonCell:(LIUAddressTableViewCell *)cell {
    NSIndexPath *indexPath = [self.addressTableView indexPathForCell:cell];
     LIUAddressEditAndAddViewController *reEdit = [LIUAddressEditAndAddViewController new];
-    [reEdit reEditAddress:self.addressArray[indexPath.row]];
+    //[reEdit reEditAddress:self.addressArray[indexPath.row]];
+    reEdit.isAdd = NO;
+    reEdit.oldAddress = self.addressArray[indexPath.row];
     reEdit.delegate = self;
     [self presentViewController:reEdit animated:YES completion:nil];
     
@@ -131,7 +133,7 @@
 - (IBAction)addNewAddress:(UIButton *)sender {
     LIUAddressEditAndAddViewController *add = [LIUAddressEditAndAddViewController new];
     add.delegate = self;
-    [add addAddress];
+    add.isAdd = YES;
     [self presentViewController:add animated:YES completion:nil];
 }
 
