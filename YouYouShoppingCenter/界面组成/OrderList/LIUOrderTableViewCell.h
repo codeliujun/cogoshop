@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger, OrderStatus) {
     OrderStatusAll = 0,
     OrderStatussWillPay = 1,
+    OrderStatusDidPay = 2,
     OrderStatusHaveSender = 4,
     OrderStatusEve = 8,
 };

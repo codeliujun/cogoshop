@@ -89,6 +89,12 @@
 		8564F4E01B9C8654007382CB /* LIUUserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4DE1B9C8654007382CB /* LIUUserInfoController.xib */; };
 		8564F4E41B9C895C007382CB /* LIUChangePassWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4E21B9C895C007382CB /* LIUChangePassWordController.m */; };
 		8564F4E51B9C895C007382CB /* LIUChangePassWordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4E31B9C895C007382CB /* LIUChangePassWordController.xib */; };
+		8564F4E91B9DD309007382CB /* LIUOrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4E71B9DD309007382CB /* LIUOrderDetailController.m */; };
+		8564F4EA1B9DD309007382CB /* LIUOrderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4E81B9DD309007382CB /* LIUOrderDetailController.xib */; };
+		8564F4ED1B9DD559007382CB /* LIUOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4EC1B9DD559007382CB /* LIUOrderHeaderView.m */; };
+		8564F4EF1B9DD569007382CB /* LIUOrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4EE1B9DD569007382CB /* LIUOrderHeaderView.xib */; };
+		8564F4F21B9DDA06007382CB /* LIUOrderAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564F4F11B9DDA06007382CB /* LIUOrderAddressView.m */; };
+		8564F4F41B9DDA19007382CB /* LIUOrderAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8564F4F31B9DDA19007382CB /* LIUOrderAddressView.xib */; };
 		85710A2B1B39061B00546AC0 /* LIUGouWuCheTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85710A291B39061B00546AC0 /* LIUGouWuCheTableViewCell.m */; };
 		85710A2C1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85710A2A1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib */; };
 		85710A6B1B3A434200546AC0 /* LIURecevingAderess.m in Sources */ = {isa = PBXBuildFile; fileRef = 85710A6A1B3A434200546AC0 /* LIURecevingAderess.m */; };
@@ -341,6 +347,15 @@
 		8564F4E11B9C895C007382CB /* LIUChangePassWordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUChangePassWordController.h; path = "界面组成/个人中心/LIUChangePassWordController.h"; sourceTree = "<group>"; };
 		8564F4E21B9C895C007382CB /* LIUChangePassWordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUChangePassWordController.m; path = "界面组成/个人中心/LIUChangePassWordController.m"; sourceTree = "<group>"; };
 		8564F4E31B9C895C007382CB /* LIUChangePassWordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUChangePassWordController.xib; path = "界面组成/个人中心/LIUChangePassWordController.xib"; sourceTree = "<group>"; };
+		8564F4E61B9DD309007382CB /* LIUOrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUOrderDetailController.h; sourceTree = "<group>"; };
+		8564F4E71B9DD309007382CB /* LIUOrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUOrderDetailController.m; sourceTree = "<group>"; };
+		8564F4E81B9DD309007382CB /* LIUOrderDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUOrderDetailController.xib; sourceTree = "<group>"; };
+		8564F4EB1B9DD559007382CB /* LIUOrderHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUOrderHeaderView.h; sourceTree = "<group>"; };
+		8564F4EC1B9DD559007382CB /* LIUOrderHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUOrderHeaderView.m; sourceTree = "<group>"; };
+		8564F4EE1B9DD569007382CB /* LIUOrderHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUOrderHeaderView.xib; sourceTree = "<group>"; };
+		8564F4F01B9DDA06007382CB /* LIUOrderAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUOrderAddressView.h; sourceTree = "<group>"; };
+		8564F4F11B9DDA06007382CB /* LIUOrderAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUOrderAddressView.m; sourceTree = "<group>"; };
+		8564F4F31B9DDA19007382CB /* LIUOrderAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUOrderAddressView.xib; sourceTree = "<group>"; };
 		85710A281B39061B00546AC0 /* LIUGouWuCheTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUGouWuCheTableViewCell.h; path = "界面组成/购物车Cell/LIUGouWuCheTableViewCell.h"; sourceTree = "<group>"; };
 		85710A291B39061B00546AC0 /* LIUGouWuCheTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUGouWuCheTableViewCell.m; path = "界面组成/购物车Cell/LIUGouWuCheTableViewCell.m"; sourceTree = "<group>"; };
 		85710A2A1B39061B00546AC0 /* LIUGouWuCheTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUGouWuCheTableViewCell.xib; path = "界面组成/购物车Cell/LIUGouWuCheTableViewCell.xib"; sourceTree = "<group>"; };
@@ -687,6 +702,15 @@
 				858CA55B1B928E7C002BCBCE /* LIUEvaThreadCell.h */,
 				858CA55C1B928E7C002BCBCE /* LIUEvaThreadCell.m */,
 				858CA55D1B928E7C002BCBCE /* LIUEvaThreadCell.xib */,
+				8564F4E61B9DD309007382CB /* LIUOrderDetailController.h */,
+				8564F4E71B9DD309007382CB /* LIUOrderDetailController.m */,
+				8564F4E81B9DD309007382CB /* LIUOrderDetailController.xib */,
+				8564F4EB1B9DD559007382CB /* LIUOrderHeaderView.h */,
+				8564F4EC1B9DD559007382CB /* LIUOrderHeaderView.m */,
+				8564F4EE1B9DD569007382CB /* LIUOrderHeaderView.xib */,
+				8564F4F01B9DDA06007382CB /* LIUOrderAddressView.h */,
+				8564F4F11B9DDA06007382CB /* LIUOrderAddressView.m */,
+				8564F4F31B9DDA19007382CB /* LIUOrderAddressView.xib */,
 			);
 			name = OrderList;
 			path = "界面组成/OrderList";
@@ -1421,6 +1445,7 @@
 				85E90A571B3A812F0062692C /* LIUConfirmViewController.xib in Resources */,
 				853AF9601B3C07630025C018 /* LIURegistViewController.xib in Resources */,
 				8522190D1B3400B700882E73 /* LIUDisplayTableViewCell.xib in Resources */,
+				8564F4F41B9DDA19007382CB /* LIUOrderAddressView.xib in Resources */,
 				852219201B36642C00882E73 /* LIUTheSecondTableViewCell.xib in Resources */,
 				858CA55F1B928E7C002BCBCE /* LIUEvaThreadCell.xib in Resources */,
 				8522191B1B365F6B00882E73 /* LIUTheFirstTableViewCell.xib in Resources */,
@@ -1432,7 +1457,9 @@
 				85E90A511B3A80E00062692C /* LIUQueRenTableViewCell.xib in Resources */,
 				858460A11B426C15003C6BB7 /* LIUZhangHuGuanLiViewController.xib in Resources */,
 				852218F91B33B1BC00882E73 /* LIUDisplayShoppingViewController.xib in Resources */,
+				8564F4EF1B9DD569007382CB /* LIUOrderHeaderView.xib in Resources */,
 				853F3C8B1B41462000BDC8C8 /* LIUAddressEditAndAddViewController.xib in Resources */,
+				8564F4EA1B9DD309007382CB /* LIUOrderDetailController.xib in Resources */,
 				85073C061B9AB29B00B39655 /* LIURecommendSub.xib in Resources */,
 				850F2E831B311055006AE553 /* LaunchScreen.xib in Resources */,
 				85073C0B1B9AB54500B39655 /* LIURecomNewView.xib in Resources */,
@@ -1525,10 +1552,12 @@
 				85E20CDE1B3D492000585D81 /* UIButton+LIUBadgeButton.m in Sources */,
 				853AF90E1B3BF25F0025C018 /* LIULoginViewController.m in Sources */,
 				85880FB61B989A87001D5EBA /* LIUChooseArea.m in Sources */,
+				8564F4E91B9DD309007382CB /* LIUOrderDetailController.m in Sources */,
 				853AF95F1B3C07630025C018 /* LIURegistViewController.m in Sources */,
 				85F6AFC81B45133B00BD8788 /* AFURLResponseSerialization.m in Sources */,
 				85073C141B9AC72700B39655 /* LIUNewUseCell.m in Sources */,
 				853AF9011B3BEBC00025C018 /* qrencode.c in Sources */,
+				8564F4ED1B9DD559007382CB /* LIUOrderHeaderView.m in Sources */,
 				85D3832A1B68690800652740 /* MJRefreshStateHeader.m in Sources */,
 				851364FD1B9175F9008C3377 /* LIUOrderTableViewCell.m in Sources */,
 				857389071B61DD7D00BF0F3F /* XKYSearchVCRecommendTableHeaderView.m in Sources */,
@@ -1565,6 +1594,7 @@
 				85E90A561B3A812F0062692C /* LIUConfirmViewController.m in Sources */,
 				853AF9051B3BEBC00025C018 /* split.c in Sources */,
 				857215C41B6A037A00A47885 /* LIUCartGoodModel.m in Sources */,
+				8564F4F21B9DDA06007382CB /* LIUOrderAddressView.m in Sources */,
 				85D383241B68690800652740 /* MJRefreshAutoStateFooter.m in Sources */,
 				8573890C1B61E54E00BF0F3F /* LIUCache.m in Sources */,
 				8585A5051B3299DA000FA17E /* LIUHeaderCollectionReusableView.m in Sources */,
