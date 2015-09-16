@@ -40,7 +40,7 @@
 #define kGetUserInfo                kGetRequestUrl(@"User/userinfo")
 #define kGetAccountings             kGetRequestUrl(@"User/accountings")
 #define kChangePassWord             kGetRequestUrl(@"User/changepwd")
-
+#define kGetOrderDetail             kGetRequestUrl(@"Order/info")
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"

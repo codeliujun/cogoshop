@@ -14,5 +14,4 @@
 
 - (void)setStatusViewHighlighted:(NSInteger)index;
 
-
 @end

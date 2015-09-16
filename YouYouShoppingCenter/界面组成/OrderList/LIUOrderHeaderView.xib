@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -30,20 +30,17 @@
                     <color key="textColor" red="1" green="0.070236308710000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_1_false" highlightedImage="orderdetails_1_true" translatesAutoresizingMaskIntoConstraints="NO" id="3is-2L-vKE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_1_false" highlightedImage="orderdetails_1_true" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3is-2L-vKE">
                     <rect key="frame" x="10" y="49" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="tIX-Cl-fsf"/>
                         <constraint firstAttribute="width" constant="40" id="xOw-Y8-pWH"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_2_false" highlightedImage="orderdetails_2_true" translatesAutoresizingMaskIntoConstraints="NO" id="rfK-kH-BGQ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_2_false" highlightedImage="orderdetails_2_true" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfK-kH-BGQ">
                     <rect key="frame" x="96" y="49" width="40" height="40"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_3_false" highlightedImage="orderdetails_3_true" translatesAutoresizingMaskIntoConstraints="NO" id="NqJ-Sm-Qjx">
-                    <rect key="frame" x="183" y="49" width="40" height="40"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_4_false" highlightedImage="orderdetails_4_true" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-zm-edU">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_4_false" highlightedImage="orderdetails_4_true" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoL-zm-edU">
                     <rect key="frame" x="270" y="49" width="40" height="40"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXh-cB-UN0">
@@ -89,6 +86,9 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderdetails_3_false" highlightedImage="orderdetails_3_true" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NqJ-Sm-Qjx">
+                    <rect key="frame" x="183" y="49" width="40" height="40"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -143,10 +143,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="statusLabel" destination="dSs-1g-5H1" id="yNl-ph-xvD"/>
-                <outletCollection property="statuImageViews" destination="3is-2L-vKE" id="WQS-12-oRp"/>
-                <outletCollection property="statuImageViews" destination="rfK-kH-BGQ" id="BsY-fc-16D"/>
-                <outletCollection property="statuImageViews" destination="NqJ-Sm-Qjx" id="twb-vU-CId"/>
-                <outletCollection property="statuImageViews" destination="aoL-zm-edU" id="EQP-cm-bVH"/>
+                <outletCollection property="statuImageViews" destination="3is-2L-vKE" id="8Ao-ql-1Wx"/>
+                <outletCollection property="statuImageViews" destination="rfK-kH-BGQ" id="g0g-f4-66Z"/>
+                <outletCollection property="statuImageViews" destination="NqJ-Sm-Qjx" id="X7r-Mw-sRV"/>
+                <outletCollection property="statuImageViews" destination="aoL-zm-edU" id="qv2-SR-KFz"/>
             </connections>
             <point key="canvasLocation" x="237" y="319"/>
         </view>

@@ -200,6 +200,13 @@
 		85F6AFDD1B45133B00BD8788 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F6AFC01B45133B00BD8788 /* SVProgressHUD.m */; };
 		85F6AFE01B45139A00BD8788 /* LIUUserInfoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F6AFDF1B45139A00BD8788 /* LIUUserInfoData.m */; };
 		85F6AFE31B45234000BD8788 /* LIUPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F6AFE21B45234000BD8788 /* LIUPersonModel.m */; };
+		85F942F01BA95CCF00F57492 /* LIUOrderGoodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F942EF1BA95CCF00F57492 /* LIUOrderGoodInfo.m */; };
+		85F942F21BA95CE600F57492 /* LIUOrderGoodInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F942F11BA95CE600F57492 /* LIUOrderGoodInfo.xib */; };
+		85F942F51BA95DE900F57492 /* LIUOtherCost.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F942F41BA95DE900F57492 /* LIUOtherCost.m */; };
+		85F942F71BA95DF800F57492 /* LIUOtherCost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F942F61BA95DF800F57492 /* LIUOtherCost.xib */; };
+		85F942FA1BA95EE800F57492 /* LIUOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F942F91BA95EE800F57492 /* LIUOrderInfo.m */; };
+		85F942FC1BA95EF400F57492 /* LIUOrderInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F942FB1BA95EF400F57492 /* LIUOrderInfo.xib */; };
+		85F942FF1BA9676400F57492 /* LIUGapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F942FE1BA9676400F57492 /* LIUGapCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -551,6 +558,17 @@
 		85F6AFDF1B45139A00BD8788 /* LIUUserInfoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUUserInfoData.m; path = Model/personModel/LIUUserInfoData.m; sourceTree = "<group>"; };
 		85F6AFE11B45234000BD8788 /* LIUPersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUPersonModel.h; path = Model/personModel/LIUPersonModel.h; sourceTree = "<group>"; };
 		85F6AFE21B45234000BD8788 /* LIUPersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUPersonModel.m; path = Model/personModel/LIUPersonModel.m; sourceTree = "<group>"; };
+		85F942EE1BA95CCF00F57492 /* LIUOrderGoodInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUOrderGoodInfo.h; sourceTree = "<group>"; };
+		85F942EF1BA95CCF00F57492 /* LIUOrderGoodInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUOrderGoodInfo.m; sourceTree = "<group>"; };
+		85F942F11BA95CE600F57492 /* LIUOrderGoodInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUOrderGoodInfo.xib; sourceTree = "<group>"; };
+		85F942F31BA95DE900F57492 /* LIUOtherCost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUOtherCost.h; sourceTree = "<group>"; };
+		85F942F41BA95DE900F57492 /* LIUOtherCost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUOtherCost.m; sourceTree = "<group>"; };
+		85F942F61BA95DF800F57492 /* LIUOtherCost.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUOtherCost.xib; sourceTree = "<group>"; };
+		85F942F81BA95EE800F57492 /* LIUOrderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUOrderInfo.h; sourceTree = "<group>"; };
+		85F942F91BA95EE800F57492 /* LIUOrderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUOrderInfo.m; sourceTree = "<group>"; };
+		85F942FB1BA95EF400F57492 /* LIUOrderInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUOrderInfo.xib; sourceTree = "<group>"; };
+		85F942FD1BA9676400F57492 /* LIUGapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUGapCell.h; sourceTree = "<group>"; };
+		85F942FE1BA9676400F57492 /* LIUGapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUGapCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -705,12 +723,23 @@
 				8564F4E61B9DD309007382CB /* LIUOrderDetailController.h */,
 				8564F4E71B9DD309007382CB /* LIUOrderDetailController.m */,
 				8564F4E81B9DD309007382CB /* LIUOrderDetailController.xib */,
+				85F942FD1BA9676400F57492 /* LIUGapCell.h */,
+				85F942FE1BA9676400F57492 /* LIUGapCell.m */,
 				8564F4EB1B9DD559007382CB /* LIUOrderHeaderView.h */,
 				8564F4EC1B9DD559007382CB /* LIUOrderHeaderView.m */,
 				8564F4EE1B9DD569007382CB /* LIUOrderHeaderView.xib */,
 				8564F4F01B9DDA06007382CB /* LIUOrderAddressView.h */,
 				8564F4F11B9DDA06007382CB /* LIUOrderAddressView.m */,
 				8564F4F31B9DDA19007382CB /* LIUOrderAddressView.xib */,
+				85F942EE1BA95CCF00F57492 /* LIUOrderGoodInfo.h */,
+				85F942EF1BA95CCF00F57492 /* LIUOrderGoodInfo.m */,
+				85F942F11BA95CE600F57492 /* LIUOrderGoodInfo.xib */,
+				85F942F31BA95DE900F57492 /* LIUOtherCost.h */,
+				85F942F41BA95DE900F57492 /* LIUOtherCost.m */,
+				85F942F61BA95DF800F57492 /* LIUOtherCost.xib */,
+				85F942F81BA95EE800F57492 /* LIUOrderInfo.h */,
+				85F942F91BA95EE800F57492 /* LIUOrderInfo.m */,
+				85F942FB1BA95EF400F57492 /* LIUOrderInfo.xib */,
 			);
 			name = OrderList;
 			path = "界面组成/OrderList";
@@ -1444,11 +1473,13 @@
 				85F6AFDC1B45133B00BD8788 /* SVProgressHUD.bundle in Resources */,
 				85E90A571B3A812F0062692C /* LIUConfirmViewController.xib in Resources */,
 				853AF9601B3C07630025C018 /* LIURegistViewController.xib in Resources */,
+				85F942FC1BA95EF400F57492 /* LIUOrderInfo.xib in Resources */,
 				8522190D1B3400B700882E73 /* LIUDisplayTableViewCell.xib in Resources */,
 				8564F4F41B9DDA19007382CB /* LIUOrderAddressView.xib in Resources */,
 				852219201B36642C00882E73 /* LIUTheSecondTableViewCell.xib in Resources */,
 				858CA55F1B928E7C002BCBCE /* LIUEvaThreadCell.xib in Resources */,
 				8522191B1B365F6B00882E73 /* LIUTheFirstTableViewCell.xib in Resources */,
+				85F942F71BA95DF800F57492 /* LIUOtherCost.xib in Resources */,
 				851364F91B917502008C3377 /* LIUOrderListController.xib in Resources */,
 				853F3C7C1B40EC3C00BDC8C8 /* LIUAdressManagerViewController.xib in Resources */,
 				85D3832B1B68690800652740 /* MJRefresh.bundle in Resources */,
@@ -1461,6 +1492,7 @@
 				853F3C8B1B41462000BDC8C8 /* LIUAddressEditAndAddViewController.xib in Resources */,
 				8564F4EA1B9DD309007382CB /* LIUOrderDetailController.xib in Resources */,
 				85073C061B9AB29B00B39655 /* LIURecommendSub.xib in Resources */,
+				85F942F21BA95CE600F57492 /* LIUOrderGoodInfo.xib in Resources */,
 				850F2E831B311055006AE553 /* LaunchScreen.xib in Resources */,
 				85073C0B1B9AB54500B39655 /* LIURecomNewView.xib in Resources */,
 				8564F4D61B9C7757007382CB /* LIUConsumeViewController.xib in Resources */,
@@ -1514,7 +1546,9 @@
 				85F6AFD81B45133B00BD8788 /* NSObject+MJCoding.m in Sources */,
 				852219031B33F39D00882E73 /* LIUGoodModel.m in Sources */,
 				85D3832C1B68690800652740 /* MJRefreshConst.m in Sources */,
+				85F942FF1BA9676400F57492 /* LIUGapCell.m in Sources */,
 				858CA5591B928E65002BCBCE /* LIUSecondCell.m in Sources */,
+				85F942FA1BA95EE800F57492 /* LIUOrderInfo.m in Sources */,
 				85F6AFD01B45133B00BD8788 /* MASViewConstraint.m in Sources */,
 				85F6AFC61B45133B00BD8788 /* AFURLConnectionOperation.m in Sources */,
 				850F2E781B311055006AE553 /* AppDelegate.m in Sources */,
@@ -1529,6 +1563,7 @@
 				85073C191B9ACEDE00B39655 /* LIUSaveMoneyController.m in Sources */,
 				85710A6B1B3A434200546AC0 /* LIURecevingAderess.m in Sources */,
 				85F6AFD51B45133B00BD8788 /* MJFoundation.m in Sources */,
+				85F942F51BA95DE900F57492 /* LIUOtherCost.m in Sources */,
 				85F6AFCB1B45133B00BD8788 /* MASCompositeConstraint.m in Sources */,
 				853AF9041B3BEBC00025C018 /* rscode.c in Sources */,
 				850F2E9E1B311783006AE553 /* LIUCategoryViewController.m in Sources */,
@@ -1606,6 +1641,7 @@
 				8522191F1B36642C00882E73 /* LIUTheSecondTableViewCell.m in Sources */,
 				85D383231B68690800652740 /* MJRefreshAutoNormalFooter.m in Sources */,
 				850F2E9B1B311769006AE553 /* LIUHomeViewController.m in Sources */,
+				85F942F01BA95CCF00F57492 /* LIUOrderGoodInfo.m in Sources */,
 				85F6AFCE1B45133B00BD8788 /* MASLayoutConstraint.m in Sources */,
 				85F6AFD61B45133B00BD8788 /* MJProperty.m in Sources */,
 				85073C021B9AB26A00B39655 /* LIURecommendSub.m in Sources */,

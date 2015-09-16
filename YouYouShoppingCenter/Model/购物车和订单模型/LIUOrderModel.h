@@ -34,5 +34,4 @@
 
 @property (nonatomic, assign) CGFloat ProductPrice;
 
-
 @end

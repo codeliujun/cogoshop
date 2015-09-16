@@ -64,7 +64,9 @@
 }
 - (IBAction)moreInfo:(UIButton *)sender {
     
-    self.buttonTap;
+    if (self.buttonTap) {
+        self.buttonTap();
+    }
 }
 
 - (void)setRecommends:(NSArray *)recommends {

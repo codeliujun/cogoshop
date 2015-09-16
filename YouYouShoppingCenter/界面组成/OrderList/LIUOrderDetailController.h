@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LIUOrderModel.h"
 
 @interface LIUOrderDetailController : UIViewController
+
+@property (nonatomic,strong)LIUOrderModel *model;
 
 @end

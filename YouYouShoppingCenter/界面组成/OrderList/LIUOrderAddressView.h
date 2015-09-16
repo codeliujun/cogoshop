@@ -10,4 +10,8 @@
 
 @interface LIUOrderAddressView : UIView
 
++ (LIUOrderAddressView *)view;
+
+- (void)setOrderData:(NSDictionary *)data;
+
 @end

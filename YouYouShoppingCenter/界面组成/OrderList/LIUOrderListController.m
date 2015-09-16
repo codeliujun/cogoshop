@@ -10,6 +10,7 @@
 #import "UIViewController+GetHTTPRequest.h"
 #import "LIUConfirmViewController.h"
 #import "MJExtension.h"
+#import "LIUOrderDetailController.h"
 #import "LIUEvalatController.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
@@ -146,6 +147,13 @@
     if (self.status == OrderStatussWillPay) {
         LIUConfirmViewController *controller = [[LIUConfirmViewController alloc]init];
         controller.orderModel = order;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+    if (self.status == OrderStatusAll) {
+        //也就是点击了详情
+        LIUOrderDetailController *controller = [[LIUOrderDetailController alloc]init];
+        controller.model = order;
         [self.navigationController pushViewController:controller animated:YES];
     }
     
