@@ -6,7 +6,11 @@
 //  Copyright (c) 2014年 Michael. All rights reserved.
 //
 
+#define kLightCellDescColor [UIColor hexStringToColor:@"#b7b7b7"]
+
 #import "ZHTextView.h"
+#import "Masonry.h"
+#import "UIColor+HexColor.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -19,6 +23,7 @@
 @implementation ZHTextView
 
 - (void)initView {
+    self.font = [UIFont systemFontOfSize:17.0];
     lbPlaceholder = [[UILabel alloc] initWithFrame:CGRectZero];
     lbPlaceholder.textColor = kLightCellDescColor;
     lbPlaceholder.text = nil;
@@ -46,15 +51,18 @@
 
 - (void)layoutSubviews {
 //    lbPlaceholder.frame = CGRectMake(5, 8, self.frame.size.width-10, self.font.lineHeight);
+
     lbPlaceholder.font = self.font;
     lbPlaceholder.text = _placeholder;
     WS(ws);
-    [lbPlaceholder mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(ws.mas_left).with.offset(5);
-        make.top.equalTo(ws.mas_top).with.offset(7);
-        make.width.equalTo(@270);
-        make.height.equalTo(@(self.font.lineHeight));
-    }];
+    lbPlaceholder.frame = CGRectMake(5, 7, 270, self.font.lineHeight);
+    //lbPlaceholder.backgroundColor = [UIColor redColor];
+//    [lbPlaceholder mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(ws.mas_left).with.offset(5);
+//        make.top.equalTo(ws.mas_top).with.offset(7);
+//        make.width.equalTo(@270);
+//        make.height.equalTo(@(self.font.lineHeight));
+//    }];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

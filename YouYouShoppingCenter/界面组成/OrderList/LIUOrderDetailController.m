@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "LIUConfirmViewController.h"
 #import "LIUOrderModel.h"
+#import "LIUEvalatController.h"
 #import "MJExtension.h"
 
 #import "LIUGapCell.h"
@@ -156,7 +157,7 @@
     
 }
 - (IBAction)tapButton:(UIButton *)sender {
-    WS(ws);
+
     NSString *title = sender.titleLabel.text;
     
     if ([title isEqualToString:@"提醒发货"]) {
@@ -189,6 +190,11 @@
     }
     
     if ([title isEqualToString:@"待评价"]) {
+        
+        LIUEvalatController *evaVc = [[LIUEvalatController alloc]init];
+        LIUOrderModel *order = [LIUOrderModel objectWithKeyValues:self.orderData];
+        evaVc.model = order;
+        [self.navigationController pushViewController:evaVc animated:YES];
         
     }
     

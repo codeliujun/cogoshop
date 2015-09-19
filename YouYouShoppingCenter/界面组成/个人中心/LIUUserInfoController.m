@@ -8,6 +8,7 @@
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 #import "LIUUserInfoController.h"
+#import "LIUChangeUserNameController.h"
 #import "UIViewController+GetHTTPRequest.h"
 #import "SVProgressHUD.h"
 #import "LIURecevingAderess.h"
@@ -44,7 +45,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -63,6 +64,10 @@
         cell.textLabel.text = @"修改密码";
         //cell.detailTextLabel.text = @"编辑，修改";
     }
+    if (2 == indexPath.section) {
+        cell.textLabel.text = @"修改用户名";
+    }
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -70,10 +75,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (0 == indexPath.section) {
         [self getAddressData];
-    }else {
+    }
+    if (1 == indexPath.section) {
         LIUChangePassWordController *controller = [[LIUChangePassWordController alloc]init];
         [self.navigationController pushViewController:controller animated:YES];
     }
+    
+    if (2 == indexPath.section) {
+        LIUChangeUserNameController *controller = [[LIUChangeUserNameController alloc]init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
 }
 
 - (void)getAddressData {

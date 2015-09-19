@@ -8,6 +8,7 @@
 
 #import "LIUHomeViewController.h"
 #import "LIUHomeViewRecommendTableViewCell.h"
+#import "LIURegistViewController.h"
 #import "UIViewController+GetHTTPRequest.h"
 #import "LIUHomeCategoryCell.h"
 #import "LIUShoppingDetaileViewController.h"
@@ -374,8 +375,16 @@
     [obj removeFromSuperview];
     self.rightButton.selected = !self.rightButton.isSelected;
     self.scanCodeView = nil;
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:str delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil];
-    [alertView show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"扫描结果" message:str preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *a1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *a2 = [UIAlertAction actionWithTitle:@"注册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //跳转到注册界面
+        LIURegistViewController *regist = [[LIURegistViewController alloc]initWithNibName:@"LIURegistViewController" bundle:nil];
+        [self.navigationController pushViewController:regist animated:YES];
+    }];
+    [alert addAction:a1];
+    [alert addAction:a2];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

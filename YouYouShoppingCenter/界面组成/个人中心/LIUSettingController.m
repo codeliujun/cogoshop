@@ -9,6 +9,8 @@
 #import "LIUSettingController.h"
 #import "UIViewController+GetHTTPRequest.h"
 #import "UIColor+HexColor.h"
+#import "LIUSuggestController.h"
+
 @interface LIUSettingController ()
 
 @property (weak, nonatomic) IBOutlet UIView *backView;
@@ -70,5 +72,10 @@
 }
 
 - (IBAction)sendSuggest:(UIButton *)sender {
+    
+    LIUSuggestController *suggest = [[LIUSuggestController alloc]init];
+    [self.navigationController pushViewController:suggest animated:YES];
+    
+    
 }
 @end
