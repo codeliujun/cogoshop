@@ -157,6 +157,8 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
     
+    //这里面要该一点点东西的哟
+    
 }
 
 - (void)didReceiveMemoryWarning {
