@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LIUOrderGoodInfo">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nz8-QB-XZO">
+                    <rect key="frame" x="10" y="10" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="MDq-cL-TIB"/>
+                        <constraint firstAttribute="height" constant="60" id="Y6w-qO-xYs"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSY-L8-090">
+                    <rect key="frame" x="80" y="10" width="230" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="kJn-JW-x68"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hei-vb-KBP">
+                    <rect key="frame" x="80" y="55.5" width="115" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tD5-la-REW">
+                    <rect key="frame" x="195" y="55" width="115" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Nz8-QB-XZO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="3iu-r1-EY7"/>
+                <constraint firstAttribute="trailing" secondItem="VSY-L8-090" secondAttribute="trailing" constant="10" id="D8s-Rm-VTp"/>
+                <constraint firstAttribute="trailing" secondItem="tD5-la-REW" secondAttribute="trailing" constant="10" id="ExS-c6-hzb"/>
+                <constraint firstItem="VSY-L8-090" firstAttribute="leading" secondItem="Nz8-QB-XZO" secondAttribute="trailing" constant="10" id="KrS-1d-sao"/>
+                <constraint firstItem="Nz8-QB-XZO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Lvi-WR-4yT"/>
+                <constraint firstItem="VSY-L8-090" firstAttribute="leading" secondItem="hei-vb-KBP" secondAttribute="leading" id="OBi-TQ-EIx"/>
+                <constraint firstItem="tD5-la-REW" firstAttribute="centerY" secondItem="hei-vb-KBP" secondAttribute="centerY" id="UHa-Wl-MYC"/>
+                <constraint firstItem="Nz8-QB-XZO" firstAttribute="top" secondItem="VSY-L8-090" secondAttribute="top" id="Yax-6a-YKb"/>
+                <constraint firstItem="tD5-la-REW" firstAttribute="height" secondItem="hei-vb-KBP" secondAttribute="height" id="aKJ-74-JGg"/>
+                <constraint firstItem="tD5-la-REW" firstAttribute="width" secondItem="hei-vb-KBP" secondAttribute="width" id="dZu-K0-vTd"/>
+                <constraint firstItem="Nz8-QB-XZO" firstAttribute="bottom" secondItem="hei-vb-KBP" secondAttribute="bottom" id="onT-Zq-dFp"/>
+                <constraint firstItem="tD5-la-REW" firstAttribute="leading" secondItem="hei-vb-KBP" secondAttribute="trailing" id="vR8-bR-8MU"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="goodCount" destination="hei-vb-KBP" id="nK3-sg-oYd"/>
+                <outlet property="goodIcon" destination="Nz8-QB-XZO" id="cOU-dd-fDm"/>
+                <outlet property="goodPrice" destination="tD5-la-REW" id="Hei-IN-nH7"/>
+                <outlet property="goodTitle" destination="VSY-L8-090" id="yfg-W0-IVX"/>
+            </connections>
+            <point key="canvasLocation" x="237" y="253"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

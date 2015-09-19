@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UBk-pR-dJt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UBk-pR-dJt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -511,7 +511,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="del_history_btn.9" width="129" height="58"/>
+        <image name="del_history_btn.9" width="137" height="29"/>
         <image name="icon_checkbox_checked" width="20" height="20"/>
         <image name="icon_checkbox_unchecked" width="20" height="20"/>
         <image name="main_tab_car" width="24" height="24"/>

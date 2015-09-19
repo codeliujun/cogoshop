@@ -142,6 +142,7 @@
         LIUEvalatController *evaVc = [[LIUEvalatController alloc]init];
         evaVc.model = order;
         [self.navigationController pushViewController:evaVc animated:YES];
+    
     }
     
     if (self.status == OrderStatussWillPay) {

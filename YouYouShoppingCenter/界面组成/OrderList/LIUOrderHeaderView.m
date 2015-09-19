@@ -11,14 +11,19 @@
 @interface LIUOrderHeaderView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
+
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *statuImageViews;
+
 @end
 
 @implementation LIUOrderHeaderView
 
 
 + (LIUOrderHeaderView *)view {
-    return [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+    LIUOrderHeaderView *view = [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
+    [view setStatusViewHighlighted:3];
+    return view;
 }
 
 - (void)setStatusViewHighlighted:(NSInteger)index {//1~4
@@ -26,12 +31,12 @@
     for (int i = 0; i < self.statuImageViews.count; i++) {
         
         UIImageView *image = self.statuImageViews[i];
-        if (index-1 <= i) {
+        
+        if (index-1 >= i) {
             image.highlighted = YES;
         }else {
             image.highlighted = NO;
         }
-        
         
     }
     
@@ -55,6 +60,9 @@
     }
     
     self.statusLabel.text = str;
+    
+   // [self setNeedsDisplay];
+    
 }
 
 
