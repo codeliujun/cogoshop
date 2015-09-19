@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *goodIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *orderStatusLabel;
-@property (weak, nonatomic) IBOutlet UIButton *button;
+
 
 @end
 
@@ -52,22 +52,32 @@
         ws.goodIconImageView.image = image;
     }];
     
-    
-    NSString *title = @"";
-    switch (self.status) {
-        case OrderStatusAll:
-            title = @"详情";
+    /*
+     typedef NS_ENUM(NSInteger, OrderStatus) {
+     OrderStatusAll = 0,
+     OrderStatussWillPay = 1,  生成订单了
+     OrderStatusDidPay = 2,   //待发货 等于3的适合才是发货
+     OrderStatusHaveSender = 4, //已经发货，也就是确认收货了
+     OrderStatusEve = 8, //订单已经完成了
+     };
+     */
+    NSInteger status = self.order.Status;
+    NSString *title = @"详情";
+    switch (status) {
+        case 1:
+            title = @"详情";//@"付款";
             break;
-        case OrderStatussWillPay:
-            title = @"付款";
+        case 2:
+            title = @"提醒发货";
             break;
-        case OrderStatusHaveSender:
+        case 4:
             title = @"确认收货";
             break;
-        case OrderStatusEve:
-            title = @"评价";
+        case 8:
+            title = @"待评价";
             break;
         default:
+            title = @"详情";
             break;
     }
     [self.button setTitle:title forState:UIControlStateNormal];

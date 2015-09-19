@@ -11,6 +11,9 @@
 #import "LIUConfirmViewController.h"
 #import "MJExtension.h"
 #import "LIUEvalatController.h"
+#import "SVProgressHUD.h"
+
+#import "LIUOrderDetailController.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -137,7 +140,9 @@
     
     LIUOrderModel *order = self.orderListArray[indexPath.section];
     
-    if (self.status == OrderStatusEve) {
+    NSString *buttenTitle = cell.button.titleLabel.text;
+    
+    if ([buttenTitle isEqualToString:@"待评价"]) {
         
         LIUEvalatController *evaVc = [[LIUEvalatController alloc]init];
         evaVc.model = order;
@@ -145,14 +150,41 @@
     
     }
     
-    if (self.status == OrderStatussWillPay) {
+    if ([buttenTitle isEqualToString:@"付款"]) {
         LIUConfirmViewController *controller = [[LIUConfirmViewController alloc]init];
         controller.orderModel = order;
         [self.navigationController pushViewController:controller animated:YES];
     }
     
-    if (self.status == OrderStatusAll) {
-        liuor
+    if ([buttenTitle isEqualToString:@"详情"]) {
+        //也就是点击了详情
+        LIUOrderDetailController *controller = [[LIUOrderDetailController alloc]init];
+        controller.model = order;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    WS(ws);
+    if ([buttenTitle isEqualToString:@"提醒发货"]) {
+        
+        [self requestWithUrl:kRemindDeliver Parameters:@{@"userid":[self getUserId],@"orderid":order.Id} Success:^(NSDictionary *result) {
+            
+            [SVProgressHUD showSuccessWithStatus:@"提醒发货成功" duration:1.5f];
+            [ws getData];
+        } Failue:^(NSDictionary *failueInfo) {
+            
+        }];
+        
+    }
+    
+    if ([buttenTitle isEqualToString:@"确认收货"]) {
+        
+        [self requestWithUrl:kReciveCOnfirm Parameters:@{@"userid":[self getUserId],@"orderid":order.Id} Success:^(NSDictionary *result) {
+            
+            [SVProgressHUD showSuccessWithStatus:@"确认收货成功" duration:1.5f];
+            [ws getData];
+        } Failue:^(NSDictionary *failueInfo) {
+            
+        }];
+        
     }
     
 }

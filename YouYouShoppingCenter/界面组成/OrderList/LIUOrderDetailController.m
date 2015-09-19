@@ -8,6 +8,10 @@
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 #import "LIUOrderDetailController.h"
 #import "UIViewController+GetHTTPRequest.h"
+#import "SVProgressHUD.h"
+#import "LIUConfirmViewController.h"
+#import "LIUOrderModel.h"
+#import "MJExtension.h"
 
 #import "LIUGapCell.h"
 #import "LIUOrderHeaderView.h"
@@ -29,6 +33,10 @@
 @property (nonatomic,strong) NSDictionary *orderData;
 @property (nonatomic,assign) NSInteger index;
 
+@property (weak, nonatomic) IBOutlet UIView *bottomBackView;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UIButton *button;
+
 @end
 
 @implementation LIUOrderDetailController
@@ -36,6 +44,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self creatViews];
+    self.bottomBackView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
+    self.button.layer.cornerRadius = 5.0f;
+    self.button.layer.masksToBounds = YES;
     [self getData];
     self.index = 0;
 }
@@ -107,7 +118,82 @@
     
     [_cell5View setOrderDetail:self.orderData];
     
+    self.totalLabel.text = [NSString stringWithFormat:@"总金额：￥%@",self.orderData[@"OrderDetails"][0][@"TotalMoney"]];
+    [self configButton];
+    
     [self.tableView reloadData];
+}
+
+- (void)configButton {
+    
+    NSInteger status = [self.orderData[@"Status"] integerValue];
+    NSString *title = @"不可用";
+    switch (status) {
+        case 1:
+            title = @"付款";//@"付款";
+            break;
+        case 2:
+            title = @"提醒发货";
+            break;
+        case 4:
+            title = @"确认收货";
+            break;
+        case 8:
+            title = @"待评价";
+            break;
+        default:
+            title = @"不可用";
+            break;
+    }
+    [self.button setTitle:title forState:UIControlStateNormal];
+    if ([title isEqualToString:@"不可用"]) {
+        self.button.enabled = NO;
+        self.button.backgroundColor = [UIColor lightGrayColor];
+    }else {
+        self.button.enabled = YES;
+        self.button.backgroundColor = [UIColor redColor];
+    }
+    
+}
+- (IBAction)tapButton:(UIButton *)sender {
+    WS(ws);
+    NSString *title = sender.titleLabel.text;
+    
+    if ([title isEqualToString:@"提醒发货"]) {
+        [self requestWithUrl:kRemindDeliver Parameters:@{@"userid":[self getUserId],@"orderid":self.orderData[@"OrderId"]} Success:^(NSDictionary *result) {
+            
+            [SVProgressHUD showSuccessWithStatus:@"提醒发货成功" duration:1.5f];
+            //[ws.navigationController popViewControllerAnimated:YES];
+        } Failue:^(NSDictionary *failueInfo) {
+            
+        }];
+    }
+    
+    if ([title isEqualToString:@"付款"]) {
+        LIUConfirmViewController *controller = [[LIUConfirmViewController alloc]init];
+        LIUOrderModel *model = [LIUOrderModel objectWithKeyValues:self.orderData];
+        controller.orderModel = model;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+    if ([title isEqualToString:@"确认收货"]) {
+        
+        [self requestWithUrl:kReciveCOnfirm Parameters:@{@"userid":[self getUserId],@"orderid":self.orderData[@"OrderId"]} Success:^(NSDictionary *result) {
+            
+            [SVProgressHUD showSuccessWithStatus:@"确认收货成功" duration:1.5f];
+            
+        } Failue:^(NSDictionary *failueInfo) {
+            
+        }];
+        
+    }
+    
+    if ([title isEqualToString:@"待评价"]) {
+        
+    }
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

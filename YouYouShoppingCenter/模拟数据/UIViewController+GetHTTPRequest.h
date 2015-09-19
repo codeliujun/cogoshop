@@ -41,6 +41,8 @@
 #define kGetAccountings             kGetRequestUrl(@"User/accountings")
 #define kChangePassWord             kGetRequestUrl(@"User/changepwd")
 #define kGetOrderDetail             kGetRequestUrl(@"Order/info")
+#define kRemindDeliver              kGetRequestUrl(@"Order/reminddeliver")
+#define kReciveCOnfirm              kGetRequestUrl(@"Order/receiptconfirm")
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"

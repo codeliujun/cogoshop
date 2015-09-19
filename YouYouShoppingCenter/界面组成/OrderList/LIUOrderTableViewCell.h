@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, OrderStatus) {
 
 @property (nonatomic,strong)LIUOrderModel *order;
 
+@property (weak, nonatomic) IBOutlet UIButton *button;
+
 @property (nonatomic,assign) OrderStatus status;
 
 @property (nonatomic,weak)id<LIUOrderTableViewCellDelegate> delegate;
