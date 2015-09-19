@@ -100,6 +100,7 @@
     self.index = index;
     //[_cell1View setStatusViewHighlighted:4];
     
+    self.title = self.orderData[@"OrderStatusDes"];
     [_cell2View setOrderData:self.orderData];
     
     [_cell3View setOrderDetails:self.orderData[@"OrderDetails"][0]];
