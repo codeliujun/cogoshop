@@ -149,7 +149,7 @@
     self.changeUserNameButton.tag = 1006;
     [self.changeUserNameButton addTarget:self action:@selector(changeUserName:) forControlEvents:UIControlEventTouchUpInside];
     [self.changeUserNameButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(userNameLabel.mas_leading).with.offset(0);
+        make.left.equalTo(userNameLabel.mas_left).with.offset(0);
         make.top.equalTo(userNameLabel.mas_top).with.offset(0);
         make.right.equalTo(ws.balanceLabel.mas_right).with.offset(0);
         make.bottom.equalTo(ws.balanceLabel.mas_bottom).with.offset(0);

@@ -10,8 +10,9 @@
 #import "UIViewController+GetHTTPRequest.h"
 #import "LIUConfirmViewController.h"
 #import "MJExtension.h"
-#import "LIUOrderDetailController.h"
 #import "LIUEvalatController.h"
+
+#import "LIUOrderDetailController.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -143,7 +144,9 @@
         LIUEvalatController *evaVc = [[LIUEvalatController alloc]init];
         evaVc.model = order;
         [self.navigationController pushViewController:evaVc animated:YES];
+    
     }
+    
     if (self.status == OrderStatussWillPay) {
         LIUConfirmViewController *controller = [[LIUConfirmViewController alloc]init];
         controller.orderModel = order;
@@ -156,9 +159,7 @@
         controller.model = order;
         [self.navigationController pushViewController:controller animated:YES];
     }
-    
-    //这里面要该一点点东西的哟
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
