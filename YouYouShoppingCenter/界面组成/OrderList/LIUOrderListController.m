@@ -151,6 +151,10 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
     
+    if (self.status == OrderStatusAll) {
+        liuor
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
