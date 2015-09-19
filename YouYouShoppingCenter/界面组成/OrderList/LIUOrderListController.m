@@ -143,6 +143,7 @@
         evaVc.model = order;
         [self.navigationController pushViewController:evaVc animated:YES];
     }
+    
     if (self.status == OrderStatussWillPay) {
         LIUConfirmViewController *controller = [[LIUConfirmViewController alloc]init];
         controller.orderModel = order;
