@@ -43,6 +43,8 @@
 #define kGetOrderDetail             kGetRequestUrl(@"Order/info")
 #define kRemindDeliver              kGetRequestUrl(@"Order/reminddeliver")
 #define kReciveCOnfirm              kGetRequestUrl(@"Order/receiptconfirm")
+#define kFeedBack                   kGetRequestUrl(@"User/feedback")
+#define kUpdateUserName             kGetRequestUrl(@"User/updatename")
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
@@ -53,5 +55,6 @@
 - (BOOL)userIsLogin;
 - (void)showLoginView;
 - (NSString *)getUserId;
+- (void)upDateUserName:(NSString *)name;
 
 @end

@@ -65,7 +65,7 @@
     NSString *title = @"详情";
     switch (status) {
         case 1:
-            title = @"详情";//@"付款";
+            title = @"付款";//@"付款";
             break;
         case 2:
             title = @"提醒发货";

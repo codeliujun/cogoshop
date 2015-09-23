@@ -93,4 +93,11 @@
     return userId;
 }
 
+- (void)upDateUserName:(NSString *)name {
+    
+    LIUUserInfoData *data = [LIUUserInfoData defaultUserInfo];
+    data.lastname = name;
+    
+}
+
 @end

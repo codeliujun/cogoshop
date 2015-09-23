@@ -134,6 +134,15 @@
     return 10.f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+     LIUOrderModel *order = self.orderListArray[indexPath.section];
+    LIUOrderDetailController *controller = [[LIUOrderDetailController alloc]init];
+    controller.model = order;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+
+
 - (void)cellDidTapButton:(LIUOrderTableViewCell *)cell {
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
