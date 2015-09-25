@@ -72,9 +72,9 @@
     order.seller = seller;
     order.tradeNO = self.orderNo; //订单ID（由商家自行制定）
     order.productName = @"账户充值"; //商品标题
-    order.productDescription = @"账户充值"; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",[self.Price floatValue]]; //商品价格 测试价格
-    order.notifyURL =  @"http://o2o.coolgou.com/Trade/Notify"; //回调URL
+    order.productDescription = @"会员账户充值"; //商品描述
+    order.amount = [NSString stringWithFormat:@"%.2f",0.01/*[self.Price floatValue]*/]; //商品价格 测试价格
+    order.notifyURL =  @"http://api.coolgou.com/api/default/alipayNotify"; //回调URL
     
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";

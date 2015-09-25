@@ -107,6 +107,8 @@
 		857389071B61DD7D00BF0F3F /* XKYSearchVCRecommendTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 857389031B61DD7D00BF0F3F /* XKYSearchVCRecommendTableHeaderView.m */; };
 		857389081B61DD7D00BF0F3F /* XKYSearchVCRecommendTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 857389041B61DD7D00BF0F3F /* XKYSearchVCRecommendTableHeaderView.xib */; };
 		8573890C1B61E54E00BF0F3F /* LIUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8573890B1B61E54E00BF0F3F /* LIUCache.m */; };
+		85777E651BB539DC003343AB /* LIUGoodInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85777E631BB539DC003343AB /* LIUGoodInfoCell.m */; settings = {ASSET_TAGS = (); }; };
+		85777E661BB539DC003343AB /* LIUGoodInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85777E641BB539DC003343AB /* LIUGoodInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
 		8579A27B1B5937CB0018B235 /* UIViewController+GetHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8579A27A1B5937CB0018B235 /* UIViewController+GetHTTPRequest.m */; };
 		858460A01B426C15003C6BB7 /* LIUZhangHuGuanLiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584609E1B426C15003C6BB7 /* LIUZhangHuGuanLiViewController.m */; };
 		858460A11B426C15003C6BB7 /* LIUZhangHuGuanLiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8584609F1B426C15003C6BB7 /* LIUZhangHuGuanLiViewController.xib */; };
@@ -409,6 +411,9 @@
 		857389041B61DD7D00BF0F3F /* XKYSearchVCRecommendTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XKYSearchVCRecommendTableHeaderView.xib; path = "界面组成/搜索/XKYSearchVCRecommendTableHeaderView.xib"; sourceTree = "<group>"; };
 		8573890A1B61E54E00BF0F3F /* LIUCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUCache.h; path = "模拟数据/LIUCache.h"; sourceTree = "<group>"; };
 		8573890B1B61E54E00BF0F3F /* LIUCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUCache.m; path = "模拟数据/LIUCache.m"; sourceTree = "<group>"; };
+		85777E621BB539DC003343AB /* LIUGoodInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIUGoodInfoCell.h; sourceTree = "<group>"; };
+		85777E631BB539DC003343AB /* LIUGoodInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIUGoodInfoCell.m; sourceTree = "<group>"; };
+		85777E641BB539DC003343AB /* LIUGoodInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LIUGoodInfoCell.xib; sourceTree = "<group>"; };
 		8579A2791B5937CB0018B235 /* UIViewController+GetHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+GetHTTPRequest.h"; path = "模拟数据/UIViewController+GetHTTPRequest.h"; sourceTree = "<group>"; };
 		8579A27A1B5937CB0018B235 /* UIViewController+GetHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+GetHTTPRequest.m"; path = "模拟数据/UIViewController+GetHTTPRequest.m"; sourceTree = "<group>"; };
 		8584609D1B426C15003C6BB7 /* LIUZhangHuGuanLiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUZhangHuGuanLiViewController.h; path = "界面组成/个人中心/账户管理/LIUZhangHuGuanLiViewController.h"; sourceTree = "<group>"; };
@@ -886,6 +891,9 @@
 				85F942EE1BA95CCF00F57492 /* LIUOrderGoodInfo.h */,
 				85F942EF1BA95CCF00F57492 /* LIUOrderGoodInfo.m */,
 				85F942F11BA95CE600F57492 /* LIUOrderGoodInfo.xib */,
+				85777E621BB539DC003343AB /* LIUGoodInfoCell.h */,
+				85777E631BB539DC003343AB /* LIUGoodInfoCell.m */,
+				85777E641BB539DC003343AB /* LIUGoodInfoCell.xib */,
 				85F942F31BA95DE900F57492 /* LIUOtherCost.h */,
 				85F942F41BA95DE900F57492 /* LIUOtherCost.m */,
 				85F942F61BA95DF800F57492 /* LIUOtherCost.xib */,
@@ -1761,6 +1769,7 @@
 				851364F21B915CD9008C3377 /* LIUCaquView.xib in Resources */,
 				8585A5131B32A2AA000FA17E /* LIUCategoryCollectionViewCell.xib in Resources */,
 				853AF90F1B3BF25F0025C018 /* LIULoginViewController.xib in Resources */,
+				85777E661BB539DC003343AB /* LIUGoodInfoCell.xib in Resources */,
 				858865501B89727700FC9BD4 /* LIUAddressChooseView.xib in Resources */,
 				85326B091BAD556900010DC7 /* LIUSuggestController.xib in Resources */,
 				85073C1A1B9ACEDE00B39655 /* LIUSaveMoneyController.xib in Resources */,
@@ -1934,6 +1943,7 @@
 				85E20CF11B3D5F0E00585D81 /* LIUWillPayTableViewCell.m in Sources */,
 				85D3831F1B68690800652740 /* MJRefreshComponent.m in Sources */,
 				85326B041BAD553800010DC7 /* ZHTextView.m in Sources */,
+				85777E651BB539DC003343AB /* LIUGoodInfoCell.m in Sources */,
 				853AF96E1B3CE2B10025C018 /* LIUStoreModel.m in Sources */,
 				858CA54F1B9283C0002BCBCE /* LIUEvalatController.m in Sources */,
 				85F6AFC31B45133B00BD8788 /* AFHTTPSessionManager.m in Sources */,

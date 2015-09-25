@@ -146,9 +146,9 @@
      Goods/addcomment?userid={userid}&orderid={orderid}&commentcontent={commentcontent}&rank={rank}&stardescription={stardescription}&starservice={starservice}&startransit={startransit}*/
     [self requestWithUrl:kAddComment Parameters:@{
                     @"userid":[self getUserId],
-                    @"orderid":self.model.Code,
+                    @"orderid":self.model.Id,
                     @"commentcontent":self.content,
-                    @"rank":@5,
+                    @"rank":@"0",
                     @"stardescription":self.stardescription,
                     @"starservice":self.starservice,
                     @"startransit":self.startransit,

@@ -20,11 +20,12 @@
 #import "LIUOrderGoodInfo.h"
 #import "LIUOtherCost.h"
 #import "LIUOrderInfo.h"
+#import "LIUGoodInfoCell.h"
 
 @interface LIUOrderDetailController ()<UITableViewDataSource,UITableViewDelegate> {
     LIUOrderHeaderView      *_cell1View;
     LIUOrderAddressView     *_cell2View;
-    LIUOrderGoodInfo        *_cell3View;
+    //LIUOrderGoodInfo        *_cell3View;
     LIUOtherCost            *_cell4View;
     LIUOrderInfo            *_cell5View;
 }
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong) NSDictionary *orderData;
+@property (nonatomic,strong) NSArray *goodArray;
 @property (nonatomic,assign) NSInteger index;
 
 @property (weak, nonatomic) IBOutlet UIView *bottomBackView;
@@ -42,6 +44,13 @@
 
 @implementation LIUOrderDetailController
 
+- (NSArray *)goodArray {
+    if (!_goodArray) {
+        _goodArray = @[];
+    }
+    return _goodArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self creatViews];
@@ -50,12 +59,15 @@
     self.button.layer.masksToBounds = YES;
     [self getData];
     self.index = 0;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([LIUGoodInfoCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([LIUGoodInfoCell class])];
 }
 
 - (void)getData {
     WS(ws);
     [self requestWithUrl:kGetOrderDetail Parameters:@{@"orderid":self.model.Id} Success:^(NSDictionary *result) {
         ws.orderData = result[@"Data"];
+        ws.goodArray = ws.orderData[@"OrderDetails"];
         [ws configViews];
     } Failue:^(NSDictionary *failueInfo) {
         
@@ -68,7 +80,7 @@
     
     _cell2View = [LIUOrderAddressView view];
     
-    _cell3View = [LIUOrderGoodInfo view];
+    //_cell3View = [LIUOrderGoodInfo view];
     
     _cell4View = [LIUOtherCost view];
     
@@ -115,11 +127,20 @@
     self.title = self.orderData[@"OrderStatusDes"];
     [_cell2View setOrderData:self.orderData];
     
-    [_cell3View setOrderDetails:self.orderData[@"OrderDetails"][0]];
+    //[_cell3View setOrderDetails:self.orderData[@"OrderDetails"][0]];
     
     [_cell5View setOrderDetail:self.orderData];
     
-    self.totalLabel.text = [NSString stringWithFormat:@"总金额：￥%@",self.orderData[@"OrderDetails"][0][@"TotalMoney"]];
+    if (self.goodArray.count == 0) {
+        self.totalLabel.text = [NSString stringWithFormat:@"总金额：￥0.00"];
+    }else {
+        
+        CGFloat total = 0.00;
+        for (NSDictionary *dic in self.goodArray) {
+            total = total + [dic[@"TotalMoney"] floatValue];
+        }
+        self.totalLabel.text = [NSString stringWithFormat:@"总金额：￥%.2f",total];
+    }
     [self configButton];
     
     [self.tableView reloadData];
@@ -157,7 +178,7 @@
     
 }
 - (IBAction)tapButton:(UIButton *)sender {
-
+    
     NSString *title = sender.titleLabel.text;
     
     if ([title isEqualToString:@"提醒发货"]) {
@@ -208,64 +229,79 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 5;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSInteger count = 1;
+    
+    if (2 == section) {
+        count = self.goodArray.count;
+    }
+    
+    return count;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LIUGapCell *cell = [tableView dequeueReusableCellWithIdentifier:@"gapCell" forIndexPath:indexPath];
     
-    if (0 == indexPath.row) {
-        [cell setCellCustomView:_cell1View];
-        [_cell1View setStatusViewHighlighted:self.index];
+    if (2 == indexPath.section) {
+        
+        LIUGoodInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LIUGoodInfoCell class]) forIndexPath:indexPath];
+        [cell setOrderDetails:self.goodArray[indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.backgroundColor = [UIColor redColor];
+        return cell;
+    }else {
+        
+        
+        LIUGapCell *cell = [tableView dequeueReusableCellWithIdentifier:@"gapCell" forIndexPath:indexPath];
+        
+        if (0 == indexPath.section) {
+            [cell setCellCustomView:_cell1View];
+            [_cell1View setStatusViewHighlighted:self.index];
+        }
+        
+        if (1 == indexPath.section) {
+            [cell setCellCustomView:_cell2View];
+        }
+        
+        if (3 == indexPath.section) {
+            [cell setCellCustomView:_cell4View];
+        }
+        
+        if (4 == indexPath.section) {
+            [cell setCellCustomView:_cell5View];
+        }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
     }
-    
-    if (1 == indexPath.row) {
-        [cell setCellCustomView:_cell2View];
-    }
-    
-    if (2 == indexPath.row) {
-        [cell setCellCustomView:_cell3View];
-    }
-    
-    if (3 == indexPath.row) {
-        [cell setCellCustomView:_cell4View];
-    }
-    
-    if (4 == indexPath.row) {
-        [cell setCellCustomView:_cell5View];
-    }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     CGFloat height = 44.f;
     
-    if (0 == indexPath.row) {
-        height = _cell1View.frame.size.height;
+    if (0 == indexPath.section) {
+        height = 120.f;
     }
     
-    if (1 == indexPath.row) {
-        height = _cell2View.frame.size.height;
+    if (1 == indexPath.section) {
+        height = 120.f;
     }
     
-    if (2 == indexPath.row) {
-        height = _cell3View.frame.size.height;
+    if (2 == indexPath.section) {
+        height = 80.0f;
     }
     
-    if (3 == indexPath.row) {
-        height = _cell4View.frame.size.height;
+    if (3 == indexPath.section) {
+        height = 140.0f;
     }
     
-    if (4 == indexPath.row) {
-        height = _cell5View.frame.size.height;
+    if (4 == indexPath.section) {
+        height = 80.0f;
     }
     
     return height;
