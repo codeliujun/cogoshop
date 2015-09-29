@@ -87,9 +87,10 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="登录密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkQ-hf-yfx">
                             <rect key="frame" x="49" y="45" width="243" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                             <connections>
                                 <action selector="enterLogin:" destination="-1" eventType="editingDidEndOnExit" id="RdV-mg-xEo"/>
+                                <outlet property="delegate" destination="-1" id="Hsb-6F-cpw"/>
                             </connections>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="main_tab_member" translatesAutoresizingMaskIntoConstraints="NO" id="BY5-OO-6EB">
@@ -98,9 +99,10 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号码/邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1pF-Fc-wgy">
                             <rect key="frame" x="49" y="5" width="243" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
                                 <action selector="enterPassword:" destination="-1" eventType="editingDidEndOnExit" id="SuH-nt-3nZ"/>
+                                <outlet property="delegate" destination="-1" id="jZN-OY-nQk"/>
                             </connections>
                         </textField>
                     </subviews>

@@ -20,7 +20,7 @@
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
-@interface LIULoginViewController ()<LIUCustomSwitchDelegate>
+@interface LIULoginViewController ()<LIUCustomSwitchDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *useNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
@@ -191,7 +191,23 @@
     }else {
         self.passWordTextField.secureTextEntry = YES;
     }
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)strin个{
     
+    if (textField == self.useNameTextField) {
+        if (textField.text.length >= 11) {
+            return NO;
+        }
+    }
+    
+    if (textField == self.passWordTextField) {
+        if (textField.text.length >= 6) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

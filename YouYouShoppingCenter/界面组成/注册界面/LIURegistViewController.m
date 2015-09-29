@@ -10,7 +10,7 @@
 #import "SVProgressHUD.h"
 #import "UIViewController+GetHTTPRequest.h"
 
-@interface LIURegistViewController () {
+@interface LIURegistViewController ()<UITextFieldDelegate> {
     /*
      mobile={mobile}&name={name}&pwd={pwd}&authcode={authcode}&shopId={shopId}
      */
@@ -158,6 +158,29 @@
         time = 30;
         [timer invalidate];
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"text:%@\nstr:%@",textField.text,string);
+    if (textField == self.shoujiHaoMa) {
+        if (textField.text.length >= 11) {
+            return NO;
+        }
+    }
+    
+    if (textField == self.diyiciMima) {
+        if (textField.text.length >= 6) {
+            return NO;
+        }
+    }
+    
+    if (textField == self.dierciMima) {
+        if (textField.text.length >= 6) {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 @end

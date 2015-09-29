@@ -79,7 +79,7 @@
 		853F3C8A1B41462000BDC8C8 /* LIUAddressEditAndAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 853F3C881B41462000BDC8C8 /* LIUAddressEditAndAddViewController.m */; };
 		853F3C8B1B41462000BDC8C8 /* LIUAddressEditAndAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853F3C891B41462000BDC8C8 /* LIUAddressEditAndAddViewController.xib */; };
 		855456821B3F7772007D6F91 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 855456811B3F7772007D6F91 /* libsqlite3.dylib */; };
-		855456851B3F82E6007D6F91 /* YouYouShoppingCenter.app in Resources */ = {isa = PBXBuildFile; fileRef = 850F2E6F1B311055006AE553 /* YouYouShoppingCenter.app */; };
+		855456851B3F82E6007D6F91 /* 优优酷购.app in Resources */ = {isa = PBXBuildFile; fileRef = 850F2E6F1B311055006AE553 /* 优优酷购.app */; };
 		855456861B3F85D1007D6F91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 850F2E741B311055006AE553 /* main.m */; };
 		855FB7E81B6E47B700AEC192 /* LIUGoodsCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 855FB7E71B6E47B700AEC192 /* LIUGoodsCartViewController.m */; };
 		855FB7EC1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 855FB7EA1B6E5BBD00AEC192 /* LIUGoodsCartTableViewCell.m */; };
@@ -269,7 +269,7 @@
 		85073C1B1B9AD61D00B39655 /* LIUPaySaveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIUPaySaveController.h; path = "界面组成/个人中心/账户管理/LIUPaySaveController.h"; sourceTree = "<group>"; };
 		85073C1C1B9AD61D00B39655 /* LIUPaySaveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIUPaySaveController.m; path = "界面组成/个人中心/账户管理/LIUPaySaveController.m"; sourceTree = "<group>"; };
 		85073C1D1B9AD61D00B39655 /* LIUPaySaveController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LIUPaySaveController.xib; path = "界面组成/个人中心/账户管理/LIUPaySaveController.xib"; sourceTree = "<group>"; };
-		850F2E6F1B311055006AE553 /* YouYouShoppingCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouYouShoppingCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		850F2E6F1B311055006AE553 /* 优优酷购.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "优优酷购.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		850F2E731B311055006AE553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		850F2E741B311055006AE553 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		850F2E761B311055006AE553 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -758,7 +758,7 @@
 		850F2E701B311055006AE553 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				850F2E6F1B311055006AE553 /* YouYouShoppingCenter.app */,
+				850F2E6F1B311055006AE553 /* 优优酷购.app */,
 				850F2E881B311055006AE553 /* YouYouShoppingCenterTests.xctest */,
 			);
 			name = Products;
@@ -1691,7 +1691,7 @@
 			);
 			name = YouYouShoppingCenter;
 			productName = YouYouShoppingCenter;
-			productReference = 850F2E6F1B311055006AE553 /* YouYouShoppingCenter.app */;
+			productReference = 850F2E6F1B311055006AE553 /* 优优酷购.app */;
 			productType = "com.apple.product-type.application";
 		};
 		850F2E871B311055006AE553 /* YouYouShoppingCenterTests */ = {
@@ -1825,7 +1825,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				855456851B3F82E6007D6F91 /* YouYouShoppingCenter.app in Resources */,
+				855456851B3F82E6007D6F91 /* 优优酷购.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2141,8 +2141,8 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "优优酷购";
+				PROVISIONING_PROFILE = "b5fe4656-b492-4a70-acd7-870555dfe6c8";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2174,8 +2174,8 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = "优优酷购";
+				PROVISIONING_PROFILE = "b5fe4656-b492-4a70-acd7-870555dfe6c8";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2199,7 +2199,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouYouShoppingCenter.app/YouYouShoppingCenter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/优优酷购.app/优优酷购";
 			};
 			name = Debug;
 		};
@@ -2215,7 +2215,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouYouShoppingCenter.app/YouYouShoppingCenter";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/优优酷购.app/优优酷购";
 			};
 			name = Release;
 		};
