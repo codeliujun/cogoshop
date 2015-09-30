@@ -2071,6 +2071,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "b5fe4656-b492-4a70-acd7-870555dfe6c8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -2110,6 +2111,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/YouYouShoppingCenter/界面组成/个人中心/Apply/openssl";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "b5fe4656-b492-4a70-acd7-870555dfe6c8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
@@ -2140,7 +2142,7 @@
 					"$(PROJECT_DIR)/YouYouShoppingCenter/界面组成/个人中心/Apply",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ykg.shopping;
 				PRODUCT_NAME = "优优酷购";
 				PROVISIONING_PROFILE = "b5fe4656-b492-4a70-acd7-870555dfe6c8";
 				SDKROOT = iphoneos;
@@ -2173,7 +2175,7 @@
 					"$(PROJECT_DIR)/YouYouShoppingCenter/界面组成/个人中心/Apply",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ykg.shopping;
 				PRODUCT_NAME = "优优酷购";
 				PROVISIONING_PROFILE = "b5fe4656-b492-4a70-acd7-870555dfe6c8";
 				SDKROOT = iphoneos;
@@ -2197,7 +2199,7 @@
 				);
 				INFOPLIST_FILE = YouYouShoppingCenterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ykg.shopping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/优优酷购.app/优优酷购";
 			};
@@ -2213,7 +2215,7 @@
 				);
 				INFOPLIST_FILE = YouYouShoppingCenterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.misslolweibo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ykg.shopping;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/优优酷购.app/优优酷购";
 			};
