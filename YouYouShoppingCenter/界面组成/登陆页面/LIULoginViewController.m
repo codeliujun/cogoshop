@@ -194,16 +194,16 @@
 }
 
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)strin个{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     if (textField == self.useNameTextField) {
-        if (textField.text.length >= 11) {
+        if (textField.text.length >= 11 && ![string isEqualToString:@""]) {
             return NO;
         }
     }
     
     if (textField == self.passWordTextField) {
-        if (textField.text.length >= 6) {
+        if (textField.text.length >= 6 && ![string isEqualToString:@""]) {
             return NO;
         }
     }

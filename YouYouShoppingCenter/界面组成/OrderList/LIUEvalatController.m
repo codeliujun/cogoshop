@@ -138,9 +138,10 @@
         self.stardescription = @"0";
     }
     if (!self.starservice) {
-        self.stardescription = @"0";
+        self.starservice = @"0";
+        
     }if (!self.startransit) {
-        self.stardescription = @"0";
+        self.startransit = @"0";
     }
     /*
      Goods/addcomment?userid={userid}&orderid={orderid}&commentcontent={commentcontent}&rank={rank}&stardescription={stardescription}&starservice={starservice}&startransit={startransit}*/
