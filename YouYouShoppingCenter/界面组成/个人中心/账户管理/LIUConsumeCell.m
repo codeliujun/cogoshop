@@ -57,11 +57,11 @@
 
 - (NSString *)getDateStr {
     
-    NSString *time1 = self.comsumer[@"CompleteTime"];
+    NSString *time1 = self.comsumer[@"Time"];
     if ([time1 isEqual:[NSNull null]]) {
         return @"时间没有";
     }
-    NSString *time2 = [time1 substringWithRange:NSMakeRange(6, time1.length-8)];
+    NSString *time2 = [time1 substringWithRange:NSMakeRange(6,10)];
     NSLog(@"%@===%@",time1,time2);
     
     NSInteger timeInterval = [time2 integerValue];

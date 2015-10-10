@@ -16,6 +16,7 @@
 #import "LIUUserInfoData.h"
 #import "LIULoginViewController.h"
 #import "Masonry.h"
+#import "LIUChageNumberController.h"
 
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 
@@ -39,47 +40,53 @@
 
 - (void)addHeaderScrollerview {
     
+    UIView *headerSupperView = [[UIView alloc]initWithFrame:CGRectMake(0,0,[UIScreen mainScreen].bounds.size.width, 200)];
+    headerSupperView.backgroundColor = [UIColor redColor];
+    
     self.addCartButton.layer.cornerRadius = 5.0f;
     self.addCartButton.layer.masksToBounds = YES;
     /**
      假数据
      */
-    self.good.imageNames = @[@"测试图片",@"测试图片",@"测试图片",@"测试图片",@"测试图片"];
+    //self.good.imageNames = @[@"测试图片",@"测试图片",@"测试图片",@"测试图片",@"测试图片"];
     
     LIUDetailHeaderImageScrollerView *scrollerView = [LIUDetailHeaderImageScrollerView creatScrollerWithShopping:self.good];
     
     //创建和配置显示数量的label
+    NSInteger count = MAX(self.good.ImageUrls.count, 2);
     self.numberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     self.numberLabel.textAlignment = NSTextAlignmentCenter;
-    self.numberLabel.text = [NSString stringWithFormat:@"%d/%lu",1,(unsigned long)self.good.imageNames.count];
+    self.numberLabel.text = [NSString stringWithFormat:@"%d/%lu",1,(long)count];
     CGRect labelFrame = [self.numberLabel textRectForBounds:CGRectMake(0, 0, 100, 200) limitedToNumberOfLines:1];
     CGSize labelSize = CGSizeMake(MAX(labelFrame.size.width, labelFrame.size.height), MAX(labelFrame.size.width, labelFrame.size.height));
     labelFrame.size = labelSize;
     //self.numberLabel.frame = labelFrame;
-    self.numberLabel.layer.cornerRadius = labelFrame.size.width*0.5;
+    self.numberLabel.layer.cornerRadius = (labelFrame.size.width+15)*0.5;
     self.numberLabel.layer.masksToBounds = YES;
     
-    [self.detaileTableView addSubview:self.numberLabel];
-    [self.detaileTableView bringSubviewToFront:self.numberLabel];
+    [headerSupperView addSubview:self.numberLabel];
+    
     self.numberLabel.backgroundColor = [UIColor yellowColor];
     
-    WS(ws);
     [self.numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(ws.detaileTableView.mas_left).with.offset(ws.detaileTableView.bounds.size.width);
-        make.top.equalTo(ws.detaileTableView.mas_top).offset(160);
-        make.width.equalTo(@(labelSize.width));
-        make.height.equalTo(@(labelSize.height));
+        make.right.equalTo(headerSupperView.mas_right).with.offset(-20);
+        make.bottom.equalTo(headerSupperView.mas_bottom).offset(-20);
+        make.width.equalTo(@(labelSize.width+15));
+        make.height.equalTo(@(labelSize.height+15));
     }];
     
     scrollerView.indexDelegate = self;
-    scrollerView.frame = CGRectMake(0, 0, self.detaileTableView.bounds.size.width, 200);
-    self.detaileTableView.tableHeaderView = scrollerView;
+    scrollerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
+    [headerSupperView addSubview:scrollerView];
+    [headerSupperView bringSubviewToFront:self.numberLabel];
+    self.detaileTableView.tableHeaderView = headerSupperView;
 }
 
 #pragma --mark  scroller的下标
 - (void)currentImageIndex:(NSInteger)index {
     //NSLog(@"当前的下表是%ld",(long)index);
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld/%lu",(long)index,(unsigned long)self.good.imageNames.count];;
+    NSInteger count = MAX(self.good.ImageUrls.count, 2);
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld/%lu",(long)index,(long)count];;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -202,50 +209,54 @@
 #pragma --mark 加入购物车
 - (IBAction)addToShoppingCart:(UIButton *)sender {
     
+    LIUChageNumberController *changeVc = [[LIUChageNumberController alloc]init];
+    changeVc.good = self.good;
+    [self.navigationController pushViewController:changeVc animated:YES];
     
-    //弹出数量选择框
-    //[self showCountSelectView];
     
-    
-    //1.判断是否登录
-    LIUUserInfoData *userInfo = [LIUUserInfoData defaultUserInfo];
-    
-    if (userInfo.Id.length <= 0) {
-        //没有登录
-        LIULoginViewController *loginVC = [LIULoginViewController shareLoginViewController];
-        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:loginVC];
-        [self presentViewController:navi animated:YES completion:nil];
-        return;
-    }
-    else {
-        /*
-         goodsid={goodsid}&count={count}&shopid={shopid}
-         */
-  
-       // 先注释
-//        if ([self.good.InstoreNumber integerValue] <= 0) {
-//            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
-//            return;
-//        }
-        
-        NSString *userId = [self getUserId];
-        [self requestWithUrl:kAddGood Parameters:@{
-                                                   @"goodsid":self.good.Id,
-                                                   @"count":@1,
-                                                   @"shopid":@"",
-                                                   @"userid":userId
-                                                   } Success:^(NSDictionary *result) {
-                                                       NSLog(@"%@",result);
-                                                       if ([result[@"ErrorCode"] integerValue] == 200) {
-                                                           [SVProgressHUD showSuccessWithStatus:@"加入购物车成功" duration:2.f];
-                                                       }
-                                                   } Failue:^(NSDictionary *failueInfo) {
-                                                       NSLog(@"%@",failueInfo);
-                                                   }];
-        
-        
-    }
-    
+//    //弹出数量选择框
+//    //[self showCountSelectView];
+//    
+//    
+//    //1.判断是否登录
+//    LIUUserInfoData *userInfo = [LIUUserInfoData defaultUserInfo];
+//    
+//    if (userInfo.Id.length <= 0) {
+//        //没有登录
+//        LIULoginViewController *loginVC = [LIULoginViewController shareLoginViewController];
+//        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:loginVC];
+//        [self presentViewController:navi animated:YES completion:nil];
+//        return;
+//    }
+//    else {
+//        /*
+//         goodsid={goodsid}&count={count}&shopid={shopid}
+//         */
+//  
+//       // 先注释
+////        if ([self.good.InstoreNumber integerValue] <= 0) {
+////            [SVProgressHUD showErrorWithStatus:@"没有库存" duration:1.5];
+////            return;
+////        }
+//        
+//        NSString *userId = [self getUserId];
+//        [self requestWithUrl:kAddGood Parameters:@{
+//                                                   @"goodsid":self.good.Id,
+//                                                   @"count":@1,
+//                                                   @"shopid":@"",
+//                                                   @"userid":userId
+//                                                   } Success:^(NSDictionary *result) {
+//                                                       NSLog(@"%@",result);
+//                                                       if ([result[@"ErrorCode"] integerValue] == 200) {
+//                                                           [SVProgressHUD showSuccessWithStatus:@"加入购物车成功" duration:2.f];
+//                                                       }
+//                                                   } Failue:^(NSDictionary *failueInfo) {
+//                                                       NSLog(@"%@",failueInfo);
+//                                                   }];
+//        
+//        
+//    }
+//
     /*
      //2.得到当前用户
      LIUPersonModel *person = [LIUPersonModel defaultUser];

@@ -65,14 +65,14 @@
     //NSLog(@"currentPriceRect:%@",NSStringFromCGRect(currentPriceRect));
     [self addSubview:self.currentLabel];
     [self.currentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ws.decLabel.mas_bottom).with.offset(5);
+        make.top.equalTo(ws.decLabel.mas_bottom).with.offset(10);
         make.left.equalTo(ws.shoppingImageView.mas_right).with.offset(8);
         make.width.equalTo(@(currentPriceRect.size.width));
         make.height.equalTo(@(currentPriceRect.size.height));
     }];
     
     
-    self.originalLabel.font = [UIFont systemFontOfSize:13];
+    self.originalLabel.font = [UIFont systemFontOfSize:12];
     self.originalLabel.textColor = [UIColor lightGrayColor];
     self.originalLabel.text = [NSString stringWithFormat:@"￥%.1f",[self.shopping.Sell_Price floatValue]];
     CGRect originalPriceRect = [self.originalLabel textRectForBounds:CGRectMake(0, 0, 200, 17) limitedToNumberOfLines:1];

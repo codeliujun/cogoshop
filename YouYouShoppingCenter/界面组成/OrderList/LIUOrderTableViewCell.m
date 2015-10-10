@@ -89,7 +89,7 @@
 - (NSString *)getDateStr {
     
     NSString *time1 = self.order.Datetime;
-    NSString *time2 = [time1 substringWithRange:NSMakeRange(6, time1.length-8)];
+    NSString *time2 = [time1 substringWithRange:NSMakeRange(6, 10)];
     NSLog(@"%@===%@",time1,time2);
     
     NSInteger timeInterval = [time2 integerValue];

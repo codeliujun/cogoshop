@@ -7,7 +7,7 @@
 //
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf=self
 #import "LIUHomeCategoryCell.h"
-#import "UIImage+GetUrlImage.h"
+#import "UIImageView+WebCache.h"
 @interface LIUHomeCategoryCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *categoryIcon;
@@ -25,10 +25,11 @@
 -(void)setCaterInfo:(NSDictionary *)caterInfo {
     _caterInfo = caterInfo;
     
-    WS(ws);
-    [UIImage getImageWithThumble:caterInfo[@"thumb"] Success:^(UIImage *image) {
-        ws.categoryIcon.image = image;
-    }];
+//    WS(ws);
+//    [UIImage getImageWithThumble:caterInfo[@"thumb"] Success:^(UIImage *image) {
+//        ws.categoryIcon.image = image;
+//    }];
+    [self.categoryIcon sd_setImageWithURL:caterInfo[@"thumb"] placeholderImage:[UIImage imageNamed:@"测试图片"]];
     
     self.catrgoryLabel.text = caterInfo[@"name"];
     

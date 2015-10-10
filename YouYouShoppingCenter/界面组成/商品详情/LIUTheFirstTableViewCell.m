@@ -28,7 +28,7 @@
 
 - (void)updateContent {
     
-    self.memberPrice.text = [NSString stringWithFormat:@"￥%@",self.goods.Member_Price];
+    self.memberPrice.text = [NSString stringWithFormat:@"￥%@",self.goods.Join_Price];
     self.sellPrice.text = [NSString stringWithFormat:@"￥%@",self.goods.Sell_Price];
     self.salesLabel.text = [NSString stringWithFormat:@"%@",self.goods.Sell_Number];
     

@@ -158,6 +158,8 @@
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
     [rightButton setTitle:@"扫描" forState:UIControlStateNormal];
+    //[rightButton setBackgroundImage:[UIImage imageNamed:@"二维码"] forState:UIControlStateNormal];
+    rightButton.contentMode = UIViewContentModeScaleAspectFill;
     [rightButton setTitle:@"取消" forState:UIControlStateSelected];
     [rightButton addTarget:self action:@selector(scanTwoDimensionalCode:) forControlEvents:UIControlEventTouchUpInside];
     self.rightButton = rightButton;
@@ -238,6 +240,17 @@
     //搜索按钮
     self.searchButton.layer.cornerRadius = self.searchButton.bounds.size.height*0.5;
     self.searchButton.layer.masksToBounds = YES;
+    
+    //添加左边的商彪
+//    UIImageView *iconImageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 32)];
+//    
+//    if ([UIScreen mainScreen].bounds.size.width <= 320) {
+//        iconImageView.frame = CGRectMake(5, 12, 40, 20);
+//    }
+//    
+//    iconImageView.image = [UIImage imageNamed:@"标题"];
+//    [self.navigationController.navigationBar addSubview:iconImageView];
+    
     
 }
 #pragma --mark 搜索商品点击
